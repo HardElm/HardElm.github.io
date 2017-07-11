@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="srs-bench,直播流,性能测试," />
 
 
 
@@ -93,16 +93,17 @@
 
 
 
-<meta name="description" content="在路上····">
-<meta property="og:type" content="website">
-<meta property="og:title" content="博客分类">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta name="description" content="项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。 服务器负载测试工具SB(SRS Bench)： 模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load支持HTTP负">
+<meta name="keywords" content="srs-bench,直播流,性能测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="srs-bench安装与使用">
+<meta property="og:url" content="http://yoursite.com/2017/07/11/srs-bench安装与使用/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
-<meta property="og:description" content="在路上····">
-<meta property="og:updated_time" content="2017-07-11T02:26:31.920Z">
+<meta property="og:description" content="项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。 服务器负载测试工具SB(SRS Bench)： 模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load支持HTTP负">
+<meta property="og:updated_time" content="2017-07-11T08:43:02.293Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博客分类">
-<meta name="twitter:description" content="在路上····">
+<meta name="twitter:title" content="srs-bench安装与使用">
+<meta name="twitter:description" content="项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。 服务器负载测试工具SB(SRS Bench)： 模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load支持HTTP负">
 
 
 
@@ -130,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/11/srs-bench安装与使用/"/>
 
 
 
 
 
-  <title>博客分类 | HardElm's blog</title>
+  <title>srs-bench安装与使用 | HardElm's blog</title>
   
 
 
@@ -276,25 +277,164 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">博客分类</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/11/srs-bench安装与使用/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HardElm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HardElm's blog">
+    </span>
 
     
-    
-      <div class="category-all-page">
-        <div class="category-all-title">
-            目前共计 1 个分类
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">srs-bench安装与使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-11T16:18:38+08:00">
+                2017-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-        <div class="category-all">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/博客搭建/">博客搭建</a><span class="category-list-count">1</span></li></ul>
-        </div>
-      </div>
+      </header>
     
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。</p>
+<p>服务器负载测试工具SB(SRS Bench)：</p>
+<p>模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。<br>支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load<br>支持HTTP负载测试，所有并发重复下载一个http文件。可将80Gbps带宽测试的72Gbps。执行程序：./objs/sb_http_load<br>支持RTMP流播放测试，一个进程支持5k并发。执行程序：./objs/sb_rtmp_load<br>支持RTMP流推流测试，一个进程支持500个并发。执行程序：./objs/sb_rtmp_publish<br>RTMP协议使用高性能服务器SRS(SimpleRtmpServer)的协议栈。</p>
+<p>注意：</p>
+<p>HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会把所有内容当做body一直读)。<br>所有程序都在Linux下运行，模拟客户端运行。<br>其他工具参考srs-librtmp</p>
+<p>一、安装配置<br>    安装前需下载安装依赖软件包，使用git下载最新版本的srs-bench源码包<br>    [root@cdvcloud huangyl]# yum install git unzip patch gcc gcc-c++ make<br>    [root@cdvcloud huangyl]# git clone <a href="https://github.com/simple-rtmp-server/srs-bench.git" target="_blank" rel="external">https://github.com/simple-rtmp-server/srs-bench.git</a><br>    编译<br>    [root@cdvcloud srs-bench-master]# ./configure<br>    [root@cdvcloud srs-bench-master]# make<br>    查看生成的文件和目录<br>    [root@cdvcloud objs]# ls<br>    http-parser-2.1  sb_hls_load   sb_rtmp_load   sb_rtmp_publish  st-1.9    Makefile   sb_http_load  sb_rtmp_load_fast  src<br>二、使用方法：<br>    模拟RTMP用户<br>        ./st_rtmp_load -c 1 -r rtmp://127.0.0.1:1935/live/livestream<br>    模拟HLS直播用户<br>        ./st_hls_load -c 1 -r <a href="http://127.0.0.1:3080/hls/hls.m3u8" target="_blank" rel="external">http://127.0.0.1:3080/hls/hls.m3u8</a><br>    模拟HSL点播用户<br>        ./st_hls_load -c 10000 -o -r <a href="http://127.0.0.1:3080/hls/hls.m3u8" target="_blank" rel="external">http://127.0.0.1:3080/hls/hls.m3u8</a><br>    模拟RTMP推流用户<br>        ./st_rtmp_publish -i doc/source.200kbps.768x320.flv -c 1 -r rtmp://127.0.0.1:1935/live/livestream<br>    模拟RTMP多路推流用户<br>        ./st_rtmp<em>publish -i doc/source.200kbps.768x320.flv -c 1000 -r rtmp://127.0.0.1:1935/live/livestream</em>{i}</p>
+<pre><code>example:
+    start a client
+        ./objs/sb_rtmp_load_fast -c 1 -r rtmp://127.0.0.1:1935/live/livestream
+    start 1000 clients
+        ./objs/sb_rtmp_load_fast -c 1000 -r rtmp://127.0.0.1:1935/live/livestream
+    start 10000 clients
+        ./objs/sb_rtmp_load_fast -c 10000 -r rtmp://127.0.0.1:1935/live/livestream
+    start 100000 clients
+        ./objs/sb_rtmp_load_fast -c 100000 -r rtmp://127.0.0.1:1935/live/livestream
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/srs-bench/" rel="tag"># srs-bench</a>
+          
+            <a href="/tags/直播流/" rel="tag"># 直播流</a>
+          
+            <a href="/tags/性能测试/" rel="tag"># 性能测试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/11/测试页/" rel="next" title="测试页">
+                <i class="fa fa-chevron-left"></i> 测试页
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -514,10 +654,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 

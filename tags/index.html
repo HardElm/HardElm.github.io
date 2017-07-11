@@ -93,13 +93,16 @@
 
 
 
+<meta name="description" content="在路上····">
 <meta property="og:type" content="website">
 <meta property="og:title" content="博客标签">
 <meta property="og:url" content="http://yoursite.com/tags/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
+<meta property="og:description" content="在路上····">
 <meta property="og:updated_time" content="2017-07-11T07:28:26.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客标签">
+<meta name="twitter:description" content="在路上····">
 
 
 
@@ -108,7 +111,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -174,7 +177,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">学习笔记</p>
       
   </div>
 
@@ -204,6 +207,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
@@ -224,22 +237,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-board">
           <a href="/board/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
             
-            留言板
+            留言
           </a>
         </li>
       
@@ -285,10 +288,10 @@
     
       <div class="tag-cloud">
         <div class="tag-cloud-title">
-            目前共计 3 个标签
+            目前共计 6 个标签
         </div>
         <div class="tag-cloud-tags">
-          <a href="/tags/GitHub/" style="font-size: 12px; color: #ccc">GitHub</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #ccc">Hexo</a> <a href="/tags/Next/" style="font-size: 12px; color: #ccc">Next</a>
+          <a href="/tags/GitHub/" style="font-size: 12px; color: #ccc">GitHub</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #ccc">Hexo</a> <a href="/tags/Next/" style="font-size: 12px; color: #ccc">Next</a> <a href="/tags/srs-bench/" style="font-size: 12px; color: #ccc">srs-bench</a> <a href="/tags/性能测试/" style="font-size: 12px; color: #ccc">性能测试</a> <a href="/tags/直播流/" style="font-size: 12px; color: #ccc">直播流</a>
         </div>
       </div>
     
@@ -318,6 +321,7 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
     <div class="sidebar-inner">
 
       
@@ -331,7 +335,7 @@
                alt="HardElm" />
           <p class="site-author-name" itemprop="name">HardElm</p>
            
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">在路上····</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -339,7 +343,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -361,7 +365,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -372,6 +376,17 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="github" target="_blank" title="LinkLabel">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  LinkLabel
+                </a>
+              </span>
+            
           
         </div>
 
@@ -388,6 +403,11 @@
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
       
 
     </div>
@@ -429,11 +449,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
   </div>
