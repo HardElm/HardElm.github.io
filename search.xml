@@ -55,9 +55,9 @@
         <category>性能工具</category>
       </categories>
       <tags>
-        <tag>性能测试</tag>
         <tag>Nmon</tag>
         <tag>监控工具</tag>
+        <tag>性能测试</tag>
       </tags>
   </entry>
   <entry>
@@ -80,9 +80,9 @@
         <category>性能工具</category>
       </categories>
       <tags>
+        <tag>性能测试</tag>
         <tag>srs-bench</tag>
         <tag>直播流</tag>
-        <tag>性能测试</tag>
       </tags>
   </entry>
   <entry>
