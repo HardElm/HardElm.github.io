@@ -13,7 +13,16 @@
 
 
 
-
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
 
 
 
@@ -471,9 +480,18 @@
               </span>
             
               <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/qq_22681061" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-codiepie"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
                 <a href="https://www.zhihu.com/people/huang-yun-long-99-76" target="_blank" title="知乎">
                   
-                    <i class="fa fa-fw fa-twitter"></i>
+                    <i class="fa fa-fw fa-eercast"></i>
                   
                   知乎
                 </a>
@@ -486,6 +504,20 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://github.com/HardElm/HardElm.github.io" title="Title" target="_blank">Title</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         
@@ -515,8 +547,15 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">HardElm</span>
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共4.0k字</span>
 </div>
 <!--
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共4.0k字</span>
+</div>
+
 
 <div class="powered-by">
   Hexo
@@ -536,7 +575,7 @@
 
   
     <span class="site-uv">
-      <i class="fa fa-user"></i>
+      <i class="fa fa-user"></i> 本站访客数
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
       
     </span>
@@ -544,7 +583,7 @@
 
   
     <span class="site-pv">
-      <i class="fa fa-eye"></i>
+      <i class="fa fa-eye"></i> 本站浏览量
       <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
       
     </span>
@@ -997,6 +1036,21 @@
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
 
