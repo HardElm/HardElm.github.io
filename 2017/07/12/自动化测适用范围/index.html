@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="srs-bench,直播流,性能测试," />
+  <meta name="keywords" content="自动化测试," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。 服务器负载测试工具SB(SRS Bench)： 模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load支持HTTP负">
-<meta name="keywords" content="srs-bench,直播流,性能测试">
+<meta name="description" content="什么情况适用自动化测试 什么情况不适用自动化测试 一、不适合自动化测试的情况 • 定制型项目（一次性的）。为客户定制的项目，维护期由客户方承担的，甚至采用的开发语言、运行环境也是客户特别要求的，即公司在这方面的测试积累就少，这样的项目不适合作自动化测试。 • 项目周期很短的项目。项目周期很短，测试周期很短，就不值得花精力去投资自动化测试，好不容易建立起的测试脚本，不能得到重复的利用是不现实的。 •">
+<meta name="keywords" content="自动化测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="srs-bench安装与使用">
-<meta property="og:url" content="http://yoursite.com/2017/07/11/srs-bench安装与使用/index.html">
+<meta property="og:title" content="自动化测试的适用范围">
+<meta property="og:url" content="http://yoursite.com/2017/07/12/自动化测适用范围/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
-<meta property="og:description" content="项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。 服务器负载测试工具SB(SRS Bench)： 模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load支持HTTP负">
-<meta property="og:updated_time" content="2017-07-12T01:06:30.291Z">
+<meta property="og:description" content="什么情况适用自动化测试 什么情况不适用自动化测试 一、不适合自动化测试的情况 • 定制型项目（一次性的）。为客户定制的项目，维护期由客户方承担的，甚至采用的开发语言、运行环境也是客户特别要求的，即公司在这方面的测试积累就少，这样的项目不适合作自动化测试。 • 项目周期很短的项目。项目周期很短，测试周期很短，就不值得花精力去投资自动化测试，好不容易建立起的测试脚本，不能得到重复的利用是不现实的。 •">
+<meta property="og:updated_time" content="2017-07-12T01:32:46.538Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="srs-bench安装与使用">
-<meta name="twitter:description" content="项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。 服务器负载测试工具SB(SRS Bench)： 模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load支持HTTP负">
+<meta name="twitter:title" content="自动化测试的适用范围">
+<meta name="twitter:description" content="什么情况适用自动化测试 什么情况不适用自动化测试 一、不适合自动化测试的情况 • 定制型项目（一次性的）。为客户定制的项目，维护期由客户方承担的，甚至采用的开发语言、运行环境也是客户特别要求的，即公司在这方面的测试积累就少，这样的项目不适合作自动化测试。 • 项目周期很短的项目。项目周期很短，测试周期很短，就不值得花精力去投资自动化测试，好不容易建立起的测试脚本，不能得到重复的利用是不现实的。 •">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/11/srs-bench安装与使用/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/12/自动化测适用范围/"/>
 
 
 
 
 
-  <title>srs-bench安装与使用 | HardElm's blog</title>
+  <title>自动化测试的适用范围 | HardElm's blog</title>
   
 
 
@@ -286,7 +286,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/11/srs-bench安装与使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/12/自动化测适用范围/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HardElm">
@@ -303,7 +303,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">srs-bench安装与使用</h1>
+          <h1 class="post-title" itemprop="name headline">自动化测试的适用范围</h1>
         
 
         <div class="post-meta">
@@ -315,8 +315,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-11T16:18:38+08:00">
-                2017-07-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-12T09:30:50+08:00">
+                2017-07-12
               </time>
             
 
@@ -338,8 +338,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/性能工具/" itemprop="url" rel="index">
-                    <span itemprop="name">性能工具</span>
+                  <a href="/categories/自动化测试/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化测试</span>
                   </a>
                 </span>
 
@@ -372,22 +372,11 @@
       
 
       
-        <p>项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。</p>
-<p>服务器负载测试工具SB(SRS Bench)：</p>
-<p>模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。<br>支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load<br>支持HTTP负载测试，所有并发重复下载一个http文件。可将80Gbps带宽测试的72Gbps。执行程序：./objs/sb_http_load<br>支持RTMP流播放测试，一个进程支持5k并发。执行程序：./objs/sb_rtmp_load<br>支持RTMP流推流测试，一个进程支持500个并发。执行程序：./objs/sb_rtmp_publish<br>RTMP协议使用高性能服务器SRS(SimpleRtmpServer)的协议栈。</p>
-<p>注意：</p>
-<p>HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会把所有内容当做body一直读)。<br>所有程序都在Linux下运行，模拟客户端运行。<br>其他工具参考srs-librtmp</p>
-<p>一、安装配置<br>    安装前需下载安装依赖软件包，使用git下载最新版本的srs-bench源码包<br>    [root@cdvcloud huangyl]# yum install git unzip patch gcc gcc-c++ make<br>    [root@cdvcloud huangyl]# git clone <a href="https://github.com/simple-rtmp-server/srs-bench.git" target="_blank" rel="external">https://github.com/simple-rtmp-server/srs-bench.git</a><br>    编译<br>    [root@cdvcloud srs-bench-master]# ./configure<br>    [root@cdvcloud srs-bench-master]# make<br>    查看生成的文件和目录<br>    [root@cdvcloud objs]# ls<br>    http-parser-2.1  sb_hls_load   sb_rtmp_load   sb_rtmp_publish  st-1.9    Makefile   sb_http_load  sb_rtmp_load_fast  src<br>二、使用方法：<br>    模拟RTMP用户<br>        ./st_rtmp_load -c 1 -r rtmp://127.0.0.1:1935/live/livestream<br>    模拟HLS直播用户<br>        ./st_hls_load -c 1 -r <a href="http://127.0.0.1:3080/hls/hls.m3u8" target="_blank" rel="external">http://127.0.0.1:3080/hls/hls.m3u8</a><br>    模拟HSL点播用户<br>        ./st_hls_load -c 10000 -o -r <a href="http://127.0.0.1:3080/hls/hls.m3u8" target="_blank" rel="external">http://127.0.0.1:3080/hls/hls.m3u8</a><br>    模拟RTMP推流用户<br>        ./st_rtmp_publish -i doc/source.200kbps.768x320.flv -c 1 -r rtmp://127.0.0.1:1935/live/livestream<br>    模拟RTMP多路推流用户<br>        ./st_rtmp<em>publish -i doc/source.200kbps.768x320.flv -c 1000 -r rtmp://127.0.0.1:1935/live/livestream</em>{i}</p>
-<pre><code>example:
-    start a client
-        ./objs/sb_rtmp_load_fast -c 1 -r rtmp://127.0.0.1:1935/live/livestream
-    start 1000 clients
-        ./objs/sb_rtmp_load_fast -c 1000 -r rtmp://127.0.0.1:1935/live/livestream
-    start 10000 clients
-        ./objs/sb_rtmp_load_fast -c 10000 -r rtmp://127.0.0.1:1935/live/livestream
-    start 100000 clients
-        ./objs/sb_rtmp_load_fast -c 100000 -r rtmp://127.0.0.1:1935/live/livestream
-</code></pre>
+        <p>什么情况适用自动化测试 什么情况不适用自动化测试</p>
+<p>一、不适合自动化测试的情况<br> • 定制型项目（一次性的）。为客户定制的项目，维护期由客户方承担的，甚至采用的开发语言、运行环境也是客户特别要求的，即公司在这方面的测试积累就少，这样的项目不适合作自动化测试。<br> • 项目周期很短的项目。项目周期很短，测试周期很短，就不值得花精力去投资自动化测试，好不容易建立起的测试脚本，不能得到重复的利用是不现实的。<br> • 业务规则复杂的对象。业务规则复杂的对象，有很多的逻辑关系、运算关系，工具就很难测试。<br> • 美观、声音、易用性测试。人的感观方面的：界面的美观、声音的体验、易用性的测试，也只有人来测试。<br> • 测试很少运行。测试很少运行，对自动化测试就是一种浪费。自动化测试就是让它不厌其烦的、反反复复的运行才有效率。<br> • 软件不稳定。软件不稳定，则会由于这些不稳定因素导致自动化测试失败。只有当软件达到相对的稳定，没有界面性严重错误和中断错误才能开始自动化测试。<br> • 涉及物理交互。工具很难完成与物理设备的交互，比如刷卡的测试等。</p>
+<p>二、适合自动化测试的情况</p>
+<p>自动化测试之所以能在很多大公司实施起来，就是有它适合自动化测试的特点和高的投资回报率。<br> • 产品型项目。产品型的项目，每个项目只改进少量的功能，但每个项目必须反反复复的测试那些没有改动过的功能。这部分测试完全可以让自动化测试来承担， 同时可以把新加入的功能的测试也慢慢地加入到自动化测试当中。<br> • 增量式开发、持续集成项目。由于这种开发模式是频繁的发布新版本进行测试，也就需要频繁的自动化测试，以便把人从中解脱出来测试新的功能。<br> • 能够自动编译、自动发布的系统。要能够完全实现自动化测试，必须具有能够自动化编译，自动化发布系统进行测试的功能。 当然，不能达到这个要求也可以在手工干预的情况下进行自动化测试。<br> • 回归测试。回归测试是自动化测试的强项，它能够很好的验证你是否引入了新的缺陷，老的缺陷是否修改过来了。在某种程度上可以把自动化测试工具叫做回归测试工具。<br> • 多次重复、机械性动作，将烦琐的任务转化为自动化测试。自动化测试最适用于多次重复、机械性动作，这样的测试对它来说从不会失败。比如要向系统输入大量的相似数据来测试压力和报表。<br> • 需要频繁运行测试。在一个项目中需要频繁的运行测试，测试周期按天算，就能最大限度的利用测试脚本</p>
+
       
     </div>
 
@@ -416,11 +405,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/srs-bench/" rel="tag"># srs-bench</a>
-          
-            <a href="/tags/直播流/" rel="tag"># 直播流</a>
-          
-            <a href="/tags/性能测试/" rel="tag"># 性能测试</a>
+            <a href="/tags/自动化测试/" rel="tag"># 自动化测试</a>
           
         </div>
       
@@ -433,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/11/测试页/" rel="next" title="测试页">
-                <i class="fa fa-chevron-left"></i> 测试页
+              <a href="/2017/07/12/Selenium初学总结/" rel="next" title="Selenium初学总结">
+                <i class="fa fa-chevron-left"></i> Selenium初学总结
               </a>
             
           </div>
@@ -443,8 +428,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/12/mongoDB基本操作/" rel="prev" title="MongoDB基本操作">
-                MongoDB基本操作 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/12/基于ffmpeg进行转码工具的编写（未完成）/" rel="prev" title="基于ffmpeg进行转码工具的编写（未完成）">
+                基于ffmpeg进行转码工具的编写（未完成） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
