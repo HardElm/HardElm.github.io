@@ -13,6 +13,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-flash.min.css?v=1.0.2" rel="stylesheet">
+
 <script>
     (function(){
         if(''){
@@ -86,7 +93,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="srs-bench,直播流,性能测试," />
+  <meta name="keywords" content="性能测试,srs-bench,直播流," />
 
 
 
@@ -105,7 +112,7 @@
 
 
 <meta name="description" content="项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。 服务器负载测试工具SB(SRS Bench)： 模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load支持HTTP负">
-<meta name="keywords" content="srs-bench,直播流,性能测试">
+<meta name="keywords" content="性能测试,srs-bench,直播流">
 <meta property="og:type" content="article">
 <meta property="og:title" content="srs-bench安装与使用">
 <meta property="og:url" content="https://hardelm.github.io/2017/07/11/srs-bench安装与使用/index.html">
@@ -123,7 +130,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true,"onmobile":true},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -174,7 +181,7 @@
   
 
   <div class="container sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
+    <div class="headband"><a href="https://github.com/HardElm"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a></a></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
@@ -225,26 +232,6 @@
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
           </a>
         </li>
       
@@ -414,7 +401,7 @@
                 
 				<span class="post-meta-divider">|</span>
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
+                  <i class="fa fa-pencil-square-o"></i>
                 </span>
                 
                   <span class="post-meta-item-text">字数</span>
@@ -532,11 +519,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/srs-bench/" rel="tag"># srs-bench</a>
+            <a href="/tags/性能测试/" <i class="fa fa-tag"></i> 性能测试</a>
           
-            <a href="/tags/直播流/" rel="tag"># 直播流</a>
+            <a href="/tags/srs-bench/" <i class="fa fa-tag"></i> srs-bench</a>
           
-            <a href="/tags/性能测试/" rel="tag"># 性能测试</a>
+            <a href="/tags/直播流/" <i class="fa fa-tag"></i> 直播流</a>
           
         </div>
       
@@ -702,6 +689,15 @@
                 </a>
               </span>
             
+              <span class="links-of-author-item">
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=976886991&site=qq&menu=yes" target="_blank" title="QQ">
+                  
+                    <i class="fa fa-fw fa-qq"></i>
+                  
+                  QQ
+                </a>
+              </span>
+            
           
         </div>
 
@@ -713,12 +709,16 @@
           <div class="links-of-blogroll motion-element links-of-blogroll-block">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
-              Links
+              友情链接
             </div>
             <ul class="links-of-blogroll-list">
               
                 <li class="links-of-blogroll-item">
-                  <a href="https://github.com/HardElm/HardElm.github.io" title="Title" target="_blank">Title</a>
+                  <a href="http://fontawesome.io/icons/" title="The Icons" target="_blank">The Icons</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="Next" target="_blank">Next</a>
                 </li>
               
             </ul>
@@ -753,9 +753,16 @@
   </span>
   <span class="author" itemprop="copyrightHolder">HardElm</span>
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共4.0k字</span>
+  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 博客全站共4.0k字</span>
+  
 </div>
+
+
 <!--
+<span class="post-meta-item-icon">
+    <i class="fa fa-pencil-square-o"></i>
+</span>
+
 <div class="theme-info">
   <div class="powered-by"></div>
   <span class="post-count">博客全站共4.0k字</span>
@@ -830,6 +837,8 @@
   
 
 
+  
+
 
 
 
@@ -857,6 +866,9 @@
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
