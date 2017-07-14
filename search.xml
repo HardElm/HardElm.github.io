@@ -55,9 +55,9 @@
         <category>性能工具</category>
       </categories>
       <tags>
-        <tag>性能测试</tag>
         <tag>Nmon</tag>
         <tag>监控工具</tag>
+        <tag>性能测试</tag>
       </tags>
   </entry>
   <entry>
@@ -73,16 +73,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[srs-bench安装与使用]]></title>
+    <title><![CDATA[st-load安装与使用]]></title>
     <url>%2F2017%2F07%2F11%2Fsrs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。 服务器负载测试工具SB(SRS Bench)： 模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load支持HTTP负载测试，所有并发重复下载一个http文件。可将80Gbps带宽测试的72Gbps。执行程序：./objs/sb_http_load支持RTMP流播放测试，一个进程支持5k并发。执行程序：./objs/sb_rtmp_load支持RTMP流推流测试，一个进程支持500个并发。执行程序：./objs/sb_rtmp_publishRTMP协议使用高性能服务器SRS(SimpleRtmpServer)的协议栈。 注意： HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会把所有内容当做body一直读)。所有程序都在Linux下运行，模拟客户端运行。其他工具参考srs-librtmp 一、安装配置 安装前需下载安装依赖软件包，使用git下载最新版本的srs-bench源码包 [root@cdvcloud huangyl]# yum install git unzip patch gcc gcc-c++ make [root@cdvcloud huangyl]# git clone https://github.com/simple-rtmp-server/srs-bench.git 编译 [root@cdvcloud srs-bench-master]# ./configure [root@cdvcloud srs-bench-master]# make 查看生成的文件和目录 [root@cdvcloud objs]# ls http-parser-2.1 sb_hls_load sb_rtmp_load sb_rtmp_publish st-1.9 Makefile sb_http_load sb_rtmp_load_fast src二、使用方法： 模拟RTMP用户 ./st_rtmp_load -c 1 -r rtmp://127.0.0.1:1935/live/livestream 模拟HLS直播用户 ./st_hls_load -c 1 -r http://127.0.0.1:3080/hls/hls.m3u8 模拟HSL点播用户 ./st_hls_load -c 10000 -o -r http://127.0.0.1:3080/hls/hls.m3u8 模拟RTMP推流用户 ./st_rtmp_publish -i doc/source.200kbps.768x320.flv -c 1 -r rtmp://127.0.0.1:1935/live/livestream 模拟RTMP多路推流用户 ./st_rtmppublish -i doc/source.200kbps.768x320.flv -c 1000 -r rtmp://127.0.0.1:1935/live/livestream{i} example: start a client ./objs/sb_rtmp_load_fast -c 1 -r rtmp://127.0.0.1:1935/live/livestream start 1000 clients ./objs/sb_rtmp_load_fast -c 1000 -r rtmp://127.0.0.1:1935/live/livestream start 10000 clients ./objs/sb_rtmp_load_fast -c 10000 -r rtmp://127.0.0.1:1935/live/livestream start 100000 clients ./objs/sb_rtmp_load_fast -c 100000 -r rtmp://127.0.0.1:1935/live/livestream]]></content>
+    <content type="text"><![CDATA[项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load服务器负载测试工具(st-load)：st-load使用nginx-rtmp的协议直接将chunk流解析为messgae。state-threads用来模拟超级并发，并简化异步socket的逻辑为同步socket，http-parser解析http协议部分。这两个库设计都很巧妙，参考大牛开的项目：https://github.com/ossrs/srs-benchstate-threads之前就有写过文章说明，那时候主要是支持高并发的rtmp服务器，也是并发和异步变为同步的协程很方便。http-parser用yum就可以search到，它其实设计得也相当巧妙，相当于只是解析buffer的http内容，并不负责网络部分。而libcurl/poco等都带了网络处理，所以不合适。举例说明，http_parser_parse_url这个函数，解析url，设计得非常有意思，不是返回字符串，而是返回位置索引，譬如主机头在什么位置长度多长等等。 模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。 支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。 支持HTTP负载测试，所有并发重复下载一个http文件。可将80Gbps带宽测试的72Gbps。 支持RTMP流播放测试，一个进程支持5k并发。 支持RTMP流推流测试，一个进程支持500个并发 RTMP协议使用高性能服务器SRS(SimpleRtmpServer)的协议栈。 注意：HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会把所有内容当做body一直读)。所有程序都在Linux下运行，模拟客户端运行。其他工具参考srs-librtmp 安装配置安装前需下载安装依赖软件包，使用git下载最新版本的srs-bench源码包 [root@cdvcloud huangyl]# yum install git unzip patch gcc gcc-c++ make [root@cdvcloud huangyl]# git clone https://github.com/simple-rtmp-server/srs-bench.git 编译 [root@cdvcloud srs-bench-master]# ./configure [root@cdvcloud srs-bench-master]# make 查看生成的文件和目录 [root@cdvcloud objs]# ls http-parser-2.1 sb_hls_load sb_rtmp_load sb_rtmp_publish st-1.9 Makefile sb_http_load sb_rtmp_load_fast src 使用方法模拟RTMP播放用户 ./objs/sb_rtmp_load_fast -c 1000 -r rtmp://192.168.0.104/na84qi/dgarfm 模拟HLS直播用户 ./objs/sb_hls_load -c 1 -r http://192.168.0.104/na84qi/dgarfm.m3u8 模拟HSL点播用户 ./objs/st_hls_load -c 1 -o -r http://192.168.0.104/na84qi/dgarfm.m3u8 模拟RTMP推流用户 ./objs/sb_rtmp_publish -i out_time.mp4 -c 1 -r rtmp://192.168.0.103/x1m4eu/16vpuy 模拟RTMP多路推流用户 ./sb_rtmp_publish -i out_time.mp4 -c 1000 -r rtmp://192.168.0.103/live/livestream_{i} example: start a client ./objs/sb_rtmp_load_fast -c 1 -r rtmp://127.0.0.1:1935/live/livestream start 1000 clients ./objs/sb_rtmp_load_fast -c 1000 -r rtmp://127.0.0.1:1935/live/livestream start 10000 clients ./objs/sb_rtmp_load_fast -c 10000 -r rtmp://127.0.0.1:1935/live/livestream start 100000 clients ./objs/sb_rtmp_load_fast -c 100000 -r rtmp://127.0.0.1:1935/live/livestream 参考： http://blog.csdn.net/win_lin/article/details/11835011 http://blog.csdn.net/xiaojun111111/article/details/52102454 http://blog.csdn.net/heiyeshuwu/article/details/52316738 https://github.com/ossrs/srs-bench]]></content>
       <categories>
         <category>性能工具</category>
       </categories>
       <tags>
-        <tag>srs-bench</tag>
-        <tag>直播流</tag>
         <tag>性能测试</tag>
+        <tag>st-load</tag>
+        <tag>直播流</tag>
       </tags>
   </entry>
   <entry>

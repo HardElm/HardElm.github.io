@@ -93,7 +93,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="srs-bench,直播流,性能测试," />
+  <meta name="keywords" content="性能测试,st-load,直播流," />
 
 
 
@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。 服务器负载测试工具SB(SRS Bench)： 模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load支持HTTP负">
-<meta name="keywords" content="srs-bench,直播流,性能测试">
+<meta name="description" content="项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load服务器负载测试工具(st-load)：st-load使用nginx-rtmp的协议直接将chunk流解析为messgae。state-threads用来模拟超级并发，并简化异步socket的逻辑为同步socket，http-parser解析http协议部分。这两个库">
+<meta name="keywords" content="性能测试,st-load,直播流">
 <meta property="og:type" content="article">
-<meta property="og:title" content="srs-bench安装与使用">
+<meta property="og:title" content="st-load安装与使用">
 <meta property="og:url" content="https://hardelm.github.io/2017/07/11/srs-bench安装与使用/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
-<meta property="og:description" content="项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。 服务器负载测试工具SB(SRS Bench)： 模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load支持HTTP负">
-<meta property="og:updated_time" content="2017-07-12T01:06:30.291Z">
+<meta property="og:description" content="项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load服务器负载测试工具(st-load)：st-load使用nginx-rtmp的协议直接将chunk流解析为messgae。state-threads用来模拟超级并发，并简化异步socket的逻辑为同步socket，http-parser解析http协议部分。这两个库">
+<meta property="og:updated_time" content="2017-07-14T11:04:42.826Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="srs-bench安装与使用">
-<meta name="twitter:description" content="项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。 服务器负载测试工具SB(SRS Bench)： 模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load支持HTTP负">
+<meta name="twitter:title" content="st-load安装与使用">
+<meta name="twitter:description" content="项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load服务器负载测试工具(st-load)：st-load使用nginx-rtmp的协议直接将chunk流解析为messgae。state-threads用来模拟超级并发，并简化异步socket的逻辑为同步socket，http-parser解析http协议部分。这两个库">
 
 
 
@@ -155,7 +155,7 @@
 
 
 
-  <title>srs-bench安装与使用 | HardElm's blog</title>
+  <title>st-load安装与使用 | HardElm's blog</title>
   
 
 
@@ -339,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">srs-bench安装与使用</h1>
+          <h1 class="post-title" itemprop="name headline">st-load安装与使用</h1>
         
 
         <div class="post-meta">
@@ -411,7 +411,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  533
+                  762
                 </span>
               
 
@@ -433,22 +433,47 @@
       
 
       
-        <p>项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了srs-bench。</p>
-<p>服务器负载测试工具SB(SRS Bench)：</p>
-<p>模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。<br>支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。执行程序：./objs/sb_hls_load<br>支持HTTP负载测试，所有并发重复下载一个http文件。可将80Gbps带宽测试的72Gbps。执行程序：./objs/sb_http_load<br>支持RTMP流播放测试，一个进程支持5k并发。执行程序：./objs/sb_rtmp_load<br>支持RTMP流推流测试，一个进程支持500个并发。执行程序：./objs/sb_rtmp_publish<br>RTMP协议使用高性能服务器SRS(SimpleRtmpServer)的协议栈。</p>
-<p>注意：</p>
-<p>HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会把所有内容当做body一直读)。<br>所有程序都在Linux下运行，模拟客户端运行。<br>其他工具参考srs-librtmp</p>
-<p>一、安装配置<br>    安装前需下载安装依赖软件包，使用git下载最新版本的srs-bench源码包<br>    [root@cdvcloud huangyl]# yum install git unzip patch gcc gcc-c++ make<br>    [root@cdvcloud huangyl]# git clone <a href="https://github.com/simple-rtmp-server/srs-bench.git" target="_blank" rel="external">https://github.com/simple-rtmp-server/srs-bench.git</a><br>    编译<br>    [root@cdvcloud srs-bench-master]# ./configure<br>    [root@cdvcloud srs-bench-master]# make<br>    查看生成的文件和目录<br>    [root@cdvcloud objs]# ls<br>    http-parser-2.1  sb_hls_load   sb_rtmp_load   sb_rtmp_publish  st-1.9    Makefile   sb_http_load  sb_rtmp_load_fast  src<br>二、使用方法：<br>    模拟RTMP用户<br>        ./st_rtmp_load -c 1 -r rtmp://127.0.0.1:1935/live/livestream<br>    模拟HLS直播用户<br>        ./st_hls_load -c 1 -r <a href="http://127.0.0.1:3080/hls/hls.m3u8" target="_blank" rel="external">http://127.0.0.1:3080/hls/hls.m3u8</a><br>    模拟HSL点播用户<br>        ./st_hls_load -c 10000 -o -r <a href="http://127.0.0.1:3080/hls/hls.m3u8" target="_blank" rel="external">http://127.0.0.1:3080/hls/hls.m3u8</a><br>    模拟RTMP推流用户<br>        ./st_rtmp_publish -i doc/source.200kbps.768x320.flv -c 1 -r rtmp://127.0.0.1:1935/live/livestream<br>    模拟RTMP多路推流用户<br>        ./st_rtmp<em>publish -i doc/source.200kbps.768x320.flv -c 1000 -r rtmp://127.0.0.1:1935/live/livestream</em>{i}</p>
-<pre><code>example:
-    start a client
-        ./objs/sb_rtmp_load_fast -c 1 -r rtmp://127.0.0.1:1935/live/livestream
-    start 1000 clients
-        ./objs/sb_rtmp_load_fast -c 1000 -r rtmp://127.0.0.1:1935/live/livestream
-    start 10000 clients
-        ./objs/sb_rtmp_load_fast -c 10000 -r rtmp://127.0.0.1:1935/live/livestream
-    start 100000 clients
-        ./objs/sb_rtmp_load_fast -c 100000 -r rtmp://127.0.0.1:1935/live/livestream
-</code></pre>
+        <p>项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。</p>
+<h1 id="什么是st-load"><a href="#什么是st-load" class="headerlink" title="什么是st-load"></a>什么是st-load</h1><p>服务器负载测试工具(st-load)：<br>st-load使用nginx-rtmp的协议直接将chunk流解析为messgae。<br><a href="http://www.udpwork.com/item/13384.html" title="state-threads" target="_blank" rel="external">state-threads</a>用来模拟超级并发，并简化异步socket的逻辑为同步socket，<a href="https://github.com/nodejs/http-parser" title="http-parser" target="_blank" rel="external">http-parser</a>解析http协议部分。<br>这两个库设计都很巧妙，参考大牛开的项目：<a href="https://github.com/ossrs/srs-bench" target="_blank" rel="external">https://github.com/ossrs/srs-bench</a><br>state-threads之前就有写过文章说明，那时候主要是支持高并发的rtmp服务器，也是并发和异步变为同步的协程很方便。<br>http-parser用yum就可以search到，它其实设计得也相当巧妙，相当于只是解析buffer的http内容，并不负责网络部分。而libcurl/poco等都带了网络处理，所以不合适。<br>举例说明，http_parser_parse_url这个函数，解析url，设计得非常有意思，不是返回字符串，而是返回位置索引，譬如主机头在什么位置长度多长等等。</p>
+<ol>
+<li>模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。</li>
+<li>支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。</li>
+<li>支持HTTP负载测试，所有并发重复下载一个http文件。可将80Gbps带宽测试的72Gbps。</li>
+<li>支持RTMP流播放测试，一个进程支持5k并发。</li>
+<li>支持RTMP流推流测试，一个进程支持500个并发</li>
+<li>RTMP协议使用高性能服务器SRS(SimpleRtmpServer)的协议栈。</li>
+</ol>
+<p>注意：<br>HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会把所有内容当做body一直读)。<br>所有程序都在Linux下运行，模拟客户端运行。<br>其他工具参考srs-librtmp</p>
+<h1 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h1><p>安装前需下载安装依赖软件包，使用git下载最新版本的srs-bench源码包</p>
+<pre><code>[root@cdvcloud huangyl]# yum install git unzip patch gcc gcc-c++ make
+[root@cdvcloud huangyl]# git clone https://github.com/simple-rtmp-server/srs-bench.git
+</code></pre><p>编译</p>
+<pre><code>[root@cdvcloud srs-bench-master]# ./configure
+[root@cdvcloud srs-bench-master]# make
+</code></pre><p>查看生成的文件和目录</p>
+<pre><code>[root@cdvcloud objs]# ls
+http-parser-2.1  sb_hls_load   sb_rtmp_load   sb_rtmp_publish  st-1.9    Makefile   sb_http_load  sb_rtmp_load_fast  src
+</code></pre><h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><p>模拟RTMP播放用户</p>
+<pre><code>./objs/sb_rtmp_load_fast -c 1000 -r rtmp://192.168.0.104/na84qi/dgarfm
+</code></pre><p>模拟HLS直播用户</p>
+<pre><code>./objs/sb_hls_load -c 1 -r http://192.168.0.104/na84qi/dgarfm.m3u8
+</code></pre><p>模拟HSL点播用户</p>
+<pre><code>./objs/st_hls_load -c 1 -o -r http://192.168.0.104/na84qi/dgarfm.m3u8
+</code></pre><p>模拟RTMP推流用户</p>
+<pre><code>./objs/sb_rtmp_publish -i out_time.mp4 -c 1 -r rtmp://192.168.0.103/x1m4eu/16vpuy
+</code></pre><p>模拟RTMP多路推流用户</p>
+<pre><code>./sb_rtmp_publish -i out_time.mp4 -c 1000 -r rtmp://192.168.0.103/live/livestream_{i}
+</code></pre><p>example:</p>
+<pre><code>start a client
+    ./objs/sb_rtmp_load_fast -c 1 -r rtmp://127.0.0.1:1935/live/livestream
+start 1000 clients
+    ./objs/sb_rtmp_load_fast -c 1000 -r rtmp://127.0.0.1:1935/live/livestream
+start 10000 clients
+    ./objs/sb_rtmp_load_fast -c 10000 -r rtmp://127.0.0.1:1935/live/livestream
+start 100000 clients
+    ./objs/sb_rtmp_load_fast -c 100000 -r rtmp://127.0.0.1:1935/live/livestream
+</code></pre><p>参考：<br>    <a href="http://blog.csdn.net/win_lin/article/details/11835011" target="_blank" rel="external">http://blog.csdn.net/win_lin/article/details/11835011</a><br>    <a href="http://blog.csdn.net/xiaojun111111/article/details/52102454" target="_blank" rel="external">http://blog.csdn.net/xiaojun111111/article/details/52102454</a><br>    <a href="http://blog.csdn.net/heiyeshuwu/article/details/52316738" target="_blank" rel="external">http://blog.csdn.net/heiyeshuwu/article/details/52316738</a><br>    <a href="https://github.com/ossrs/srs-bench" target="_blank" rel="external">https://github.com/ossrs/srs-bench</a></p>
+
       
     </div>
 
@@ -507,7 +532,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://hardelm.github.io/2017/07/11/srs-bench安装与使用/" title="srs-bench安装与使用">https://hardelm.github.io/2017/07/11/srs-bench安装与使用/</a>
+      <a href="https://hardelm.github.io/2017/07/11/srs-bench安装与使用/" title="st-load安装与使用">https://hardelm.github.io/2017/07/11/srs-bench安装与使用/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -523,11 +548,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/srs-bench/" <i class="fa fa-tag"></i> srs-bench</a>
+            <a href="/tags/性能测试/" <i class="fa fa-tag"></i> 性能测试</a>
+          
+            <a href="/tags/st-load/" <i class="fa fa-tag"></i> st-load</a>
           
             <a href="/tags/直播流/" <i class="fa fa-tag"></i> 直播流</a>
-          
-            <a href="/tags/性能测试/" <i class="fa fa-tag"></i> 性能测试</a>
           
         </div>
       
@@ -610,8 +635,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/header.jpg"
@@ -737,6 +771,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是st-load"><span class="nav-number">1.</span> <span class="nav-text">什么是st-load</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置"><span class="nav-number">2.</span> <span class="nav-text">安装配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用方法"><span class="nav-number">3.</span> <span class="nav-text">使用方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -772,7 +822,7 @@
 </span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站4.0k字</span>
+  <span class="post-count">全站4.2k字</span>
 </div>
 
 
@@ -809,7 +859,7 @@
   
   
   <div class="powered-by"></div>
-  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站4.0k字</span>
+  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站4.2k字</span>
 </div>
 
 
