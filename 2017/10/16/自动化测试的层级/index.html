@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="什么情况适用自动化测试 什么情况不适用自动化测试 一、不适合自动化测试的情况 • 定制型项目（一次性的）。为客户定制的项目，维护期由客户方承担的，甚至采用的开发语言、运行环境也是客户特别要求的，即公司在这方面的测试积累就少，这样的项目不适合作自动化测试。 • 项目周期很短的项目。项目周期很短，测试周期很短，就不值得花精力去投资自动化测试，好不容易建立起的测试脚本，不能得到重复的利用是不现实的。 •">
+<meta name="description" content="背景接《自动化测试的适用范围》 会用工具就是自动化测试工程师吗会使用自动化测试工具的测试人员不能够称之为完全的自动化测试人员，这类测试人员被称为工具小子(Script Kid)。这个阶段还是处于自动化测试的一个比较低级的阶段，因为这些工具都不是测试人员开发的。 对于高手来说，要能写一些独立的测试脚本甚至测试工具。更高的高手则是能脚本和工具和实际工作紧密结合起来，解决工作中遇到的问题。 哪些可以做自">
 <meta name="keywords" content="自动化测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自动化测试的适用范围">
-<meta property="og:url" content="https://hardelm.github.io/2017/07/12/自动化测适用范围/index.html">
+<meta property="og:title" content="Linux下expect脚本语言的简单使用">
+<meta property="og:url" content="https://hardelm.github.io/2017/10/16/自动化测试的层级/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
-<meta property="og:description" content="什么情况适用自动化测试 什么情况不适用自动化测试 一、不适合自动化测试的情况 • 定制型项目（一次性的）。为客户定制的项目，维护期由客户方承担的，甚至采用的开发语言、运行环境也是客户特别要求的，即公司在这方面的测试积累就少，这样的项目不适合作自动化测试。 • 项目周期很短的项目。项目周期很短，测试周期很短，就不值得花精力去投资自动化测试，好不容易建立起的测试脚本，不能得到重复的利用是不现实的。 •">
-<meta property="og:updated_time" content="2017-07-12T01:32:46.538Z">
+<meta property="og:description" content="背景接《自动化测试的适用范围》 会用工具就是自动化测试工程师吗会使用自动化测试工具的测试人员不能够称之为完全的自动化测试人员，这类测试人员被称为工具小子(Script Kid)。这个阶段还是处于自动化测试的一个比较低级的阶段，因为这些工具都不是测试人员开发的。 对于高手来说，要能写一些独立的测试脚本甚至测试工具。更高的高手则是能脚本和工具和实际工作紧密结合起来，解决工作中遇到的问题。 哪些可以做自">
+<meta property="og:updated_time" content="2017-10-16T10:23:49.024Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="自动化测试的适用范围">
-<meta name="twitter:description" content="什么情况适用自动化测试 什么情况不适用自动化测试 一、不适合自动化测试的情况 • 定制型项目（一次性的）。为客户定制的项目，维护期由客户方承担的，甚至采用的开发语言、运行环境也是客户特别要求的，即公司在这方面的测试积累就少，这样的项目不适合作自动化测试。 • 项目周期很短的项目。项目周期很短，测试周期很短，就不值得花精力去投资自动化测试，好不容易建立起的测试脚本，不能得到重复的利用是不现实的。 •">
+<meta name="twitter:title" content="Linux下expect脚本语言的简单使用">
+<meta name="twitter:description" content="背景接《自动化测试的适用范围》 会用工具就是自动化测试工程师吗会使用自动化测试工具的测试人员不能够称之为完全的自动化测试人员，这类测试人员被称为工具小子(Script Kid)。这个阶段还是处于自动化测试的一个比较低级的阶段，因为这些工具都不是测试人员开发的。 对于高手来说，要能写一些独立的测试脚本甚至测试工具。更高的高手则是能脚本和工具和实际工作紧密结合起来，解决工作中遇到的问题。 哪些可以做自">
 
 
 
@@ -149,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="https://hardelm.github.io/2017/07/12/自动化测适用范围/"/>
+  <link rel="canonical" href="https://hardelm.github.io/2017/10/16/自动化测试的层级/"/>
 
 
 
 
 
-  <title>自动化测试的适用范围 | HardElm's blog</title>
+  <title>Linux下expect脚本语言的简单使用 | HardElm's blog</title>
   
 
 
@@ -322,7 +322,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://hardelm.github.io/2017/07/12/自动化测适用范围/">
+    <link itemprop="mainEntityOfPage" href="https://hardelm.github.io/2017/10/16/自动化测试的层级/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HardElm">
@@ -339,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">自动化测试的适用范围</h1>
+          <h1 class="post-title" itemprop="name headline">Linux下expect脚本语言的简单使用</h1>
         
 
         <div class="post-meta">
@@ -351,8 +351,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-12T09:30:50+08:00">
-                2017-07-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-16T18:20:00+08:00">
+                2017-10-16
               </time>
             
 
@@ -411,7 +411,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  867
+                  924
                 </span>
               
 
@@ -433,10 +433,24 @@
       
 
       
-        <p>什么情况适用自动化测试 什么情况不适用自动化测试</p>
-<p>一、不适合自动化测试的情况<br> • 定制型项目（一次性的）。为客户定制的项目，维护期由客户方承担的，甚至采用的开发语言、运行环境也是客户特别要求的，即公司在这方面的测试积累就少，这样的项目不适合作自动化测试。<br> • 项目周期很短的项目。项目周期很短，测试周期很短，就不值得花精力去投资自动化测试，好不容易建立起的测试脚本，不能得到重复的利用是不现实的。<br> • 业务规则复杂的对象。业务规则复杂的对象，有很多的逻辑关系、运算关系，工具就很难测试。<br> • 美观、声音、易用性测试。人的感观方面的：界面的美观、声音的体验、易用性的测试，也只有人来测试。<br> • 测试很少运行。测试很少运行，对自动化测试就是一种浪费。自动化测试就是让它不厌其烦的、反反复复的运行才有效率。<br> • 软件不稳定。软件不稳定，则会由于这些不稳定因素导致自动化测试失败。只有当软件达到相对的稳定，没有界面性严重错误和中断错误才能开始自动化测试。<br> • 涉及物理交互。工具很难完成与物理设备的交互，比如刷卡的测试等。</p>
-<p>二、适合自动化测试的情况</p>
-<p>自动化测试之所以能在很多大公司实施起来，就是有它适合自动化测试的特点和高的投资回报率。<br> • 产品型项目。产品型的项目，每个项目只改进少量的功能，但每个项目必须反反复复的测试那些没有改动过的功能。这部分测试完全可以让自动化测试来承担， 同时可以把新加入的功能的测试也慢慢地加入到自动化测试当中。<br> • 增量式开发、持续集成项目。由于这种开发模式是频繁的发布新版本进行测试，也就需要频繁的自动化测试，以便把人从中解脱出来测试新的功能。<br> • 能够自动编译、自动发布的系统。要能够完全实现自动化测试，必须具有能够自动化编译，自动化发布系统进行测试的功能。 当然，不能达到这个要求也可以在手工干预的情况下进行自动化测试。<br> • 回归测试。回归测试是自动化测试的强项，它能够很好的验证你是否引入了新的缺陷，老的缺陷是否修改过来了。在某种程度上可以把自动化测试工具叫做回归测试工具。<br> • 多次重复、机械性动作，将烦琐的任务转化为自动化测试。自动化测试最适用于多次重复、机械性动作，这样的测试对它来说从不会失败。比如要向系统输入大量的相似数据来测试压力和报表。<br> • 需要频繁运行测试。在一个项目中需要频繁的运行测试，测试周期按天算，就能最大限度的利用测试脚本</p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>接《自动化测试的适用范围》</p>
+<h1 id="会用工具就是自动化测试工程师吗"><a href="#会用工具就是自动化测试工程师吗" class="headerlink" title="会用工具就是自动化测试工程师吗"></a>会用工具就是自动化测试工程师吗</h1><p>会使用自动化测试工具的测试人员不能够称之为完全的自动化测试人员，这类测试人员被称为工具小子(Script Kid)。这个阶段还是处于自动化测试的一个比较低级的阶段，因为这些工具都不是测试人员开发的。</p>
+<p>对于高手来说，要能写一些独立的测试脚本甚至测试工具。更高的高手则是能脚本和工具和实际工作紧密结合起来，解决工作中遇到的问题。</p>
+<h1 id="哪些可以做自动化测试："><a href="#哪些可以做自动化测试：" class="headerlink" title="哪些可以做自动化测试："></a>哪些可以做自动化测试：</h1><h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>单元测试无疑是最适合做自动化的。大多数单元测试是由研发人员完成，测试人员可以不做单元测试，但是可以推动研发人员来编写单元测试用例</p>
+<h3 id="单元测试框架"><a href="#单元测试框架" class="headerlink" title="单元测试框架"></a>单元测试框架</h3><p>1、单元测试常用的框架有很多，比如Java的JUnit，PHP的PHPUnit，Python的unittest等</p>
+<p>2、设计自动化单元测试测试用例时一个测试用例通常由三部分组成：setUp，测试逻辑和tearDown，其中setUp用于准备测试数据，tearDown用于清理数据</p>
+<p>3、一般单元测试框架都支持装饰器设计模式的注解，比如跳过执行，测试套件的组织，测试用例依赖管理等等</p>
+<p>4、单元测试框架可以无缝地在UI测试和接口测试中使用，它们的基本思想都是相通的。</p>
+<h2 id="接口测试"><a href="#接口测试" class="headerlink" title="接口测试"></a>接口测试</h2><p>接口的自动化是目前最适合测试工程师进行自动化的一层。</p>
+<p>接口不但变化小，运行速度快，受益高，还有着出现问题后能够很快定位的优点。</p>
+<h2 id="UI测试"><a href="#UI测试" class="headerlink" title="UI测试"></a>UI测试</h2><p>目前，大众眼中关注的比较多的是UI的自动化测试，这是由大家的思维惯性导致的。</p>
+<p>传统的测试行业，测试工程师都是从UI下手，来完成所有的测试工作，所以到自动化领域，大家也理所当然的喜欢从UI层来进行自动化。</p>
+<p>做UI自动化，最重要的是要能有一个好的自动化测试框架，这里有一些框架的基本设计思路供大家参考：</p>
+<h3 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h3><p>case增加到一定程度后，如何快速的运行所有的case，这就涉及到分布式的概念。对于Selenium，官方提供了一个Grid，感兴趣的同学可以研究一下。</p>
+<h3 id="行为驱动"><a href="#行为驱动" class="headerlink" title="行为驱动"></a>行为驱动</h3><p>行为驱动就是常说的Cucumber</p>
+<h3 id="关键字驱动"><a href="#关键字驱动" class="headerlink" title="关键字驱动"></a>关键字驱动</h3><p>由『操作对象』、『操作』、『数据』关键字组合成测试用例，框架来把关键字解析为脚本并执行。这种框架最大的优点就是可以提供给不懂代码的测试人员使用，典型的代表是Robot framwork</p>
+<h3 id="数据驱动"><a href="#数据驱动" class="headerlink" title="数据驱动"></a>数据驱动</h3><p>同一段代码的业务逻辑通过更换数据输入来生成多个测试用例，我们只需维护测试数据就可以维护case，这种框架思想在很多测试工具中都有实现</p>
+<h3 id="关键字和数据混合驱动"><a href="#关键字和数据混合驱动" class="headerlink" title="关键字和数据混合驱动"></a>关键字和数据混合驱动</h3><p>较为复杂的测试框架框架，将上述两种框架结合了起来<br>当然，这些思路不仅仅能用在UI层的自动化。<br>对于UI自动化，可以选择只做冒烟测试用例的自动化，这样既可以从UI的角度来重复性的验证主业务主流程没有问题，又可以降低维护成本。</p>
 
       
     </div>
@@ -496,7 +510,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://hardelm.github.io/2017/07/12/自动化测适用范围/" title="自动化测试的适用范围">https://hardelm.github.io/2017/07/12/自动化测适用范围/</a>
+      <a href="https://hardelm.github.io/2017/10/16/自动化测试的层级/" title="Linux下expect脚本语言的简单使用">https://hardelm.github.io/2017/10/16/自动化测试的层级/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -525,8 +539,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/12/Selenium初学总结/" rel="next" title="Selenium初学总结">
-                <i class="fa fa-chevron-left"></i> Selenium初学总结
+              <a href="/2017/09/19/nginx配置http和https代理/" rel="next" title="nginx配置http和https代理">
+                <i class="fa fa-chevron-left"></i> nginx配置http和https代理
               </a>
             
           </div>
@@ -534,10 +548,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/12/基于ffmpeg进行转码工具的编写（未完成）/" rel="prev" title="基于ffmpeg进行转码工具的编写（未完成）">
-                基于ffmpeg进行转码工具的编写（未完成） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -595,8 +605,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/header.jpg"
@@ -611,7 +630,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -722,6 +741,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#会用工具就是自动化测试工程师吗"><span class="nav-number">2.</span> <span class="nav-text">会用工具就是自动化测试工程师吗</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#哪些可以做自动化测试："><span class="nav-number">3.</span> <span class="nav-text">哪些可以做自动化测试：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单元测试"><span class="nav-number">3.1.</span> <span class="nav-text">单元测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单元测试框架"><span class="nav-number">3.1.1.</span> <span class="nav-text">单元测试框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口测试"><span class="nav-number">3.2.</span> <span class="nav-text">接口测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI测试"><span class="nav-number">3.3.</span> <span class="nav-text">UI测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式"><span class="nav-number">3.3.1.</span> <span class="nav-text">分布式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行为驱动"><span class="nav-number">3.3.2.</span> <span class="nav-text">行为驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键字驱动"><span class="nav-number">3.3.3.</span> <span class="nav-text">关键字驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据驱动"><span class="nav-number">3.3.4.</span> <span class="nav-text">数据驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键字和数据混合驱动"><span class="nav-number">3.3.5.</span> <span class="nav-text">关键字和数据混合驱动</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -757,7 +792,7 @@
 </span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站8.5k字</span>
+  <span class="post-count">全站9.5k字</span>
 </div>
 
 
@@ -794,7 +829,7 @@
   
   
   <div class="powered-by"></div>
-  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站8.5k字</span>
+  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站9.5k字</span>
 </div>
 
 
