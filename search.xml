@@ -2,15 +2,28 @@
 <search>
   <entry>
     <title><![CDATA[ab下载与上传压测]]></title>
-    <url>%2F2017%2F10%2F18%2Fabs%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0%E5%8E%8B%E6%B5%8B%2F</url>
+    <url>%2F2017%2F10%2F18%2Fab%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0%E5%8E%8B%E6%B5%8B%2F</url>
     <content type="text"><![CDATA[背景略 简要命令下载ab -n 10000 -c 100 “文件地址” 上传ab -n 10000 -c 100 -T ‘multipart/form-data; boundary=w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ’ -p ./abpost.txt “上传接口地址” 上传压测操作方法1、修改abpost.txt内容 1）Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot;，依照例子进行修改 2）Content-Type: MIME，具体格式由上传的文件决定，参考常见的MIME类型 3）对上传的文件进行base64编码，可采用在线转换base64，图片在线转换地址http://tool.css-js.com/base64.html 4）无 2、将abpost.txt放置在执行ab命令的目录下 3、修改总请求数和并发请求数，回车，执行命令 abpost.txt内容--w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot; Content-Type: image/png iVBORw0KGgoAAAANSUhEUgAAAkgAAAFmCAYAAACWUGV0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhe7L11lB1Xeq+t+8dd37130GzLFtiWZBJYZmaSmWYyPJnkZjKUDCRjkkEM3S01MzMzMzMzd4tZMtszSb7v/X6/vWufU+f0aant8SSTxL3Ws4rhVFfVfurdtOj/bX5AFK33y0TG7ZK7e7X8w7dukqfvWSVP3HWNPHTbtfLAbdfLfbeulntvXSt337JO7rxlvebmm+SOs3DnLTfPy1233uLktlvPyt233yb33HGb3HfnbXL/nbfLg3fd7Qci8jJUHITPWTSFlKKJxskJYUQU5asiE9mXKVjGTKy0ihvMwUys9MNWSl8rllskNhFLaVHCWtVRQdS3KPLsVhpLeZIsXZXzln2cA732G/kR6X4uxHy5jthG/bN49/3S6hFvDm8fbZXG/5fP3l8bWI6zEnHdcqX7N6TbvXfLxLhoPeD0HXPq5zudZlveYaN3jXuRJ4nWM/eZ+jEXn8Fv5zFoug5duLoO0dAeHX8f8cgo41GkHL/1II//2de8263+zr1tzfGQI6GwSlIP9/IllCWUEWlRdkU3lhNlUU5VBlca5QVZJH1aA0/xdLbVkBjRvcky655BKpVoMYGX6g/x/H/Eel0xKsRgAAAABJRU5ErkJggg== ----w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ-- 附：常见的MIME类型(通用型)： 超文本标记语言文本 .html text/html xml文档 .xml text/xml XHTML文档 .xhtml application/xhtml+xml 普通文本 .txt text/plain RTF文本 .rtf application/rtf PDF文档 .pdf application/pdf Microsoft Word文件 .word application/msword PNG图像 .png image/png GIF图形 .gif image/gif JPEG图形 .jpeg,.jpg image/jpeg au声音文件 .au audio/basic MIDI音乐文件 mid,.midi audio/midi,audio/x-midi RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio MPEG文件 .mpg,.mpeg video/mpeg AVI文件 .avi video/x-msvideo GZIP文件 .gz application/x-gzip TAR文件 .tar application/x-tar 任意的二进制数据 application/octet-stream]]></content>
       <categories>
         <category>性能工具</category>
       </categories>
       <tags>
-        <tag>性能测试</tag>
         <tag>ab</tag>
         <tag>性能工具</tag>
+        <tag>性能测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ab下载与上传压测]]></title>
+    <url>%2F2017%2F10%2F18%2F%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E4%B8%8Exscan%E6%BC%8F%E6%89%AB%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[背景略 简要命令下载ab -n 10000 -c 100 “文件地址” 上传ab -n 10000 -c 100 -T ‘multipart/form-data; boundary=w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ’ -p ./abpost.txt “上传接口地址” 上传压测操作方法1、修改abpost.txt内容 1）Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot;，依照例子进行修改 2）Content-Type: MIME，具体格式由上传的文件决定，参考常见的MIME类型 3）对上传的文件进行base64编码，可采用在线转换base64，图片在线转换地址http://tool.css-js.com/base64.html 4）无 2、将abpost.txt放置在执行ab命令的目录下 3、修改总请求数和并发请求数，回车，执行命令 abpost.txt内容--w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot; Content-Type: image/png iVBORw0KGgoAAAANSUhEUgAAAkgAAAFmCAYAAACWUGV0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhe7L11lB1Xeq+t+8dd37130GzLFtiWZBJYZmaSmWYyPJnkZjKUDCRjkkEM3S01MzMzMzMzd4tZMtszSb7v/X6/vWufU+f0aant8SSTxL3Ws4rhVFfVfurdtOj/bX5AFK33y0TG7ZK7e7X8w7dukqfvWSVP3HWNPHTbtfLAbdfLfbeulntvXSt337JO7rxlvebmm+SOs3DnLTfPy1233uLktlvPyt233yb33HGb3HfnbXL/nbfLg3fd7Qci8jJUHITPWTSFlKKJxskJYUQU5asiE9mXKVjGTKy0ihvMwUys9MNWSl8rllskNhFLaVHCWtVRQdS3KPLsVhpLeZIsXZXzln2cA732G/kR6X4uxHy5jthG/bN49/3S6hFvDm8fbZXG/5fP3l8bWI6zEnHdcqX7N6TbvXfLxLhoPeD0HXPq5zudZlveYaN3jXuRJ4nWM/eZ+jEXn8Fv5zFoug5duLoO0dAeHX8f8cgo41GkHL/1II//2de8263+zr1tzfGQI6GwSlIP9/IllCWUEWlRdkU3lhNlUU5VBlca5QVZJH1aA0/xdLbVkBjRvcky655BKpVoMYGX6g/x/H/Eel0xKsRgAAAABJRU5ErkJggg== ----w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ-- 附：常见的MIME类型(通用型)： 超文本标记语言文本 .html text/html xml文档 .xml text/xml XHTML文档 .xhtml application/xhtml+xml 普通文本 .txt text/plain RTF文本 .rtf application/rtf PDF文档 .pdf application/pdf Microsoft Word文件 .word application/msword PNG图像 .png image/png GIF图形 .gif image/gif JPEG图形 .jpeg,.jpg image/jpeg au声音文件 .au audio/basic MIDI音乐文件 mid,.midi audio/midi,audio/x-midi RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio MPEG文件 .mpg,.mpeg video/mpeg AVI文件 .avi video/x-msvideo GZIP文件 .gz application/x-gzip TAR文件 .tar application/x-tar 任意的二进制数据 application/octet-stream]]></content>
+      <categories>
+        <category>性能工具</category>
+      </categories>
+      <tags>
+        <tag>ab</tag>
+        <tag>性能工具</tag>
+        <tag>性能测试</tag>
       </tags>
   </entry>
   <entry>
@@ -66,8 +79,8 @@
         <category>Expect</category>
       </categories>
       <tags>
-        <tag>Expect</tag>
         <tag>性能测试</tag>
+        <tag>Expect</tag>
         <tag>自动化测试</tag>
       </tags>
   </entry>
@@ -106,11 +119,11 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[RabbitMQ初接触]]></title>
-    <url>%2F2017%2F07%2F12%2Frabbitmq%2F</url>
-    <content type="text"><![CDATA[什么是RabbitMQMessage Queue（MQ），消息队列是一种应用程序对应用程序的通信方法。应用程序通过读写MQ的消息（针对应用程序的数据）来通信，而无需建立专用连接来链接它们。MQ是消费者-生产模型的一个典型代表，一段不断写入消息，而另一段可以读取或者订阅队列中的消息。MQ是遵循AMQP协议的具体实现和产品。 适用场景RabbitMQ，或者说AMQP解决了什么问题，或者说它的应用场景是什么？ 对于一个大型的软件系统来说，它会有很多的组件或者说模块或者说子系统或者（subsystem or Component or submodule）。那么这些模块的如何通信？这和传统的IPC有很大的区别。传统的IPC很多都是在单一系统上的，模块耦合性很大，不适合扩展（Scalability）；如果使用socket那么不同的模块的确可以部署到不同的机器上，但是还是有很多问题需要解决。比如： 1）信息的发送者和接收者如何维持这个连接，如果一方的连接中断，这期间的数据如何方式丢失？ 2）如何降低发送者和接收者的耦合度？ 3）如何让Priority高的接收者先接到数据？ 4）如何做到load balance？有效均衡接收者的负载？ 5）如何有效的将数据发送到相关的接收者？也就是说将接收者subscribe 不同的数据，如何做有效的filter。 6）如何做到可扩展，甚至将这个通信模块发到cluster上？ 7）如何保证接收者接收到了完整，正确的数据？ AMDQ协议解决了以上的问题，而RabbitMQ实现了AMQP。 安装部署1、安装erlang 1）下载erlang源码，解压，进入$erlang目录，安装依赖包： yum install tk yum install tcl yum install unixODBC 2）编译erlang ./configure –prefix=/usr/local/erlang ./make ./make install 3）将erlang的bin目录添加至PATH 2、安装RabitMQ 1）下载RabbitMQ，解压至$RMQ 2）启动RabbitMQ ./bin/rabbitmq-server start 实际使用1、创建未完 相关博客链接：http://blog.csdn.net/column/details/rabbitmq.html]]></content>
+    <title><![CDATA[Selenium初学总结]]></title>
+    <url>%2F2017%2F07%2F12%2FSelenium%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 selenium集成java的一些常用方法： 1、页面元素定位方法：ID: driver.findElement(By.id(“ID值”));Name: driver.findElement(By.name(“name值”));链接的全部文字 : driver.findElement(By.linkText(“链接的全部文字内容”));部分链接文字: driver.findElement(By.partialLinkText(“链接的部分文字内容”));Xpath : driver.findElement(By.xpath(“Xpath定位表达式”));CSS: driver.findElement(By.cssSelector(“CSS定位表达式”));Class: driver.findElement(By.className(“页面元素的Class属性值”));标签名称:driver.findElement(By.tagName (“页面元素的HTML标签名称”)); 2、打开浏览器：打开firefox ： WebDriver driver= new FirefoxDriver();打开ie ：WebDriver driver =new InternetExplorerDriver();打开chrome： WebDriver driver = new ChromeDriver();打开指定路径浏览器 ： System.setProperty(“webdriver.firefox.bin”,”D:\ProgramFiles\MozillaFirefox\firefox.exe”); 3、关闭浏览器：driver.close();driver.quit(); 4、返回当前页面Title URLdriver.getTitle();driver.getCurrentUrl(); 5、返回上一个访问的网页driver.navigate().to(url1);driver.navigate().to(url2);driver.navigate().back();6、刷新当前网页：driver.navigate().refresh();7、输入框中输入指定内容:driver.sendKeys();8、输入框中清除文字内容：driver.clear();9、查看页面元素属性：driver.getAttribute(“value”);10、点击按钮：driver.click();11、操作frame：Driver.switchTo.frame()12、单选下拉列表：Select dropList = new Select(element);Select.getFrestSelectOption().getText();Select.selectByIndex();Select.selectByValue();Select.selectByVisibleText();例子： 单选框：List radioList = driver.findElements();radio. getAttribute(“Value”).equals(“”);radio.isSelectd()radio.click(); 复选框：List checkList = driver.findElements();check.getAttribute(“Value”).equals(“”);check.isSelectd()check.click();13、Alert弹窗：Alert alert = driver.switchTo().alert(); alert.accept();14、执行JavaScript脚本：声明一个JavaScript 执行器对象 JavaScriptExecutor js = (JavaScriptExecutor )driver; js.executeScript(“loginSubmit();”);]]></content>
       <categories>
-        <category>RabbitMQ</category>
+        <category>自动化测试</category>
       </categories>
       <tags>
         <tag>Selenium</tag>
@@ -119,11 +132,11 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Selenium初学总结]]></title>
-    <url>%2F2017%2F07%2F12%2FSelenium%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 selenium集成java的一些常用方法： 1、页面元素定位方法：ID: driver.findElement(By.id(“ID值”));Name: driver.findElement(By.name(“name值”));链接的全部文字 : driver.findElement(By.linkText(“链接的全部文字内容”));部分链接文字: driver.findElement(By.partialLinkText(“链接的部分文字内容”));Xpath : driver.findElement(By.xpath(“Xpath定位表达式”));CSS: driver.findElement(By.cssSelector(“CSS定位表达式”));Class: driver.findElement(By.className(“页面元素的Class属性值”));标签名称:driver.findElement(By.tagName (“页面元素的HTML标签名称”)); 2、打开浏览器：打开firefox ： WebDriver driver= new FirefoxDriver();打开ie ：WebDriver driver =new InternetExplorerDriver();打开chrome： WebDriver driver = new ChromeDriver();打开指定路径浏览器 ： System.setProperty(“webdriver.firefox.bin”,”D:\ProgramFiles\MozillaFirefox\firefox.exe”); 3、关闭浏览器：driver.close();driver.quit(); 4、返回当前页面Title URLdriver.getTitle();driver.getCurrentUrl(); 5、返回上一个访问的网页driver.navigate().to(url1);driver.navigate().to(url2);driver.navigate().back();6、刷新当前网页：driver.navigate().refresh();7、输入框中输入指定内容:driver.sendKeys();8、输入框中清除文字内容：driver.clear();9、查看页面元素属性：driver.getAttribute(“value”);10、点击按钮：driver.click();11、操作frame：Driver.switchTo.frame()12、单选下拉列表：Select dropList = new Select(element);Select.getFrestSelectOption().getText();Select.selectByIndex();Select.selectByValue();Select.selectByVisibleText();例子： 单选框：List radioList = driver.findElements();radio. getAttribute(“Value”).equals(“”);radio.isSelectd()radio.click(); 复选框：List checkList = driver.findElements();check.getAttribute(“Value”).equals(“”);check.isSelectd()check.click();13、Alert弹窗：Alert alert = driver.switchTo().alert(); alert.accept();14、执行JavaScript脚本：声明一个JavaScript 执行器对象 JavaScriptExecutor js = (JavaScriptExecutor )driver; js.executeScript(“loginSubmit();”);]]></content>
+    <title><![CDATA[RabbitMQ初接触]]></title>
+    <url>%2F2017%2F07%2F12%2Frabbitmq%2F</url>
+    <content type="text"><![CDATA[什么是RabbitMQMessage Queue（MQ），消息队列是一种应用程序对应用程序的通信方法。应用程序通过读写MQ的消息（针对应用程序的数据）来通信，而无需建立专用连接来链接它们。MQ是消费者-生产模型的一个典型代表，一段不断写入消息，而另一段可以读取或者订阅队列中的消息。MQ是遵循AMQP协议的具体实现和产品。 适用场景RabbitMQ，或者说AMQP解决了什么问题，或者说它的应用场景是什么？ 对于一个大型的软件系统来说，它会有很多的组件或者说模块或者说子系统或者（subsystem or Component or submodule）。那么这些模块的如何通信？这和传统的IPC有很大的区别。传统的IPC很多都是在单一系统上的，模块耦合性很大，不适合扩展（Scalability）；如果使用socket那么不同的模块的确可以部署到不同的机器上，但是还是有很多问题需要解决。比如： 1）信息的发送者和接收者如何维持这个连接，如果一方的连接中断，这期间的数据如何方式丢失？ 2）如何降低发送者和接收者的耦合度？ 3）如何让Priority高的接收者先接到数据？ 4）如何做到load balance？有效均衡接收者的负载？ 5）如何有效的将数据发送到相关的接收者？也就是说将接收者subscribe 不同的数据，如何做有效的filter。 6）如何做到可扩展，甚至将这个通信模块发到cluster上？ 7）如何保证接收者接收到了完整，正确的数据？ AMDQ协议解决了以上的问题，而RabbitMQ实现了AMQP。 安装部署1、安装erlang 1）下载erlang源码，解压，进入$erlang目录，安装依赖包： yum install tk yum install tcl yum install unixODBC 2）编译erlang ./configure –prefix=/usr/local/erlang ./make ./make install 3）将erlang的bin目录添加至PATH 2、安装RabitMQ 1）下载RabbitMQ，解压至$RMQ 2）启动RabbitMQ ./bin/rabbitmq-server start 实际使用1、创建未完 相关博客链接：http://blog.csdn.net/column/details/rabbitmq.html]]></content>
       <categories>
-        <category>自动化测试</category>
+        <category>RabbitMQ</category>
       </categories>
       <tags>
         <tag>Selenium</tag>
