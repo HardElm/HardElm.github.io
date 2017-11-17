@@ -93,7 +93,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="性能测试,ab,性能工具," />
+  <meta name="keywords" content="xscan,安全测试," />
 
 
 
@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="背景略 简要命令下载ab -n 10000 -c 100 “文件地址” 上传ab -n 10000 -c 100 -T ‘multipart/form-data; boundary=w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ’ -p ./abpost.txt “上传接口地址” 上传压测操作方法1、修改abpost.txt内容 1）Content-Dispositio">
-<meta name="keywords" content="性能测试,ab,性能工具">
+<meta name="description" content="背景略 xscan有什么功能采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。 安装与使用安装1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3 2、安装X-">
+<meta name="keywords" content="xscan,安全测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ab下载与上传压测">
+<meta property="og:title" content="xscan漏扫工具的使用">
 <meta property="og:url" content="https://hardelm.github.io/2017/10/18/安全测试与xscan漏扫工具的使用/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
-<meta property="og:description" content="背景略 简要命令下载ab -n 10000 -c 100 “文件地址” 上传ab -n 10000 -c 100 -T ‘multipart/form-data; boundary=w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ’ -p ./abpost.txt “上传接口地址” 上传压测操作方法1、修改abpost.txt内容 1）Content-Dispositio">
-<meta property="og:updated_time" content="2017-10-18T04:08:48.143Z">
+<meta property="og:description" content="背景略 xscan有什么功能采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。 安装与使用安装1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3 2、安装X-">
+<meta property="og:updated_time" content="2017-11-17T09:41:06.426Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ab下载与上传压测">
-<meta name="twitter:description" content="背景略 简要命令下载ab -n 10000 -c 100 “文件地址” 上传ab -n 10000 -c 100 -T ‘multipart/form-data; boundary=w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ’ -p ./abpost.txt “上传接口地址” 上传压测操作方法1、修改abpost.txt内容 1）Content-Dispositio">
+<meta name="twitter:title" content="xscan漏扫工具的使用">
+<meta name="twitter:description" content="背景略 xscan有什么功能采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。 安装与使用安装1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3 2、安装X-">
 
 
 
@@ -155,7 +155,7 @@
 
 
 
-  <title>ab下载与上传压测 | HardElm's blog</title>
+  <title>xscan漏扫工具的使用 | HardElm's blog</title>
   
 
 
@@ -339,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ab下载与上传压测</h1>
+          <h1 class="post-title" itemprop="name headline">xscan漏扫工具的使用</h1>
         
 
         <div class="post-meta">
@@ -374,8 +374,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/性能工具/" itemprop="url" rel="index">
-                    <span itemprop="name">性能工具</span>
+                  <a href="/categories/测试工具/" itemprop="url" rel="index">
+                    <span itemprop="name">测试工具</span>
                   </a>
                 </span>
 
@@ -411,7 +411,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  367
+                  333
                 </span>
               
 
@@ -434,40 +434,17 @@
 
       
         <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>略</p>
-<h1 id="简要命令"><a href="#简要命令" class="headerlink" title="简要命令"></a>简要命令</h1><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>ab -n 10000 -c 100 “文件地址”</p>
-<h2 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h2><p>ab -n 10000 -c 100 -T ‘multipart/form-data; boundary=w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ’ -p ./abpost.txt “上传接口地址”</p>
-<h3 id="上传压测操作方法"><a href="#上传压测操作方法" class="headerlink" title="上传压测操作方法"></a>上传压测操作方法</h3><p>1、修改abpost.txt内容</p>
-<pre><code>1）Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot;，依照例子进行修改
-2）Content-Type: MIME，具体格式由上传的文件决定，参考常见的MIME类型
-3）对上传的文件进行base64编码，可采用在线转换base64，图片在线转换地址http://tool.css-js.com/base64.html
-4）无
-</code></pre><p>2、将abpost.txt放置在执行ab命令的目录下</p>
-<p>3、修改总请求数和并发请求数，回车，执行命令</p>
-<h3 id="abpost-txt内容"><a href="#abpost-txt内容" class="headerlink" title="abpost.txt内容"></a>abpost.txt内容</h3><pre><code>--w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ
-Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot;
-Content-Type: image/png
-iVBORw0KGgoAAAANSUhEUgAAAkgAAAFmCAYAAACWUGV0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhe7L11lB1Xeq+t+8dd37130GzLFtiWZBJYZmaSmWYyPJnkZjKUDCRjkkEM3S01MzMzMzMzd4tZMtszSb7v/X6/vWufU+f0aant8SSTxL3Ws4rhVFfVfurdtOj/bX5AFK33y0TG7ZK7e7X8w7dukqfvWSVP3HWNPHTbtfLAbdfLfbeulntvXSt337JO7rxlvebmm+SOs3DnLTfPy1233uLktlvPyt233yb33HGb3HfnbXL/nbfLg3fd7Qci8jJUHITPWTSFlKKJxskJYUQU5asiE9mXKVjGTKy0ihvMwUys9MNWSl8rllskNhFLaVHCWtVRQdS3KPLsVhpLeZIsXZXzln2cA732G/kR6X4uxHy5jthG/bN49/3S6hFvDm8fbZXG/5fP3l8bWI6zEnHdcqX7N6TbvXfLxLhoPeD0HXPq5zudZlveYaN3jXuRJ4nWM/eZ+jEXn8Fv5zFoug5duLoO0dAeHX8f8cgo41GkHL/1II//2de8263+zr1tzfGQI6GwSlIP9/IllCWUEWlRdkU3lhNlUU5VBlca5QVZJH1aA0/xdLbVkBjRvcky655BKpVoMYGX6g/x/H/Eel0xKsRgAAAABJRU5ErkJggg==
-----w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ--
-</code></pre><p>附：<br>常见的MIME类型(通用型)：</p>
-<pre><code>超文本标记语言文本 .html text/html
-xml文档 .xml text/xml
-XHTML文档 .xhtml application/xhtml+xml
-普通文本 .txt text/plain
-RTF文本 .rtf application/rtf
-PDF文档 .pdf application/pdf
-Microsoft Word文件 .word application/msword
-PNG图像 .png image/png
-GIF图形 .gif image/gif
-JPEG图形 .jpeg,.jpg image/jpeg
-au声音文件 .au audio/basic
-MIDI音乐文件 mid,.midi audio/midi,audio/x-midi
-RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio
-MPEG文件 .mpg,.mpeg video/mpeg
-AVI文件 .avi video/x-msvideo
-GZIP文件 .gz application/x-gzip
-TAR文件 .tar application/x-tar
-任意的二进制数据 application/octet-stream
-</code></pre>
+<h1 id="xscan有什么功能"><a href="#xscan有什么功能" class="headerlink" title="xscan有什么功能"></a>xscan有什么功能</h1><p>采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。</p>
+<h1 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3</p>
+<p>2、安装X-scan需安装WinPCap驱动程序<a href="http://https://baike.baidu.com/item/winpcap/11048966?fr=aladdin" title="什么是WinPCap" target="_blank" rel="external">（什么是WinPCap，以及WinPCap的功能作用，参考百度百科）</a></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>1、“设置”修改扫描IP或者网段</p>
+<p>2、“设置”修改扫描参数，可修改内容包括开放的服务端口，Telnet、SSH、FTP、SQL-Server等协议弱口令以及IIS编解码漏洞等扫描配置内容</p>
+<p>3、“设置”修改扫描报告格式，可选html、txt、xml</p>
+<p>4、开启任务，可实时监测扫描过程中的普通信息、漏洞信息（开放的服务、端口以及协议类型）、错误信息等内容</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>简单好用，基本满足日常工作使用！</p>
+<p>附：</p>
+<p>telnet命令：<a href="http://www.runoob.com/linux/linux-comm-telnet.html" target="_blank" rel="external">http://www.runoob.com/linux/linux-comm-telnet.html</a></p>
+
       
     </div>
 
@@ -526,7 +503,7 @@ TAR文件 .tar application/x-tar
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://hardelm.github.io/2017/10/18/安全测试与xscan漏扫工具的使用/" title="ab下载与上传压测">https://hardelm.github.io/2017/10/18/安全测试与xscan漏扫工具的使用/</a>
+      <a href="https://hardelm.github.io/2017/10/18/安全测试与xscan漏扫工具的使用/" title="xscan漏扫工具的使用">https://hardelm.github.io/2017/10/18/安全测试与xscan漏扫工具的使用/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -542,11 +519,9 @@ TAR文件 .tar application/x-tar
       
         <div class="post-tags">
           
-            <a href="/tags/性能测试/" <i class="fa fa-tag"></i> 性能测试</a>
+            <a href="/tags/xscan/" <i class="fa fa-tag"></i> xscan</a>
           
-            <a href="/tags/ab/" <i class="fa fa-tag"></i> ab</a>
-          
-            <a href="/tags/性能工具/" <i class="fa fa-tag"></i> 性能工具</a>
+            <a href="/tags/安全测试/" <i class="fa fa-tag"></i> 安全测试</a>
           
         </div>
       
@@ -665,7 +640,7 @@ TAR文件 .tar application/x-tar
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -676,7 +651,7 @@ TAR文件 .tar application/x-tar
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -774,7 +749,7 @@ TAR文件 .tar application/x-tar
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简要命令"><span class="nav-number">2.</span> <span class="nav-text">简要命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载"><span class="nav-number">2.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传"><span class="nav-number">2.2.</span> <span class="nav-text">上传</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上传压测操作方法"><span class="nav-number">2.2.1.</span> <span class="nav-text">上传压测操作方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#abpost-txt内容"><span class="nav-number">2.2.2.</span> <span class="nav-text">abpost.txt内容</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xscan有什么功能"><span class="nav-number">2.</span> <span class="nav-text">xscan有什么功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装与使用"><span class="nav-number">3.</span> <span class="nav-text">安装与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.2.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
