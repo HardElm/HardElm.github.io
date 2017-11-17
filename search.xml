@@ -25,15 +25,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[xscan漏扫工具的使用]]></title>
-    <url>%2F2017%2F10%2F18%2F%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E4%B8%8Exscan%E6%BC%8F%E6%89%AB%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[背景略 xscan有什么功能采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。 安装与使用安装1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3 2、安装X-scan需安装WinPCap驱动程序（什么是WinPCap，以及WinPCap的功能作用，参考百度百科） 使用1、“设置”修改扫描IP或者网段 2、“设置”修改扫描参数，可修改内容包括开放的服务端口，Telnet、SSH、FTP、SQL-Server等协议弱口令以及IIS编解码漏洞等扫描配置内容 3、“设置”修改扫描报告格式，可选html、txt、xml 4、开启任务，可实时监测扫描过程中的普通信息、漏洞信息（开放的服务、端口以及协议类型）、错误信息等内容 总结简单好用，基本满足日常工作使用！ 附： telnet命令：http://www.runoob.com/linux/linux-comm-telnet.html]]></content>
+    <title><![CDATA[正则表达式的使用]]></title>
+    <url>%2F2017%2F11%2F05%2F%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[背景略 正则表达式简介啥是正则表达式正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”）。 正则表达式能干啥正则表达式使用单个字符串来描述、匹配一系列匹配某个句法规则的字符串。 正则表达式是烦琐的，但它是强大的，学会之后的应用会让你除了提高效率外，会给你带来绝对的成就感。只要认真阅读本教程，加上应用的时候进行一定的参考，掌握正则表达式不是问题。 许多程序设计语言都支持利用正则表达式进行字符串操作。 使用示例总结功能强大，特别有用！ 附： 参考资料：http://www.runoob.com/regexp/regexp-operator.html]]></content>
       <categories>
-        <category>测试工具</category>
+        <category>正则表达式</category>
       </categories>
       <tags>
-        <tag>xscan</tag>
-        <tag>安全测试</tag>
+        <tag>正则表达式</tag>
       </tags>
   </entry>
   <entry>
@@ -44,9 +43,21 @@
         <category>性能工具</category>
       </categories>
       <tags>
+        <tag>性能测试</tag>
         <tag>ab</tag>
         <tag>性能工具</tag>
-        <tag>性能测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[xscan漏扫工具的使用]]></title>
+    <url>%2F2017%2F10%2F18%2F%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E4%B8%8Exscan%E6%BC%8F%E6%89%AB%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[背景略 xscan有什么功能采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。 安装与使用安装1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3 2、安装X-scan需安装WinPCap驱动程序（什么是WinPCap，以及WinPCap的功能作用，参考百度百科） 使用1、“设置”修改扫描IP或者网段 2、“设置”修改扫描参数，可修改内容包括开放的服务端口，Telnet、SSH、FTP、SQL-Server等协议弱口令以及IIS编解码漏洞等扫描配置内容 3、“设置”修改扫描报告格式，可选html、txt、xml 4、开启任务，可实时监测扫描过程中的普通信息、漏洞信息（开放的服务、端口以及协议类型）、错误信息等内容 总结简单好用，基本满足日常工作使用！ 附： telnet命令：http://www.runoob.com/linux/linux-comm-telnet.html]]></content>
+      <categories>
+        <category>测试工具</category>
+      </categories>
+      <tags>
+        <tag>xscan</tag>
+        <tag>安全测试</tag>
       </tags>
   </entry>
   <entry>
@@ -102,9 +113,9 @@
         <category>Expect</category>
       </categories>
       <tags>
+        <tag>Expect</tag>
         <tag>性能测试</tag>
         <tag>自动化测试</tag>
-        <tag>Expect</tag>
       </tags>
   </entry>
   <entry>
