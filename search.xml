@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[python学习总结]]></title>
     <url>%2F2017%2F11%2F20%2Fpython%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[背景略 python简介略 基础有什么环境部署略 中文编码1、python中默认的编码格式是ASCII格式 2、若程序中有中文，需在文件开头加入# -- coding: UTF-8 -- 或者 #coding=utf-8 3、python3.X源码文件默认使用utf-8编码，无需指定utf-8编码 基础语法1、python编程方式 交互式编程：不需要创建脚本文件，通过python解释器的交互模式进行代码编写 脚本式编程：通过脚本参数调用解释器执行脚本，脚本执行完毕后，解释器就不再有效 2、标识符 编程语言的标识符大同小异 数字、字母、下划线 区分大小写 不能以数字开头 _test，以单下划线开头的标识符是不能直接访问的类属性，不能用from XXX import *导入，需要通过类提供的接口进行访问 __test，以双下划线开头的标识符代表类的私有成员、 __test__，以双下划线开头和结尾的标识符代表特殊方法专用的标识，比如__init__()标识类的构造函数 3、保留字符 保留字符可以理解为关键字，保留字符不能被当成常数或者变数，或者是其他任何标识符的名称 ![](https://i.imgur.com/7TXDfmp.png) 4、缩进 python对格式要求非常严格，因为python使用缩进来写模块，不像java需要用大括号{}来控制类、方法和其他的一些逻辑判断 缩进的空白数量可变，但是所有的**代码块语句的缩进空白数量必须保持相同** 5、其他 多行连接符 \ 若语句中包括[]、{}或者()就不需要使用多行连接符进行换行 引号 &apos;&apos;、&quot;&quot;、&apos;&apos;&apos; &apos;&apos;&apos;、&quot;&quot;&quot; &quot;&quot;&quot; 其中三引号可以由多行组成，多行文本的快捷语法经常被用在文件的特定地点，被当做注释来使用 注释 # #用做单行注释 三引号常用作多行注释 空行 空行用来分隔两段不同功能或含义的代码，便于代码维护或重构 一行显示多条语句 ; 如果想在同一行会用多条语句，需要在语句之间使用分号分隔 等待输入 下方语句执行后就会等待用户输入，按回车键后就会退出程序 raw_input(&quot;\n\nPress the enter key to exit.&quot;) Print输出 使用Print进行输出，默认都是换行的，如果想要不换行输出，需要在变量末尾加上逗号 python -h 用来查看各参数帮助信息 变量类型]]></content>
+    <content type="text"><![CDATA[背景略 python简介略 基础有什么环境部署略 中文编码1、python中默认的编码格式是ASCII格式 2、若程序中有中文，需在文件开头加入# -- coding: UTF-8 -- 或者 #coding=utf-8 3、python3.X源码文件默认使用utf-8编码，无需指定utf-8编码 基础语法1、python编程方式 交互式编程：不需要创建脚本文件，通过python解释器的交互模式进行代码编写 脚本式编程：通过脚本参数调用解释器执行脚本，脚本执行完毕后，解释器就不再有效 2、标识符 编程语言的标识符大同小异 数字、字母、下划线 区分大小写 不能以数字开头 _test，以单下划线开头的标识符是不能直接访问的类属性，不能用from XXX import *导入，需要通过类提供的接口进行访问 __test，以双下划线开头的标识符代表类的私有成员、 __test__，以双下划线开头和结尾的标识符代表特殊方法专用的标识，比如__init__()标识类的构造函数 3、保留字符 保留字符可以理解为关键字，保留字符不能被当成常数或者变数，或者是其他任何标识符的名称 ![](https://i.imgur.com/7TXDfmp.png) 4、缩进 python对格式要求非常严格，因为python使用缩进来写模块，不像java需要用大括号{}来控制类、方法和其他的一些逻辑判断 缩进的空白数量可变，但是所有的**代码块语句的缩进空白数量必须保持相同** 5、其他 多行连接符 \ 若语句中包括[]、{}或者()就不需要使用多行连接符进行换行 引号 &apos;&apos;、&quot;&quot;、&apos;&apos;&apos; &apos;&apos;&apos;、&quot;&quot;&quot; &quot;&quot;&quot; 其中三引号可以由多行组成，多行文本的快捷语法经常被用在文件的特定地点，被当做注释来使用 注释 # #用做单行注释 三引号常用作多行注释 空行 空行用来分隔两段不同功能或含义的代码，便于代码维护或重构 一行显示多条语句 ; 如果想在同一行会用多条语句，需要在语句之间使用分号分隔 等待输入 下方语句执行后就会等待用户输入，按回车键后就会退出程序 raw_input(&quot;\n\nPress the enter key to exit.&quot;) Print输出 使用Print进行输出，默认都是换行的，如果想要不换行输出，需要在变量末尾加上逗号 python -h 用来查看各参数帮助信息 变量类型标准数据类型 Number（数字） String（字符串） List（列表） Tuple（元组） Dictionary（字典） 涉及数据类型转换时，可以采用内置函数进行数据类型转码，只需要将数据类型作为函数名，将待转换内容作为参数输入即可 数字数字数据类型用来存储数值，是不可变的数据类型 使用del语句删除对象的引用 python支持四种数字类型 int（有符号整型） long（长整型[也可以代表八进制和十六进制]） float（浮点型） complex（复数） python中使用L来表示长整型，避免使用l与数字1产生混淆 复数由实数部分和虚数部分构成，可表示为a+bj,或者complex(a,b)，复数的实部a和虚部b都是浮点型 字符串字符串由数字、字母和下划线组成的一串字符 一般有两种取值顺序： 从左到右索引默认0开始的，最大范围是字符串长度少1 从右到左索引默认-1开始的，最大范围是字符串开头 例： s = &quot;letusmaketest&quot; s1 = s[5]的结果是m s2 = s[9]的结果是t s3 = s[5:9]的结果是make s4 = s[:9]的结果是letusmake s5 = s[5:]的结果是maketest 上面的s3结果包含s[5]的值m，但是不包括s[9]的值t。 加号（+）是字符串连接运算符，比如s + &apos;test&apos; 星号（*）是重复操作，比如s * 2表示s连续输出两次 列表列表是Python中使用最频繁的数据类型 列表可以完成大多数集合类的数据结构实现，支持数字、字符、字符串甚至包含列表（嵌套） 列表中值的切割也可以使用 [头下标:尾下标]的方式，规则和字符串切割取值相同 加号和星号操作与字符串相同 列表可以二次赋值 元组元组和列表类似 元组使用()标识，内部元素用逗号隔开 元组不能二次赋值，相当于只读列表 字典字典是除列表之外Python中最灵活的内置数据结构类型 字典是无序的对象集合，列表是有序的对象集合 字典和列表的区别：字典中的元素是通过键来存取，而列表中的元素是通过偏移来存取 字典用&quot;{}&quot;标识，字典由索引(key)和它对应的值value组成 例： testDic = {} testDic[&apos;test1&apos;] = &apos;This is test1&apos; testDic[2] = &apos;This is test2&apos; testDic2 = {&apos;name&apos;: &apos;huangyl&apos;,&apos;age&apos;:25, &apos;sex&apos;: &apos;man&apos;} print testDic[&apos;test1&apos;] #输出键为&apos;test1&apos;的值 print testDic[2] #输出键为2的值 print testDic2 #输出字典testDic2 print testDic2.keys() #输出字典testDic2的所有键 print testDic2.value() #输出字典testDic2的所有值 未完待续]]></content>
       <categories>
         <category>编程语言</category>
       </categories>
@@ -46,18 +46,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[xscan漏扫工具的使用]]></title>
-    <url>%2F2017%2F10%2F18%2F%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E4%B8%8Exscan%E6%BC%8F%E6%89%AB%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[背景略 xscan有什么功能采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。 安装与使用安装1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3 2、安装X-scan需安装WinPCap驱动程序（什么是WinPCap，以及WinPCap的功能作用，参考百度百科） 使用1、“设置”修改扫描IP或者网段 2、“设置”修改扫描参数，可修改内容包括开放的服务端口，Telnet、SSH、FTP、SQL-Server等协议弱口令以及IIS编解码漏洞等扫描配置内容 3、“设置”修改扫描报告格式，可选html、txt、xml 4、开启任务，可实时监测扫描过程中的普通信息、漏洞信息（开放的服务、端口以及协议类型）、错误信息等内容 总结简单好用，基本满足日常工作使用！ 附： telnet命令：http://www.runoob.com/linux/linux-comm-telnet.html]]></content>
-      <categories>
-        <category>测试工具</category>
-      </categories>
-      <tags>
-        <tag>xscan</tag>
-        <tag>安全测试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[ab下载与上传压测]]></title>
     <url>%2F2017%2F10%2F18%2Fab%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0%E5%8E%8B%E6%B5%8B%2F</url>
     <content type="text"><![CDATA[背景略 简要命令下载ab -n 10000 -c 100 “文件地址” 上传ab -n 10000 -c 100 -T ‘multipart/form-data; boundary=w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ’ -p ./abpost.txt “上传接口地址” 上传压测操作方法1、修改abpost.txt内容 1）Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot;，依照例子进行修改 2）Content-Type: MIME，具体格式由上传的文件决定，参考常见的MIME类型 3）对上传的文件进行base64编码，可采用在线转换base64，图片在线转换地址http://tool.css-js.com/base64.html 4）无 2、将abpost.txt放置在执行ab命令的目录下 3、修改总请求数和并发请求数，回车，执行命令 abpost.txt内容--w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot; Content-Type: image/png iVBORw0KGgoAAAANSUhEUgAAAkgAAAFmCAYAAACWUGV0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhe7L11lB1Xeq+t+8dd37130GzLFtiWZBJYZmaSmWYyPJnkZjKUDCRjkkEM3S01MzMzMzMzd4tZMtszSb7v/X6/vWufU+f0aant8SSTxL3Ws4rhVFfVfurdtOj/bX5AFK33y0TG7ZK7e7X8w7dukqfvWSVP3HWNPHTbtfLAbdfLfbeulntvXSt337JO7rxlvebmm+SOs3DnLTfPy1233uLktlvPyt233yb33HGb3HfnbXL/nbfLg3fd7Qci8jJUHITPWTSFlKKJxskJYUQU5asiE9mXKVjGTKy0ihvMwUys9MNWSl8rllskNhFLaVHCWtVRQdS3KPLsVhpLeZIsXZXzln2cA732G/kR6X4uxHy5jthG/bN49/3S6hFvDm8fbZXG/5fP3l8bWI6zEnHdcqX7N6TbvXfLxLhoPeD0HXPq5zudZlveYaN3jXuRJ4nWM/eZ+jEXn8Fv5zFoug5duLoO0dAeHX8f8cgo41GkHL/1II//2de8263+zr1tzfGQI6GwSlIP9/IllCWUEWlRdkU3lhNlUU5VBlca5QVZJH1aA0/xdLbVkBjRvcky655BKpVoMYGX6g/x/H/Eel0xKsRgAAAABJRU5ErkJggg== ----w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ-- 附：常见的MIME类型(通用型)： 超文本标记语言文本 .html text/html xml文档 .xml text/xml XHTML文档 .xhtml application/xhtml+xml 普通文本 .txt text/plain RTF文本 .rtf application/rtf PDF文档 .pdf application/pdf Microsoft Word文件 .word application/msword PNG图像 .png image/png GIF图形 .gif image/gif JPEG图形 .jpeg,.jpg image/jpeg au声音文件 .au audio/basic MIDI音乐文件 mid,.midi audio/midi,audio/x-midi RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio MPEG文件 .mpg,.mpeg video/mpeg AVI文件 .avi video/x-msvideo GZIP文件 .gz application/x-gzip TAR文件 .tar application/x-tar 任意的二进制数据 application/octet-stream]]></content>
@@ -68,6 +56,18 @@
         <tag>性能测试</tag>
         <tag>ab</tag>
         <tag>性能工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[xscan漏扫工具的使用]]></title>
+    <url>%2F2017%2F10%2F18%2F%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E4%B8%8Exscan%E6%BC%8F%E6%89%AB%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[背景略 xscan有什么功能采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。 安装与使用安装1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3 2、安装X-scan需安装WinPCap驱动程序（什么是WinPCap，以及WinPCap的功能作用，参考百度百科） 使用1、“设置”修改扫描IP或者网段 2、“设置”修改扫描参数，可修改内容包括开放的服务端口，Telnet、SSH、FTP、SQL-Server等协议弱口令以及IIS编解码漏洞等扫描配置内容 3、“设置”修改扫描报告格式，可选html、txt、xml 4、开启任务，可实时监测扫描过程中的普通信息、漏洞信息（开放的服务、端口以及协议类型）、错误信息等内容 总结简单好用，基本满足日常工作使用！ 附： telnet命令：http://www.runoob.com/linux/linux-comm-telnet.html]]></content>
+      <categories>
+        <category>测试工具</category>
+      </categories>
+      <tags>
+        <tag>xscan</tag>
+        <tag>安全测试</tag>
       </tags>
   </entry>
   <entry>
