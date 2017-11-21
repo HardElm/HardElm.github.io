@@ -118,7 +118,7 @@
 <meta property="og:url" content="https://hardelm.github.io/2017/11/20/python学习总结/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
 <meta property="og:description" content="背景略 python简介略 基础有什么环境部署略 中文编码1、python中默认的编码格式是ASCII格式 2、若程序中有中文，需在文件开头加入# -- coding: UTF-8 -- 或者 #coding=utf-8 3、python3.X源码文件默认使用utf-8编码，无需指定utf-8编码  基础语法1、python编程方式 交互式编程：不需要创建脚本文件，通过python解释器的交互模式">
-<meta property="og:updated_time" content="2017-11-20T09:51:02.573Z">
+<meta property="og:updated_time" content="2017-11-21T10:15:03.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python学习总结">
 <meta name="twitter:description" content="背景略 python简介略 基础有什么环境部署略 中文编码1、python中默认的编码格式是ASCII格式 2、若程序中有中文，需在文件开头加入# -- coding: UTF-8 -- 或者 #coding=utf-8 3、python3.X源码文件默认使用utf-8编码，无需指定utf-8编码  基础语法1、python编程方式 交互式编程：不需要创建脚本文件，通过python解释器的交互模式">
@@ -411,7 +411,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  1,378
+                  1,785
                 </span>
               
 
@@ -540,6 +540,41 @@ python中使用L来表示长整型，避免使用l与数字1产生混淆
     print testDic2        #输出字典testDic2
     print testDic2.keys()        #输出字典testDic2的所有键
     print testDic2.value()        #输出字典testDic2的所有值
+</code></pre><h2 id="基本语句"><a href="#基本语句" class="headerlink" title="基本语句"></a>基本语句</h2><pre><code>大同小异，基本语句包括：
+    1、条件语句
+    2、循环语句
+        基本分类
+        1）for循环
+        2）while循环
+        3）嵌套循环
+        控制语句
+        1）break语句
+        2）continue语句
+        3）pass语句
+</code></pre><h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><pre><code>基本形式：
+    if 判断条件：
+        执行语句……
+    else：
+        执行语句……
+
+显而易见，如果满足条件，就do A，如果不满足，就do B
+以上需要注意的几点：
+    1、else是可选语句，当需要在条件不成立时执行内容则可以执行相关语句
+    2、Python不支持switch语句，多个条件判断，只能用elif来实现，即判断条件a后又继续对条件b做了判断
+    3、需同时判断多个条件时，可判断组合条件。当有多个条件时，判断优先级顺序为：括号&gt;大于/小于&gt;与/或/非
+</code></pre><h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><pre><code>Python中提供了for循环和while循环以及两种循环的组合形式嵌套循环
+
+Python支持以下循环控制语句：
+    break语句：在语句块执行过程中终止循环，并且跳出整个循环
+    continue语句：在语句块执行过程中终止当前循环，跳出该次循环，执行下一次循环
+    pass语句：pass是空语句，是为了保持程序结构的完整性
+</code></pre><h4 id="while"><a href="#while" class="headerlink" title="while"></a>while</h4><pre><code>基本形式：
+    while 判断条件：
+        执行语句……
+其中：
+    1、执行语句可以是单个语句也可以是语句块
+    2、判断条件可以是任何表达式，任何非零、或非空的值均为ture
+    3、当判断条件为false时，循环结束
 </code></pre><h2 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h2>
       
     </div>
@@ -839,7 +874,7 @@ python中使用L来表示长整型，避免使用l与数字1产生混淆
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python简介"><span class="nav-number">2.</span> <span class="nav-text">python简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础有什么"><span class="nav-number">3.</span> <span class="nav-text">基础有什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境部署"><span class="nav-number">3.1.</span> <span class="nav-text">环境部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文编码"><span class="nav-number">3.2.</span> <span class="nav-text">中文编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础语法"><span class="nav-number">3.3.</span> <span class="nav-text">基础语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量类型"><span class="nav-number">3.4.</span> <span class="nav-text">变量类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数字"><span class="nav-number">3.4.1.</span> <span class="nav-text">数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串"><span class="nav-number">3.4.2.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表"><span class="nav-number">3.4.3.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组"><span class="nav-number">3.4.4.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典"><span class="nav-number">3.4.5.</span> <span class="nav-text">字典</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未完待续"><span class="nav-number">3.5.</span> <span class="nav-text">未完待续</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python简介"><span class="nav-number">2.</span> <span class="nav-text">python简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础有什么"><span class="nav-number">3.</span> <span class="nav-text">基础有什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境部署"><span class="nav-number">3.1.</span> <span class="nav-text">环境部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文编码"><span class="nav-number">3.2.</span> <span class="nav-text">中文编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础语法"><span class="nav-number">3.3.</span> <span class="nav-text">基础语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量类型"><span class="nav-number">3.4.</span> <span class="nav-text">变量类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数字"><span class="nav-number">3.4.1.</span> <span class="nav-text">数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串"><span class="nav-number">3.4.2.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表"><span class="nav-number">3.4.3.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组"><span class="nav-number">3.4.4.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典"><span class="nav-number">3.4.5.</span> <span class="nav-text">字典</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本语句"><span class="nav-number">3.5.</span> <span class="nav-text">基本语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#条件语句"><span class="nav-number">3.5.1.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环语句"><span class="nav-number">3.5.2.</span> <span class="nav-text">循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#while"><span class="nav-number">3.5.2.1.</span> <span class="nav-text">while</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未完待续"><span class="nav-number">3.6.</span> <span class="nav-text">未完待续</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -881,7 +916,7 @@ python中使用L来表示长整型，避免使用l与数字1产生混淆
 </span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站12.6k字</span>
+  <span class="post-count">全站13.0k字</span>
 </div>
 
 
@@ -918,7 +953,7 @@ python中使用L来表示长整型，避免使用l与数字1产生混淆
   
   
   <div class="powered-by"></div>
-  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站12.6k字</span>
+  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站13.0k字</span>
 </div>
 
 
