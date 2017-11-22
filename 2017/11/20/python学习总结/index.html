@@ -118,7 +118,7 @@
 <meta property="og:url" content="https://hardelm.github.io/2017/11/20/python学习总结/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
 <meta property="og:description" content="背景略 python简介略 基础有什么环境部署略 中文编码1、python中默认的编码格式是ASCII格式 2、若程序中有中文，需在文件开头加入# -- coding: UTF-8 -- 或者 #coding=utf-8 3、python3.X源码文件默认使用utf-8编码，无需指定utf-8编码  基础语法1、python编程方式 交互式编程：不需要创建脚本文件，通过python解释器的交互模式">
-<meta property="og:updated_time" content="2017-11-22T02:20:38.250Z">
+<meta property="og:updated_time" content="2017-11-22T07:45:43.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python学习总结">
 <meta name="twitter:description" content="背景略 python简介略 基础有什么环境部署略 中文编码1、python中默认的编码格式是ASCII格式 2、若程序中有中文，需在文件开头加入# -- coding: UTF-8 -- 或者 #coding=utf-8 3、python3.X源码文件默认使用utf-8编码，无需指定utf-8编码  基础语法1、python编程方式 交互式编程：不需要创建脚本文件，通过python解释器的交互模式">
@@ -411,7 +411,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  1,791
+                  2,462
                 </span>
               
 
@@ -571,11 +571,67 @@ Python支持以下循环控制语句：
 </code></pre><h4 id="while"><a href="#while" class="headerlink" title="while"></a>while</h4><pre><code>基本形式：
     while 判断条件：
         执行语句……
-![](https://i.imgur.com/mKQqAUW.gif)
+    else
+        执行语句……
 其中：
     1、执行语句可以是单个语句也可以是语句块
     2、判断条件可以是任何表达式，任何非零、或非空的值均为ture
-    3、当判断条件为false时，循环结束
+    3、若无else语句，当判断条件为false时，循环结束；若有else，当判断条件为false时，将执行else语句
+    4、如果判断条件永远为true，循环将会无限的执行下去
+</code></pre><h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><pre><code>基本形式：
+    for iterating_var in sequence:
+        statements(s)
+        break
+    else:
+        执行语句……
+
+
+其中：
+    1、Python中for循环可以遍历任何序列的项目，如一个列表或者一个字符串
+    2、另外还有一种执行循环的遍历方式是通过索引进行遍历
+    3、若无else语句，for循环会在遍历完成后退出；若有else语句，else语句会在循环正常执行完成的情况下执行
+</code></pre><h4 id="循环嵌套"><a href="#循环嵌套" class="headerlink" title="循环嵌套"></a>循环嵌套</h4><pre><code>while循环嵌套基本形式：
+    while expression:
+        while expression:
+            statement(s)
+    statement(s)
+
+for循环嵌套基本形式：
+    for iterating_var in sequence:
+        for iterating_var in sequence:
+            statements(s)
+    statements(s)
+
+其中：
+    1、while与for循环体可以互相嵌套
+</code></pre><h4 id="break"><a href="#break" class="headerlink" title="break"></a>break</h4><pre><code>1、break语句用在while和for循环中，用来跳出整个循环
+2、break语句用来打破最小封闭for或者while循环
+3、使用break终止循环语句时，即便循环条件没有false或者序列没有完全递归完，也会停止执行循环语句
+4、在嵌套循环中，break语句将停止执行最深层的循环，并开始执行下一行代码
+</code></pre><h4 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h4><pre><code>1、continue语句用在while和for循环中，用来跳出本次循环，跳过当前循环的剩余语句，继续进行下一轮循环
+2、无
+</code></pre><h4 id="pass"><a href="#pass" class="headerlink" title="pass"></a>pass</h4><pre><code>1、pass是空语句，为了保持程序结构的完整性
+2、pass不做任何事情，一般用作占位语句
+</code></pre><h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h2><pre><code>1、什么是函数
+    1）函数是啥，函数就是函数。。。
+    2）函数是组织好的，可重复使用的，用来实现单一，或相关联功能的代码段
+    3）函数能提高应用的模块性，和代码的重复利用率
+    4）Python提供了很多內建函数，如len()、range()和print()等
+    5）用户自己创建的函数，叫做用户自定义函数
+
+2、函数的语法格式
+    基本形式：
+        def functionname( parameters ):
+            &quot;函数_文档字符串&quot;
+            function_suite
+            return [expression]
+
+    其中：
+        1）函数代码块以 def 关键词开头，后接函数标识符名称和圆括号()。
+        2）任何传入参数和自变量必须放在圆括号中间。圆括号之间可以用于定义参数。
+        3）函数的第一行语句可以选择性地使用文档字符串—用于存放函数说明。
+        4）函数内容以冒号起始，并且缩进。
+        5）return [表达式] 结束函数，选择性地返回一个值给调用方。不带表达式的return相当于返回 None。
 </code></pre><h2 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h2>
       
     </div>
@@ -875,7 +931,7 @@ Python支持以下循环控制语句：
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python简介"><span class="nav-number">2.</span> <span class="nav-text">python简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础有什么"><span class="nav-number">3.</span> <span class="nav-text">基础有什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境部署"><span class="nav-number">3.1.</span> <span class="nav-text">环境部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文编码"><span class="nav-number">3.2.</span> <span class="nav-text">中文编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础语法"><span class="nav-number">3.3.</span> <span class="nav-text">基础语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量类型"><span class="nav-number">3.4.</span> <span class="nav-text">变量类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数字"><span class="nav-number">3.4.1.</span> <span class="nav-text">数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串"><span class="nav-number">3.4.2.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表"><span class="nav-number">3.4.3.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组"><span class="nav-number">3.4.4.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典"><span class="nav-number">3.4.5.</span> <span class="nav-text">字典</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本语句"><span class="nav-number">3.5.</span> <span class="nav-text">基本语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#条件语句"><span class="nav-number">3.5.1.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环语句"><span class="nav-number">3.5.2.</span> <span class="nav-text">循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#while"><span class="nav-number">3.5.2.1.</span> <span class="nav-text">while</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未完待续"><span class="nav-number">3.6.</span> <span class="nav-text">未完待续</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python简介"><span class="nav-number">2.</span> <span class="nav-text">python简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础有什么"><span class="nav-number">3.</span> <span class="nav-text">基础有什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境部署"><span class="nav-number">3.1.</span> <span class="nav-text">环境部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中文编码"><span class="nav-number">3.2.</span> <span class="nav-text">中文编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础语法"><span class="nav-number">3.3.</span> <span class="nav-text">基础语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量类型"><span class="nav-number">3.4.</span> <span class="nav-text">变量类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数字"><span class="nav-number">3.4.1.</span> <span class="nav-text">数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串"><span class="nav-number">3.4.2.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表"><span class="nav-number">3.4.3.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组"><span class="nav-number">3.4.4.</span> <span class="nav-text">元组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典"><span class="nav-number">3.4.5.</span> <span class="nav-text">字典</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本语句"><span class="nav-number">3.5.</span> <span class="nav-text">基本语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#条件语句"><span class="nav-number">3.5.1.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环语句"><span class="nav-number">3.5.2.</span> <span class="nav-text">循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#while"><span class="nav-number">3.5.2.1.</span> <span class="nav-text">while</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for"><span class="nav-number">3.5.2.2.</span> <span class="nav-text">for</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环嵌套"><span class="nav-number">3.5.2.3.</span> <span class="nav-text">循环嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#break"><span class="nav-number">3.5.2.4.</span> <span class="nav-text">break</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#continue"><span class="nav-number">3.5.2.5.</span> <span class="nav-text">continue</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pass"><span class="nav-number">3.5.2.6.</span> <span class="nav-text">pass</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是函数"><span class="nav-number">3.6.</span> <span class="nav-text">什么是函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未完待续"><span class="nav-number">3.7.</span> <span class="nav-text">未完待续</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -917,7 +973,7 @@ Python支持以下循环控制语句：
 </span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站13.0k字</span>
+  <span class="post-count">全站13.7k字</span>
 </div>
 
 
@@ -954,7 +1010,7 @@ Python支持以下循环控制语句：
   
   
   <div class="powered-by"></div>
-  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站13.0k字</span>
+  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站13.7k字</span>
 </div>
 
 
