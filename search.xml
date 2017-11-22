@@ -65,9 +65,9 @@
         <category>测试工具</category>
       </categories>
       <tags>
+        <tag>性能测试</tag>
         <tag>ab</tag>
         <tag>性能工具</tag>
-        <tag>性能测试</tag>
       </tags>
   </entry>
   <entry>
@@ -100,8 +100,8 @@
         <category>测试工具</category>
       </categories>
       <tags>
-        <tag>性能工具</tag>
         <tag>性能测试</tag>
+        <tag>性能工具</tag>
         <tag>iperf</tag>
       </tags>
   </entry>
@@ -136,15 +136,26 @@
         <category>编程语言</category>
       </categories>
       <tags>
-        <tag>自动化测试</tag>
-        <tag>性能测试</tag>
         <tag>Expect</tag>
+        <tag>性能测试</tag>
+        <tag>自动化测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[针对mysql数据库性能测试的相关总结]]></title>
+    <url>%2F2017%2F07%2F12%2Fmysql%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 mysql简介mysql是怎么样的数据库mysql关系型数据库 主要功能特性有： 略。 咋用安装略 简单的语句1、查看数据库连接池最大连接数 show variables like &apos;%max_connections%&apos;; 实际MySQL服务器允许的最大连接数16384； 2、设置数据库连接池最大连接数 set global max_connections=1000; 3、show processlist; 如果是root帐号，你能看到所有用户的当前连接。如果是其它普通帐号，只能看到自己占用的连接。 只列出前100条，如果想全列出请使用show full processlist; 4、My.ini配置 虚拟内存 5、查看数据库版本 select @@Version; 6、查看表状态属性 show table status like &apos;表名&apos;; 7、更改表引擎属性 ALTER TABLE test_table1 ENGINE=MyISAM; 8、查看数据库状态 show status; 9、查看数据库状态参数相关命令：show status like &apos;%下面变量%&apos;; show status like &apos;%Aborted_clients%&apos;; 由于客户没有正确关闭连接已经死掉，已经放弃的连接数量。 show status like &apos;%Aborted_connects%&apos;; 尝试已经失败的MySQL服务器的连接的次数。 show status like &apos;%Connections%&apos;; 试图连接MySQL服务器的次数。 show status like &apos;%Created_tmp_tables%&apos;;当执行语句时，已经被创造了的隐含临时表的数量。 show status like &apos;%Delayed_insert_threads%&apos;;正在使用的延迟插入处理器线程的数量。 show status like &apos;%Delayed_writes%&apos;; 用INSERT DELAYED写入的行数。 show status like &apos;%Delayed_errors%&apos;; 用INSERT DELAYED写入的发生某些错误(可能重复键值)的行数。 show status like &apos;%Flush_commands%&apos;; 执行FLUSH命令的次数。 show status like &apos;%Handler_delete%&apos;; 请求从一张表中删除行的次数。 show status like &apos;%Handler_read_first%&apos;;请求读入表中第一行的次数。 show status like &apos;%Handler_read_key%&apos;; 请求数字基于键读行。 show status like &apos;%Handler_read_next%&apos;; 请求读入基于一个键的一行的次数。 show status like &apos;%Handler_read_rnd%&apos;; 请求读入基于一个固定位置的一行的次数。 show status like &apos;%Handler_update%&apos;; 请求更新表中一行的次数。 show status like &apos;%Handler_write%&apos;; 请求向表中插入一行的次数。 show status like &apos;%Key_blocks_used%&apos;; 用于关键字缓存的块的数量。 show status like &apos;%Key_read_requests%&apos;; 请求从缓存读入一个键值的次数。 show status like &apos;%Key_reads%&apos;; 从磁盘物理读入一个键值的次数。 show status like &apos;%Key_write_requests%&apos;;请求将一个关键字块写入缓存次数。 show status like &apos;%Key_writes%&apos;; 将一个键值块物理写入磁盘的次数。 show status like &apos;%Max_used_connections%&apos;;同时使用的连接的最大数目。 show status like &apos;%Not_flushed_key_blocks%&apos;;在键缓存中已经改变但是还没被清空到磁盘上的键块。 show status like &apos;%Not_flushed_delayed_rows%&apos;;在INSERT DELAY队列中等待写入的行的数量。 show status like &apos;%Open_tables%&apos;; 打开表的数量。 show status like &apos;%Open_files%&apos;; 打开文件的数量。 show status like &apos;%Open_streams%&apos;; 打开流的数量(主要用于日志记载） show status like &apos;%Opened_tables%&apos;; 已经打开的表的数量。 show status like &apos;%Questions%&apos;; 发往服务器的查询的数量。 show status like &apos;%Slow_queries%&apos;; 要花超过long_query_time时间的查询数量。 show status like &apos;%Threads_connected%&apos;; 当前打开的连接的数量。 show status like &apos;%Threads_running%&apos;; 不在睡眠的线程数量。 show status like &apos;%Uptime%&apos;; 服务器工作了多少秒。 做测试用到的一些未完待续]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[针对mongoDB数据库性能测试的相关总结]]></title>
     <url>%2F2017%2F07%2F12%2FmongoDB%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%2F</url>
-    <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 mongo简介mongodb是怎么样的数据库怕忘了，摘抄网络上的，简单记录下 mongodb是非关系型数据库，它的特点是高性能、易部署、易使用，存储数据非常方便。 主要功能特性有： *面向集合存储，易存储对象类型的数据。 *模式自由。 *支持动态查询。 *支持完全索引，包含内部对象。 *支持查询。 *支持复制和故障恢复。 *使用高效的二进制数据存储，包括大型对象（如视频等）。 *自动处理碎片，以支持云计算层次的扩展性。 *支持RUBY，PYTHON，JAVA，C++，PHP，C#等多种语言。 *文件存储格式为BSON（一种JSON的扩展）。 *可通过网络访问。 咋用安装略 启动：/usr/bin/mongod -f /etc/mongod.conf 简单的语句1、删除全部数据 db.Account.remove({}) 2、建表 db.createCollection(&quot;表名&quot;) db.createCollection(&quot;表名&quot;,{capped:true, size:10000}) { &quot;ok&quot; : 1 } 3、查看表数据 db.表名.find() 4、删除数据 db.表名.remove({&quot;字段名&quot;:&quot;字段内容&quot;}) 5、添加用户角色 创建一个可以连接到任何数据库的用户test来查询和写入元数据到testdb db.createUser({user:&quot;test&quot;,pwd:&quot;test&quot;,roles:[&quot;readAnyDatabase&quot;,{role:&quot;admin&quot;,db:&quot;testdb&quot;}]}) 6、删除用户角色 db.dropUser(&quot;test&quot;); 7、多条件查询：db.media.find({&quot;$and&quot;:[{&quot;consumername&quot; : &quot;onair&quot;},{&quot;isdel&quot; : &quot;1&quot;}]}).count() 做测试用到的一些1、大批量插入数据 for(var i=0;i&lt;10000000;i++){ db.test.insert({&quot;name&quot;:&quot;test&quot;+i,&quot;age&quot;:parseInt(i*Math.random())}) } 使用客户端工具如：Robomongo 1.0.0-RC1、NoSQL Manager for MongoDB再或者mongodbmanager执行以上语句灌数据时，灌几万条数据后会报错停止（错误信息忘记记录了） 未完待续]]></content>
+    <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 mongo简介mongodb是怎么样的数据库摘抄网络上的，简单记录下 mongodb是非关系型数据库，它的特点是高性能、易部署、易使用，存储数据非常方便。 主要功能特性有： *面向集合存储，易存储对象类型的数据。 *模式自由。 *支持动态查询。 *支持完全索引，包含内部对象。 *支持查询。 *支持复制和故障恢复。 *使用高效的二进制数据存储，包括大型对象（如视频等）。 *自动处理碎片，以支持云计算层次的扩展性。 *支持RUBY，PYTHON，JAVA，C++，PHP，C#等多种语言。 *文件存储格式为BSON（一种JSON的扩展）。 *可通过网络访问。 咋用安装略 启动：/usr/bin/mongod -f /etc/mongod.conf 简单的语句1、删除全部数据 db.Account.remove({}) 2、建表 db.createCollection(&quot;表名&quot;) db.createCollection(&quot;表名&quot;,{capped:true, size:10000}) { &quot;ok&quot; : 1 } 3、查看表数据 db.表名.find() 4、删除数据 db.表名.remove({&quot;字段名&quot;:&quot;字段内容&quot;}) 5、添加用户角色 创建一个可以连接到任何数据库的用户test来查询和写入元数据到testdb db.createUser({user:&quot;test&quot;,pwd:&quot;test&quot;,roles:[&quot;readAnyDatabase&quot;,{role:&quot;admin&quot;,db:&quot;testdb&quot;}]}) 6、删除用户角色 db.dropUser(&quot;test&quot;); 7、多条件查询：db.media.find({&quot;$and&quot;:[{&quot;consumername&quot; : &quot;onair&quot;},{&quot;isdel&quot; : &quot;1&quot;}]}).count() 做测试用到的一些1、大批量插入数据 for(var i=0;i&lt;10000000;i++){ db.test.insert({&quot;name&quot;:&quot;test&quot;+i,&quot;age&quot;:parseInt(i*Math.random())}) } 使用客户端工具如：Robomongo 1.0.0-RC1、NoSQL Manager for MongoDB再或者mongodbmanager执行以上语句灌数据时，灌几万条数据后会报错停止（错误信息忘记记录了），后来写了简单的java代码，使用LR进行执行进行测试数据的灌入 未完待续]]></content>
       <categories>
         <category>数据库</category>
       </categories>
@@ -194,9 +205,9 @@
         <category>测试工具</category>
       </categories>
       <tags>
+        <tag>自动化测试</tag>
         <tag>Selenium</tag>
         <tag>java</tag>
-        <tag>自动化测试</tag>
       </tags>
   </entry>
   <entry>
@@ -224,17 +235,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数据库性能的影响因素]]></title>
-    <url>%2F2017%2F07%2F12%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0%2F</url>
-    <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 #影响数据库性能表现的因素 #简单概括，通常会有如下相关项： 硬件、操作系统、数据库配置、应用模型 1、硬件 1）变化的硬件： 通常指裸机配置等，如CPU、内存大小都对性能有重要影响。 再如裸设备、固态硬盘等，对性能也影响很大。 2）变化的网络环境： 10M、100M、千兆以太网甚至光纤等，会对应用系统的整体性能产生较大影响。 2、操作系统 典型的如Linux系列、Win系列，通常会有不同的性能表现。 操作系统的一些设置，也可能对数据库性能造成影响。比如块读写的设置等。 3、数据库 数据库，至少包含2部分内容，一是数据库引擎，一是接口（如JDBC、ODBC等）。 1）接口如果实现的不好，某些时候，也容易成为瓶颈。 2）数据库引擎，可调优之处很多，需要根据实际情况，综合判断。如分区、索引、日志、数据文件、数据库可调参数等 4、应用模型 基于数据库的应用，原型是什么样的，需要深入了解，掌握，才能因地制宜地结合数据库一起调优。 目前国内对于数据库的应用现状，基本的问题是：应用不当，SQL写法有误。 应用模型对于数据库的影响可能有： 1）读多写少、读写并重、读少写多； 2）并发情况 3）数据量 4）中间件 总之，应用逻辑和应用模型对数据库的使用方式，更多地影响着系统的瓶颈（通常情况，硬件一旦固定，更换的机会少。比如，数据库性能测试的TPCX系列，很多硬件厂家给出的测试最佳值，都是在固定硬件的环境下进行的）。 附：什么是数据库应用模型？参考本博客：《数据库应用模型的简单理解》]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>数据库性能</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据库模型的简单理解]]></title>
     <url>%2F2017%2F07%2F12%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 什么是数据模型？访问数据库中的数据取决于数据库实现的数据模型。 数据模型会影响客户端通过API对数据的操作。不同的数据模型可能会提供或多或少的功能。一般而言，数据模型不会直接提供过多的功能，许多功能必须由客户端自行实现。 数据模型决定了客户端如何对数据进行编码存储。应用程序需要某种域模型与存储技术支持的特性进行映射。 有哪些数据库模型关系模型关系模型使用记录（由元组组成）进行存储，记录存储在表中，表由架构界定。 表中的每个列都有名称和类型，表中的所有记录都要符合表的定义。 SQL是专门的查询语言，提供相应的语法查找符合条件的记录，如表联接（Join）。表联接可以基于表之间的关系在多表之间查询记录。 表中的记录可以被创建和删除，记录中的字段也可以单独更新。 关系模型数据库通常提供事务处理机制，这为涉及多条记录的自动化处理提供了解决方案。 对不同的编程语言而言，表可以被看成数组、记录列表或者结构。表可以使用B树和哈希表进行索引，以应对高性能访问。 键值存储键值存储提供了基于键对值的访问方式。 键值对可以被创建或删除，与键相关联的值可以被更新。 键值存储一般不提供事务处理机制。 对不同的编程语言而言，键值存储类似于哈希表。对此，不同的编程语言有不同的名字（如，Java称之为“HashMap”，Perl称之为“hash”，Python称之为“dict”，PHP称之为“associative array”），C++则称之为“boost::unordered_map&lt;...&gt;”。 键值存储支持键上自有的隐式索引。 键值存储看起来好像不太有用，但却可以在“值”上存储大量信息。“值”可以是一个XML文档，一个JSON对象，或者其它任何序列化形式。 重要的是，键值存储引擎并不在意“值”的内部结构，它依赖客户端对“值”进行解释和管理。 文档存储文档存储支持对结构化数据的访问，不同于关系模型的是，文档存储没有强制的架构。 事实上，文档存储以封包键值对的方式进行存储。在这种情况下，应用对要检索的封包采取一些约定，或者利用存储引擎的能力将不同的文档划分成不同的集合，以管理数据。 与关系模型不同的是，文档存储模型支持嵌套结构。例如，文档存储模型支持XML和JSON文档，字段的“值”又可以嵌套存储其它文档。文档存储模型也支持数组和列值键。 与键值存储不同的是，文档存储关心文档的内部结构。这使得存储引擎可以直接支持二级索引，从而允许对任意字段进行高效查询。支持文档嵌套存储的能力，使得查询语言具有搜索嵌套对象的能力，XQuery就是一个例子。 MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。 列式存储如果翻转数据，列式存储与关系存储将会非常相似。 与关系模型存储记录不同，列式存储以流的方式在列中存储所有的数据。对于任何记录，索引都可以快速地获取列上的数据。 Map-reduce的实现Hadoop的流数据处理效率非常高，列式存储的优点体现的淋漓极致。因此，HBase和Hypertable通常作为非关系型数据仓库，为Map-reduce进行数据分析提供支持。 关系类型的列标对数据分析效果不好，因此，用户经常将更复杂的数据存储在列式数据库中。这直接体现在Cassandra中，它引入的“column family”可以被认为是一个“super-column”。 列式存储支持行检索，但这需要从每个列获取匹配的列值，并重新组成行。 图形数据库图形数据库存储顶点和边的信息，有的支持添加注释。 图形数据库可用于对事物建模，如社交图谱、真实世界的各种对象。IMDB（Internet Movie Database）站点的内容就组成了一幅复杂的图像，演员与电影彼此交织在一起。 图形数据库的查询语言一般用于查找图形中断点的路径，或端点之间路径的属性。 Neo4j是一个典型的图形数据库。]]></content>
@@ -243,6 +243,17 @@
       </categories>
       <tags>
         <tag>数据库模型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据库性能的影响因素]]></title>
+    <url>%2F2017%2F07%2F12%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0%2F</url>
+    <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 #影响数据库性能表现的因素 #简单概括，通常会有如下相关项： 硬件、操作系统、数据库配置、应用模型 1、硬件 1）变化的硬件： 通常指裸机配置等，如CPU、内存大小都对性能有重要影响。 再如裸设备、固态硬盘等，对性能也影响很大。 2）变化的网络环境： 10M、100M、千兆以太网甚至光纤等，会对应用系统的整体性能产生较大影响。 2、操作系统 典型的如Linux系列、Win系列，通常会有不同的性能表现。 操作系统的一些设置，也可能对数据库性能造成影响。比如块读写的设置等。 3、数据库 数据库，至少包含2部分内容，一是数据库引擎，一是接口（如JDBC、ODBC等）。 1）接口如果实现的不好，某些时候，也容易成为瓶颈。 2）数据库引擎，可调优之处很多，需要根据实际情况，综合判断。如分区、索引、日志、数据文件、数据库可调参数等 4、应用模型 基于数据库的应用，原型是什么样的，需要深入了解，掌握，才能因地制宜地结合数据库一起调优。 目前国内对于数据库的应用现状，基本的问题是：应用不当，SQL写法有误。 应用模型对于数据库的影响可能有： 1）读多写少、读写并重、读少写多； 2）并发情况 3）数据量 4）中间件 总之，应用逻辑和应用模型对数据库的使用方式，更多地影响着系统的瓶颈（通常情况，硬件一旦固定，更换的机会少。比如，数据库性能测试的TPCX系列，很多硬件厂家给出的测试最佳值，都是在固定硬件的环境下进行的）。 附：什么是数据库应用模型？参考本博客：《数据库应用模型的简单理解》]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库性能</tag>
       </tags>
   </entry>
   <entry>

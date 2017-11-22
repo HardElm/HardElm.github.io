@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 mongo简介mongodb是怎么样的数据库怕忘了，摘抄网络上的，简单记录下 mongodb是非关系型数据库，它的特点是高性能、易部署、易使用，存储数据非常方便。 主要功能特性有：      *面向集合存储，易存储对象类型的数据。">
+<meta name="description" content="背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 mongo简介mongodb是怎么样的数据库摘抄网络上的，简单记录下 mongodb是非关系型数据库，它的特点是高性能、易部署、易使用，存储数据非常方便。 主要功能特性有：      *面向集合存储，易存储对象类型的数据。     *模式">
 <meta name="keywords" content="mongoDB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="针对mongoDB数据库性能测试的相关总结">
 <meta property="og:url" content="https://hardelm.github.io/2017/07/12/mongoDB基本操作/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
-<meta property="og:description" content="背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 mongo简介mongodb是怎么样的数据库怕忘了，摘抄网络上的，简单记录下 mongodb是非关系型数据库，它的特点是高性能、易部署、易使用，存储数据非常方便。 主要功能特性有：      *面向集合存储，易存储对象类型的数据。">
-<meta property="og:updated_time" content="2017-11-22T10:17:43.291Z">
+<meta property="og:description" content="背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 mongo简介mongodb是怎么样的数据库摘抄网络上的，简单记录下 mongodb是非关系型数据库，它的特点是高性能、易部署、易使用，存储数据非常方便。 主要功能特性有：      *面向集合存储，易存储对象类型的数据。     *模式">
+<meta property="og:updated_time" content="2017-11-22T10:40:51.909Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="针对mongoDB数据库性能测试的相关总结">
-<meta name="twitter:description" content="背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 mongo简介mongodb是怎么样的数据库怕忘了，摘抄网络上的，简单记录下 mongodb是非关系型数据库，它的特点是高性能、易部署、易使用，存储数据非常方便。 主要功能特性有：      *面向集合存储，易存储对象类型的数据。">
+<meta name="twitter:description" content="背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 mongo简介mongodb是怎么样的数据库摘抄网络上的，简单记录下 mongodb是非关系型数据库，它的特点是高性能、易部署、易使用，存储数据非常方便。 主要功能特性有：      *面向集合存储，易存储对象类型的数据。     *模式">
 
 
 
@@ -411,7 +411,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  488
+                  511
                 </span>
               
 
@@ -434,7 +434,7 @@
 
       
         <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西</p>
-<h1 id="mongo简介"><a href="#mongo简介" class="headerlink" title="mongo简介"></a>mongo简介</h1><h2 id="mongodb是怎么样的数据库"><a href="#mongodb是怎么样的数据库" class="headerlink" title="mongodb是怎么样的数据库"></a>mongodb是怎么样的数据库</h2><p>怕忘了，摘抄网络上的，简单记录下</p>
+<h1 id="mongo简介"><a href="#mongo简介" class="headerlink" title="mongo简介"></a>mongo简介</h1><h2 id="mongodb是怎么样的数据库"><a href="#mongodb是怎么样的数据库" class="headerlink" title="mongodb是怎么样的数据库"></a>mongodb是怎么样的数据库</h2><p>摘抄网络上的，简单记录下</p>
 <p>mongodb是非关系型数据库，它的特点是高性能、易部署、易使用，存储数据非常方便。</p>
 <pre><code>主要功能特性有：
 
@@ -471,7 +471,7 @@
         db.test.insert({&quot;name&quot;:&quot;test&quot;+i,&quot;age&quot;:parseInt(i*Math.random())})
     }
 
-使用客户端工具如：Robomongo 1.0.0-RC1、NoSQL Manager for MongoDB再或者mongodbmanager执行以上语句灌数据时，灌几万条数据后会报错停止（错误信息忘记记录了）
+使用客户端工具如：Robomongo 1.0.0-RC1、NoSQL Manager for MongoDB再或者mongodbmanager执行以上语句灌数据时，灌几万条数据后会报错停止（错误信息忘记记录了），后来写了简单的java代码，使用LR进行执行进行测试数据的灌入
 </code></pre><h2 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h2>
       
     </div>
@@ -570,8 +570,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/24/Expect交互语言的简单使用/" rel="prev" title="Linux下expect脚本语言的简单使用">
-                Linux下expect脚本语言的简单使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/12/mysql基本操作/" rel="prev" title="针对mysql数据库性能测试的相关总结">
+                针对mysql数据库性能测试的相关总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -655,7 +655,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -677,7 +677,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -817,7 +817,7 @@
 </span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站16.6k字</span>
+  <span class="post-count">全站17.5k字</span>
 </div>
 
 
@@ -854,7 +854,7 @@
   
   
   <div class="powered-by"></div>
-  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站16.6k字</span>
+  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站17.5k字</span>
 </div>
 
 
