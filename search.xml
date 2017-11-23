@@ -12,6 +12,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[JNA方式调用dll动态库]]></title>
+    <url>%2F2017%2F11%2F19%2FJNA%E8%B0%83%E7%94%A8dll%E5%8A%A8%E6%80%81%E5%BA%93%2F</url>
+    <content type="text"><![CDATA[背景之前有段时间写了个GUI，调用公司CA服务器相关接口，进行两码获取、证书下载等操作，证书下载需要借助动态链接库等控件进行，故有如下内容 JNA是什么java调用dll较为常用的方式有JNA和JNI。 JNA是建立在JNI技术基础之上的一个Java类库，我们可以方便地使用java直接访问动态链接库中的函数。 原来使用JNI，必须手工用C写一个动态链接库，在C语言中映射Java的数据类型。 而JNA提供了一个动态的C语言编写的转发器，可以自动实现Java和C的数据类型映射，我们不再需要编写C动态链接库。 怎么用过程： 1、引入JNA.jar 2、声明接口（注意和动态库方法数据类型的映射关系） 3、调用声明的接口中的方法 调用时需要注意dll的位置： 方式一：把动态库拷贝到system32目录 方式二： String path = ESAMServer.class.getResource(&quot;/&quot;).getPath()+&quot;/dll&quot;; System.load(path+&quot;/MyNative.dll&quot;); NativeLibrary.addSearchPath(&quot;MyNative.dll&quot;, path); 测试代码JComboBoxTest.javapackage TestNativeLibrary; import java.awt.BorderLayout; import java.awt.GridLayout; import javax.swing.DefaultComboBoxModel; import javax.swing.JComboBox; import javax.swing.JFrame; import javax.swing.JPanel; import javax.swing.JTextArea; public class JComboBoxTest { private JFrame frame = new JFrame(&quot;JComboBoxTest&quot;); private JPanel panel1 = new JPanel(new BorderLayout()); private JComboBox JComboBoxT = new JComboBox(); private JTextArea JTextAreaT = new JTextArea(); public JComboBoxTest(){ JNATest jc = JNATest.instanceDll; frame.setLayout(null); frame.setLayout(new GridLayout(1,1)); frame.setVisible(true); frame.setBounds(400, 250, 200, 150); frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); JComboBoxT.setModel(new DefaultComboBoxModel(jc.rsa_csp_listProvider())); frame.add(panel1); panel1.add(&quot;North&quot;,JComboBoxT); panel1.add(&quot;Center&quot;,JTextAreaT); } public static void main(String args[]){ new JComboBoxTest(); } } JNATest.javapackage TestNativeLibrary; import com.sun.jna.Library; import com.sun.jna.Native; public interface JNATest extends Library { public JNATest instanceDll = (JNATest)Native.loadLibrary(&quot;SKFCSPEnroll&quot;, JNATest.class); public String[] rsa_csp_listProvider(); } 附：参考： http://blog.csdn.net/hengwei_vc/article/details/6982076 http://blog.chinaunix.net/uid-29308108-id-4048576.html]]></content>
+      <categories>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>动态链接库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[docker kubernetes]]></title>
     <url>%2F2017%2F11%2F13%2Fdocker-kubernetes%2F</url>
     <content type="text"><![CDATA[背景略 kubernetes]]></content>
@@ -53,9 +65,9 @@
         <category>测试工具</category>
       </categories>
       <tags>
+        <tag>性能测试</tag>
         <tag>ab</tag>
         <tag>性能工具</tag>
-        <tag>性能测试</tag>
       </tags>
   </entry>
   <entry>
@@ -100,8 +112,8 @@
         <category>测试工具</category>
       </categories>
       <tags>
-        <tag>性能工具</tag>
         <tag>性能测试</tag>
+        <tag>性能工具</tag>
         <tag>iperf</tag>
       </tags>
   </entry>
@@ -136,8 +148,8 @@
         <category>编程语言</category>
       </categories>
       <tags>
-        <tag>性能测试</tag>
         <tag>Expect</tag>
+        <tag>性能测试</tag>
         <tag>自动化测试</tag>
       </tags>
   </entry>
@@ -198,17 +210,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[RabbitMQ学习总结]]></title>
-    <url>%2F2017%2F07%2F12%2Frabbitmq%2F</url>
-    <content type="text"><![CDATA[什么是RabbitMQMessage Queue（MQ），消息队列是一种应用程序对应用程序的通信方法。应用程序通过读写MQ的消息（针对应用程序的数据）来通信，而无需建立专用连接来链接它们。MQ是消费者-生产模型的一个典型代表，一段不断写入消息，而另一段可以读取或者订阅队列中的消息。MQ是遵循AMQP协议的具体实现和产品。 适用场景RabbitMQ，或者说AMQP解决了什么问题，或者说它的应用场景是什么？ 对于一个大型的软件系统来说，它会有很多的组件或者说模块或者说子系统或者（subsystem or Component or submodule）。那么这些模块的如何通信？这和传统的IPC有很大的区别。传统的IPC很多都是在单一系统上的，模块耦合性很大，不适合扩展（Scalability）；如果使用socket那么不同的模块的确可以部署到不同的机器上，但是还是有很多问题需要解决。比如： 1）信息的发送者和接收者如何维持这个连接，如果一方的连接中断，这期间的数据如何方式丢失？ 2）如何降低发送者和接收者的耦合度？ 3）如何让Priority高的接收者先接到数据？ 4）如何做到load balance？有效均衡接收者的负载？ 5）如何有效的将数据发送到相关的接收者？也就是说将接收者subscribe 不同的数据，如何做有效的filter。 6）如何做到可扩展，甚至将这个通信模块发到cluster上？ 7）如何保证接收者接收到了完整，正确的数据？ AMDQ协议解决了以上的问题，而RabbitMQ实现了AMQP。 安装部署1、安装erlang 1）下载erlang源码，解压，进入$erlang目录，安装依赖包： yum install tk yum install tcl yum install unixODBC 2）编译erlang ./configure –prefix=/usr/local/erlang ./make ./make install 3）将erlang的bin目录添加至PATH 2、安装RabitMQ 1）下载RabbitMQ，解压至$RMQ 2）启动RabbitMQ ./bin/rabbitmq-server start 实际使用1、创建未完 相关博客链接：http://blog.csdn.net/column/details/rabbitmq.html]]></content>
-      <categories>
-        <category>杂</category>
-      </categories>
-      <tags>
-        <tag>RabbitMQ</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Selenium初学总结]]></title>
     <url>%2F2017%2F07%2F12%2FSelenium%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 selenium集成java的一些常用方法： 1、页面元素定位方法：ID: driver.findElement(By.id(“ID值”));Name: driver.findElement(By.name(“name值”));链接的全部文字 : driver.findElement(By.linkText(“链接的全部文字内容”));部分链接文字: driver.findElement(By.partialLinkText(“链接的部分文字内容”));Xpath : driver.findElement(By.xpath(“Xpath定位表达式”));CSS: driver.findElement(By.cssSelector(“CSS定位表达式”));Class: driver.findElement(By.className(“页面元素的Class属性值”));标签名称:driver.findElement(By.tagName (“页面元素的HTML标签名称”)); 2、打开浏览器：打开firefox ： WebDriver driver= new FirefoxDriver();打开ie ：WebDriver driver =new InternetExplorerDriver();打开chrome： WebDriver driver = new ChromeDriver();打开指定路径浏览器 ： System.setProperty(“webdriver.firefox.bin”,”D:\ProgramFiles\MozillaFirefox\firefox.exe”); 3、关闭浏览器：driver.close();driver.quit(); 4、返回当前页面Title URLdriver.getTitle();driver.getCurrentUrl(); 5、返回上一个访问的网页driver.navigate().to(url1);driver.navigate().to(url2);driver.navigate().back();6、刷新当前网页：driver.navigate().refresh();7、输入框中输入指定内容:driver.sendKeys();8、输入框中清除文字内容：driver.clear();9、查看页面元素属性：driver.getAttribute(“value”);10、点击按钮：driver.click();11、操作frame：Driver.switchTo.frame()12、单选下拉列表：Select dropList = new Select(element);Select.getFrestSelectOption().getText();Select.selectByIndex();Select.selectByValue();Select.selectByVisibleText();例子： 单选框：List radioList = driver.findElements();radio. getAttribute(“Value”).equals(“”);radio.isSelectd()radio.click(); 复选框：List checkList = driver.findElements();check.getAttribute(“Value”).equals(“”);check.isSelectd()check.click();13、Alert弹窗：Alert alert = driver.switchTo().alert(); alert.accept();14、执行JavaScript脚本：声明一个JavaScript 执行器对象 JavaScriptExecutor js = (JavaScriptExecutor )driver; js.executeScript(“loginSubmit();”);]]></content>
@@ -219,6 +220,17 @@
         <tag>java</tag>
         <tag>自动化测试</tag>
         <tag>Selenium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[RabbitMQ学习总结]]></title>
+    <url>%2F2017%2F07%2F12%2Frabbitmq%2F</url>
+    <content type="text"><![CDATA[什么是RabbitMQMessage Queue（MQ），消息队列是一种应用程序对应用程序的通信方法。应用程序通过读写MQ的消息（针对应用程序的数据）来通信，而无需建立专用连接来链接它们。MQ是消费者-生产模型的一个典型代表，一段不断写入消息，而另一段可以读取或者订阅队列中的消息。MQ是遵循AMQP协议的具体实现和产品。 适用场景RabbitMQ，或者说AMQP解决了什么问题，或者说它的应用场景是什么？ 对于一个大型的软件系统来说，它会有很多的组件或者说模块或者说子系统或者（subsystem or Component or submodule）。那么这些模块的如何通信？这和传统的IPC有很大的区别。传统的IPC很多都是在单一系统上的，模块耦合性很大，不适合扩展（Scalability）；如果使用socket那么不同的模块的确可以部署到不同的机器上，但是还是有很多问题需要解决。比如： 1）信息的发送者和接收者如何维持这个连接，如果一方的连接中断，这期间的数据如何方式丢失？ 2）如何降低发送者和接收者的耦合度？ 3）如何让Priority高的接收者先接到数据？ 4）如何做到load balance？有效均衡接收者的负载？ 5）如何有效的将数据发送到相关的接收者？也就是说将接收者subscribe 不同的数据，如何做有效的filter。 6）如何做到可扩展，甚至将这个通信模块发到cluster上？ 7）如何保证接收者接收到了完整，正确的数据？ AMDQ协议解决了以上的问题，而RabbitMQ实现了AMQP。 安装部署1、安装erlang 1）下载erlang源码，解压，进入$erlang目录，安装依赖包： yum install tk yum install tcl yum install unixODBC 2）编译erlang ./configure –prefix=/usr/local/erlang ./make ./make install 3）将erlang的bin目录添加至PATH 2、安装RabitMQ 1）下载RabbitMQ，解压至$RMQ 2）启动RabbitMQ ./bin/rabbitmq-server start 实际使用1、创建未完 相关博客链接：http://blog.csdn.net/column/details/rabbitmq.html]]></content>
+      <categories>
+        <category>杂</category>
+      </categories>
+      <tags>
+        <tag>RabbitMQ</tag>
       </tags>
   </entry>
   <entry>
@@ -235,17 +247,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数据库性能的影响因素]]></title>
-    <url>%2F2017%2F07%2F12%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0%2F</url>
-    <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 #影响数据库性能表现的因素 #简单概括，通常会有如下相关项： 硬件、操作系统、数据库配置、应用模型 1、硬件 1）变化的硬件： 通常指裸机配置等，如CPU、内存大小都对性能有重要影响。 再如裸设备、固态硬盘等，对性能也影响很大。 2）变化的网络环境： 10M、100M、千兆以太网甚至光纤等，会对应用系统的整体性能产生较大影响。 2、操作系统 典型的如Linux系列、Win系列，通常会有不同的性能表现。 操作系统的一些设置，也可能对数据库性能造成影响。比如块读写的设置等。 3、数据库 数据库，至少包含2部分内容，一是数据库引擎，一是接口（如JDBC、ODBC等）。 1）接口如果实现的不好，某些时候，也容易成为瓶颈。 2）数据库引擎，可调优之处很多，需要根据实际情况，综合判断。如分区、索引、日志、数据文件、数据库可调参数等 4、应用模型 基于数据库的应用，原型是什么样的，需要深入了解，掌握，才能因地制宜地结合数据库一起调优。 目前国内对于数据库的应用现状，基本的问题是：应用不当，SQL写法有误。 应用模型对于数据库的影响可能有： 1）读多写少、读写并重、读少写多； 2）并发情况 3）数据量 4）中间件 总之，应用逻辑和应用模型对数据库的使用方式，更多地影响着系统的瓶颈（通常情况，硬件一旦固定，更换的机会少。比如，数据库性能测试的TPCX系列，很多硬件厂家给出的测试最佳值，都是在固定硬件的环境下进行的）。 附：什么是数据库应用模型？参考本博客：《数据库应用模型的简单理解》]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>数据库性能</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据库模型的简单理解]]></title>
     <url>%2F2017%2F07%2F12%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 什么是数据模型？访问数据库中的数据取决于数据库实现的数据模型。 数据模型会影响客户端通过API对数据的操作。不同的数据模型可能会提供或多或少的功能。一般而言，数据模型不会直接提供过多的功能，许多功能必须由客户端自行实现。 数据模型决定了客户端如何对数据进行编码存储。应用程序需要某种域模型与存储技术支持的特性进行映射。 有哪些数据库模型关系模型关系模型使用记录（由元组组成）进行存储，记录存储在表中，表由架构界定。 表中的每个列都有名称和类型，表中的所有记录都要符合表的定义。 SQL是专门的查询语言，提供相应的语法查找符合条件的记录，如表联接（Join）。表联接可以基于表之间的关系在多表之间查询记录。 表中的记录可以被创建和删除，记录中的字段也可以单独更新。 关系模型数据库通常提供事务处理机制，这为涉及多条记录的自动化处理提供了解决方案。 对不同的编程语言而言，表可以被看成数组、记录列表或者结构。表可以使用B树和哈希表进行索引，以应对高性能访问。 键值存储键值存储提供了基于键对值的访问方式。 键值对可以被创建或删除，与键相关联的值可以被更新。 键值存储一般不提供事务处理机制。 对不同的编程语言而言，键值存储类似于哈希表。对此，不同的编程语言有不同的名字（如，Java称之为“HashMap”，Perl称之为“hash”，Python称之为“dict”，PHP称之为“associative array”），C++则称之为“boost::unordered_map&lt;...&gt;”。 键值存储支持键上自有的隐式索引。 键值存储看起来好像不太有用，但却可以在“值”上存储大量信息。“值”可以是一个XML文档，一个JSON对象，或者其它任何序列化形式。 重要的是，键值存储引擎并不在意“值”的内部结构，它依赖客户端对“值”进行解释和管理。 文档存储文档存储支持对结构化数据的访问，不同于关系模型的是，文档存储没有强制的架构。 事实上，文档存储以封包键值对的方式进行存储。在这种情况下，应用对要检索的封包采取一些约定，或者利用存储引擎的能力将不同的文档划分成不同的集合，以管理数据。 与关系模型不同的是，文档存储模型支持嵌套结构。例如，文档存储模型支持XML和JSON文档，字段的“值”又可以嵌套存储其它文档。文档存储模型也支持数组和列值键。 与键值存储不同的是，文档存储关心文档的内部结构。这使得存储引擎可以直接支持二级索引，从而允许对任意字段进行高效查询。支持文档嵌套存储的能力，使得查询语言具有搜索嵌套对象的能力，XQuery就是一个例子。 MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。 列式存储如果翻转数据，列式存储与关系存储将会非常相似。 与关系模型存储记录不同，列式存储以流的方式在列中存储所有的数据。对于任何记录，索引都可以快速地获取列上的数据。 Map-reduce的实现Hadoop的流数据处理效率非常高，列式存储的优点体现的淋漓极致。因此，HBase和Hypertable通常作为非关系型数据仓库，为Map-reduce进行数据分析提供支持。 关系类型的列标对数据分析效果不好，因此，用户经常将更复杂的数据存储在列式数据库中。这直接体现在Cassandra中，它引入的“column family”可以被认为是一个“super-column”。 列式存储支持行检索，但这需要从每个列获取匹配的列值，并重新组成行。 图形数据库图形数据库存储顶点和边的信息，有的支持添加注释。 图形数据库可用于对事物建模，如社交图谱、真实世界的各种对象。IMDB（Internet Movie Database）站点的内容就组成了一幅复杂的图像，演员与电影彼此交织在一起。 图形数据库的查询语言一般用于查找图形中断点的路径，或端点之间路径的属性。 Neo4j是一个典型的图形数据库。]]></content>
@@ -254,6 +255,17 @@
       </categories>
       <tags>
         <tag>数据库模型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据库性能的影响因素]]></title>
+    <url>%2F2017%2F07%2F12%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0%2F</url>
+    <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 #影响数据库性能表现的因素 #简单概括，通常会有如下相关项： 硬件、操作系统、数据库配置、应用模型 1、硬件 1）变化的硬件： 通常指裸机配置等，如CPU、内存大小都对性能有重要影响。 再如裸设备、固态硬盘等，对性能也影响很大。 2）变化的网络环境： 10M、100M、千兆以太网甚至光纤等，会对应用系统的整体性能产生较大影响。 2、操作系统 典型的如Linux系列、Win系列，通常会有不同的性能表现。 操作系统的一些设置，也可能对数据库性能造成影响。比如块读写的设置等。 3、数据库 数据库，至少包含2部分内容，一是数据库引擎，一是接口（如JDBC、ODBC等）。 1）接口如果实现的不好，某些时候，也容易成为瓶颈。 2）数据库引擎，可调优之处很多，需要根据实际情况，综合判断。如分区、索引、日志、数据文件、数据库可调参数等 4、应用模型 基于数据库的应用，原型是什么样的，需要深入了解，掌握，才能因地制宜地结合数据库一起调优。 目前国内对于数据库的应用现状，基本的问题是：应用不当，SQL写法有误。 应用模型对于数据库的影响可能有： 1）读多写少、读写并重、读少写多； 2）并发情况 3）数据量 4）中间件 总之，应用逻辑和应用模型对数据库的使用方式，更多地影响着系统的瓶颈（通常情况，硬件一旦固定，更换的机会少。比如，数据库性能测试的TPCX系列，很多硬件厂家给出的测试最佳值，都是在固定硬件的环境下进行的）。 附：什么是数据库应用模型？参考本博客：《数据库应用模型的简单理解》]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库性能</tag>
       </tags>
   </entry>
   <entry>
@@ -280,18 +292,6 @@
         <tag>Hexo</tag>
         <tag>GitHub</tag>
         <tag>Next</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[JNA方式调用dll动态库]]></title>
-    <url>%2F2017%2F06%2F12%2FJNA%E8%B0%83%E7%94%A8dll%E5%8A%A8%E6%80%81%E5%BA%93%2F</url>
-    <content type="text"><![CDATA[背景之前有段时间写了个GUI，调用公司CA服务器相关接口，进行两码获取、证书下载等操作，证书下载需要借助动态链接库等控件进行，故有如下内容 JNA是什么java调用dll较为常用的方式有JNA和JNI。 JNA是建立在JNI技术基础之上的一个Java类库，我们可以方便地使用java直接访问动态链接库中的函数。 原来使用JNI，必须手工用C写一个动态链接库，在C语言中映射Java的数据类型。 而JNA提供了一个动态的C语言编写的转发器，可以自动实现Java和C的数据类型映射，我们不再需要编写C动态链接库。 怎么用过程： 1、引入JNA.jar 2、声明接口（注意和动态库方法数据类型的映射关系） 3、调用声明的接口中的方法 调用时需要注意dll的位置： 方式一：把动态库拷贝到system32目录 方式二： String path = ESAMServer.class.getResource(&quot;/&quot;).getPath()+&quot;/dll&quot;; System.load(path+&quot;/MyNative.dll&quot;); NativeLibrary.addSearchPath(&quot;MyNative.dll&quot;, path); 测试代码JComboBoxTest.javapackage TestNativeLibrary; import java.awt.BorderLayout; import java.awt.GridLayout; import javax.swing.DefaultComboBoxModel; import javax.swing.JComboBox; import javax.swing.JFrame; import javax.swing.JPanel; import javax.swing.JTextArea; public class JComboBoxTest { private JFrame frame = new JFrame(&quot;JComboBoxTest&quot;); private JPanel panel1 = new JPanel(new BorderLayout()); private JComboBox JComboBoxT = new JComboBox(); private JTextArea JTextAreaT = new JTextArea(); public JComboBoxTest(){ JNATest jc = JNATest.instanceDll; frame.setLayout(null); frame.setLayout(new GridLayout(1,1)); frame.setVisible(true); frame.setBounds(400, 250, 200, 150); frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); JComboBoxT.setModel(new DefaultComboBoxModel(jc.rsa_csp_listProvider())); frame.add(panel1); panel1.add(&quot;North&quot;,JComboBoxT); panel1.add(&quot;Center&quot;,JTextAreaT); } public static void main(String args[]){ new JComboBoxTest(); } } JNATest.javapackage TestNativeLibrary; import com.sun.jna.Library; import com.sun.jna.Native; public interface JNATest extends Library { public JNATest instanceDll = (JNATest)Native.loadLibrary(&quot;SKFCSPEnroll&quot;, JNATest.class); public String[] rsa_csp_listProvider(); } 附：参考： http://blog.csdn.net/hengwei_vc/article/details/6982076 http://blog.chinaunix.net/uid-29308108-id-4048576.html]]></content>
-      <categories>
-        <category>编程语言</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>动态链接库</tag>
       </tags>
   </entry>
 </search>
