@@ -119,7 +119,7 @@
 <meta property="og:site_name" content="HardElm&#39;s blog">
 <meta property="og:description" content="背景针对近半年的测试经验进行简要的总结，部分内容参考了网络上的一些文章 有哪些服务端测试我们公司有哪些服务端的应用： 1、web端的服务，onsite直播平台、云导播、云轮播、拆条、收录等等 2、客户端相关的服务：无 针对以上的这些服务，总结归纳了一下，划分了两种类型： 1、B\S结构，即浏览器\服务器结构，也就是各种web应用，这些web应用只与浏览器有关，他的web页面以及各种后台逻辑均运行在">
 <meta property="og:image" content="https://i.imgur.com/ncPWWXi.png">
-<meta property="og:updated_time" content="2017-11-24T09:31:28.828Z">
+<meta property="og:updated_time" content="2017-11-24T09:53:56.649Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="服务端测试思路">
 <meta name="twitter:description" content="背景针对近半年的测试经验进行简要的总结，部分内容参考了网络上的一些文章 有哪些服务端测试我们公司有哪些服务端的应用： 1、web端的服务，onsite直播平台、云导播、云轮播、拆条、收录等等 2、客户端相关的服务：无 针对以上的这些服务，总结归纳了一下，划分了两种类型： 1、B\S结构，即浏览器\服务器结构，也就是各种web应用，这些web应用只与浏览器有关，他的web页面以及各种后台逻辑均运行在">
@@ -413,7 +413,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  2,645
+                  2,779
                 </span>
               
 
@@ -502,15 +502,21 @@
     LoadRunner
     ab
     st_load
-</code></pre><p>以上测试工具的简单使用方法参照本博客其他文章</p>
+</code></pre><p>以上测试工具的简单使用方法参照本博客其他文章，<a href="https://hardelm.github.io/2017/10/18/ab%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0%E5%8E%8B%E6%B5%8B/">《ab下载与上传压测》</a>，<a href="https://hardelm.github.io/2017/07/11/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="《st-load安装与使用》">《st-load安装与使用》</a></p>
 <h3 id="选择监控工具"><a href="#选择监控工具" class="headerlink" title="选择监控工具"></a>选择监控工具</h3><p>监控工具也有很多，也可以需求写适合性能测试场景的监控脚本，重点提取需要关注的性能参数</p>
 <pre><code>运维监控工具Zabbix等
 nmon
-</code></pre><p>以上部分工具的简单使用，参考本博客其他文章</p>
+</code></pre><p>以上部分工具的简单使用，参考本博客其他文章，<a href="https://hardelm.github.io/2017/07/12/nmon%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" title="Nmon使用总结">《Nmon使用总结》</a></p>
 <h3 id="测试环境准备"><a href="#测试环境准备" class="headerlink" title="测试环境准备"></a>测试环境准备</h3><pre><code>1、明确各个模块集群内部的服务器配置：基本的有内存、CPU、磁盘以及网络带宽等等
 2、部署测试环境，也可以编写自动化部署脚本（ansible）或者使用容器（docker、kubernetes）快速部署
 3、系统流程调试，确保系统底层功能正确无误
-</code></pre><h3 id="执行测试"><a href="#执行测试" class="headerlink" title="执行测试"></a>执行测试</h3><p>渐增加压，达到一定程度观察系统稳定性，观察资源消耗以及系统响应情况</p>
+</code></pre><h3 id="测试脚本准备"><a href="#测试脚本准备" class="headerlink" title="测试脚本准备"></a>测试脚本准备</h3><p>考虑到压力机系统瓶颈，测试过程中可能需要多台压力机同时给出压力，为提高测试效率以及避免操作失误，需准备测试脚本</p>
+<pre><code>编写测试脚本可采用脚本语言亦可采用编程语言
+shell
+expect
+python等
+</code></pre><p>expect脚本在压力测试中的简单使用参考本博客中<a href="https://hardelm.github.io/2017/07/24/Expect%E4%BA%A4%E4%BA%92%E8%AF%AD%E8%A8%80%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" title="《Linux下expect脚本语言的简单使用》">《Linux下expect脚本语言的简单使用》</a></p>
+<h3 id="执行测试"><a href="#执行测试" class="headerlink" title="执行测试"></a>执行测试</h3><p>渐增加压，达到一定程度观察系统稳定性，观察资源消耗以及系统响应情况</p>
 <h4 id="单台"><a href="#单台" class="headerlink" title="单台"></a>单台</h4><pre><code>1、在一定的配置与系统环境下，得出模块单台服务器的系统性能
 2、若有条件，在以上基础上对程序内部单个接口进行压测
 3、定位瓶颈并给出优化意见
@@ -613,8 +619,8 @@ nmon
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/24/Jenkins/" rel="next" title="关于Jenkins持续构建的初步了解">
-                <i class="fa fa-chevron-left"></i> 关于Jenkins持续构建的初步了解
+              <a href="/2017/11/24/服务端自动化测试/" rel="next" title="服务端自动化测试">
+                <i class="fa fa-chevron-left"></i> 服务端自动化测试
               </a>
             
           </div>
@@ -622,10 +628,6 @@ nmon
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/24/服务端自动化测试/" rel="prev" title="服务端自动化测试">
-                服务端自动化测试 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -828,7 +830,7 @@ nmon
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有哪些服务端测试"><span class="nav-number">2.</span> <span class="nav-text">有哪些服务端测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备会议"><span class="nav-number">3.1.</span> <span class="nav-text">准备会议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#产品需求评审会"><span class="nav-number">3.1.1.</span> <span class="nav-text">产品需求评审会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发设计实现讲解会"><span class="nav-number">3.1.2.</span> <span class="nav-text">开发设计实现讲解会</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备环境"><span class="nav-number">3.2.</span> <span class="nav-text">准备环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试服务器"><span class="nav-number">3.2.1.</span> <span class="nav-text">测试服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待上线服务器"><span class="nav-number">3.2.2.</span> <span class="nav-text">待上线服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线上服务器"><span class="nav-number">3.2.3.</span> <span class="nav-text">线上服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备监控"><span class="nav-number">3.3.</span> <span class="nav-text">准备监控</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何开展"><span class="nav-number">4.</span> <span class="nav-text">如何开展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#功能测试"><span class="nav-number">4.1.</span> <span class="nav-text">功能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于用户层面的黑盒功能测试"><span class="nav-number">4.1.1.</span> <span class="nav-text">基于用户层面的黑盒功能测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于代码逻辑和服务器配置的白盒测试"><span class="nav-number">4.1.2.</span> <span class="nav-text">基于代码逻辑和服务器配置的白盒测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端配置的正确性与合理性"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">服务器端配置的正确性与合理性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口测试"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">接口测试</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能测试"><span class="nav-number">4.2.</span> <span class="nav-text">性能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#制定方案"><span class="nav-number">4.2.1.</span> <span class="nav-text">制定方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择压力生成工具"><span class="nav-number">4.2.2.</span> <span class="nav-text">选择压力生成工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择监控工具"><span class="nav-number">4.2.3.</span> <span class="nav-text">选择监控工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试环境准备"><span class="nav-number">4.2.4.</span> <span class="nav-text">测试环境准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行测试"><span class="nav-number">4.2.5.</span> <span class="nav-text">执行测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单台"><span class="nav-number">4.2.5.1.</span> <span class="nav-text">单台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群"><span class="nav-number">4.2.5.2.</span> <span class="nav-text">集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统"><span class="nav-number">4.2.5.3.</span> <span class="nav-text">系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库等其他模块"><span class="nav-number">4.2.5.4.</span> <span class="nav-text">数据库等其他模块</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有哪些服务端测试"><span class="nav-number">2.</span> <span class="nav-text">有哪些服务端测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备会议"><span class="nav-number">3.1.</span> <span class="nav-text">准备会议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#产品需求评审会"><span class="nav-number">3.1.1.</span> <span class="nav-text">产品需求评审会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发设计实现讲解会"><span class="nav-number">3.1.2.</span> <span class="nav-text">开发设计实现讲解会</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备环境"><span class="nav-number">3.2.</span> <span class="nav-text">准备环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试服务器"><span class="nav-number">3.2.1.</span> <span class="nav-text">测试服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待上线服务器"><span class="nav-number">3.2.2.</span> <span class="nav-text">待上线服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线上服务器"><span class="nav-number">3.2.3.</span> <span class="nav-text">线上服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备监控"><span class="nav-number">3.3.</span> <span class="nav-text">准备监控</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何开展"><span class="nav-number">4.</span> <span class="nav-text">如何开展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#功能测试"><span class="nav-number">4.1.</span> <span class="nav-text">功能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于用户层面的黑盒功能测试"><span class="nav-number">4.1.1.</span> <span class="nav-text">基于用户层面的黑盒功能测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于代码逻辑和服务器配置的白盒测试"><span class="nav-number">4.1.2.</span> <span class="nav-text">基于代码逻辑和服务器配置的白盒测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端配置的正确性与合理性"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">服务器端配置的正确性与合理性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口测试"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">接口测试</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能测试"><span class="nav-number">4.2.</span> <span class="nav-text">性能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#制定方案"><span class="nav-number">4.2.1.</span> <span class="nav-text">制定方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择压力生成工具"><span class="nav-number">4.2.2.</span> <span class="nav-text">选择压力生成工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择监控工具"><span class="nav-number">4.2.3.</span> <span class="nav-text">选择监控工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试环境准备"><span class="nav-number">4.2.4.</span> <span class="nav-text">测试环境准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试脚本准备"><span class="nav-number">4.2.5.</span> <span class="nav-text">测试脚本准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行测试"><span class="nav-number">4.2.6.</span> <span class="nav-text">执行测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单台"><span class="nav-number">4.2.6.1.</span> <span class="nav-text">单台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群"><span class="nav-number">4.2.6.2.</span> <span class="nav-text">集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统"><span class="nav-number">4.2.6.3.</span> <span class="nav-text">系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库等其他模块"><span class="nav-number">4.2.6.4.</span> <span class="nav-text">数据库等其他模块</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
@@ -870,7 +872,7 @@ nmon
 </span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站21.2k字</span>
+  <span class="post-count">全站21.4k字</span>
 </div>
 
 
@@ -907,7 +909,7 @@ nmon
   
   
   <div class="powered-by"></div>
-  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站21.2k字</span>
+  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站21.4k字</span>
 </div>
 
 

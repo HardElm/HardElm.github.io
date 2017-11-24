@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[服务端测试思路]]></title>
+    <url>%2F2017%2F11%2F24%2F%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%80%9D%E8%B7%AF%2F</url>
+    <content type="text"><![CDATA[背景针对近半年的测试经验进行简要的总结，部分内容参考了网络上的一些文章 有哪些服务端测试我们公司有哪些服务端的应用： 1、web端的服务，onsite直播平台、云导播、云轮播、拆条、收录等等 2、客户端相关的服务：无 针对以上的这些服务，总结归纳了一下，划分了两种类型： 1、B\S结构，即浏览器\服务器结构，也就是各种web应用，这些web应用只与浏览器有关，他的web页面以及各种后台逻辑均运行在各种服务器上。 2、C\S结构，即客户端\服务器结构，这种产品的客户端需要与服务器端通过接口进行通讯，同时服务器端还有自己的功能逻辑，在接收到客户端发送的请求之后会进行处理，然后返回给客户端。 准备工作针对以上这两种不同结构的服务器端程序，如何进行测试呢？ 首先，制定一套完善的测试流程，通过该流程，指导测试、开发、产品、OP运维等同学的工作。在这个流程中，有三个关键的环节： 准备会议产品需求评审会在这个评审会上，产品会对提出的需求做出详细的讲解，如果各方涉及的人员比较多，还会确定产品负责人、开发负责人、测试负责人。各负责人的职责如下： 1、产品负责人：是这个项目的总负责人，负责各配合方之间的沟通。 2、开发责任人：包括客户端和服务端，原则上由客户端开发为开发的总负责人。 3、测试负责人：包括客户端和服务端，原则上由客户端测试为测试的总负责人。 开发设计实现讲解会在这个环节，开发会在接到需求后，组织一次设计评审，在这里主要由开发（包括前端和后端）和测试参加，在会上我们会做以下几件事情： 1、由开发详细的讲解功能得到设计思路，包括客户端和服务器端的功能实现 2、后续的计划排期 3、在设计阶段就会增加线上的监控机制 经过这两个评审会之后，测试会给出大概的测试方案，待开发提测后，测试就可以展开后续的测试工作。 准备环境测试服务器我们的开发会将编写完成的代码上传到SVN上，所有测试环境中的代码均来自SVN，这样可以保证被测试的代码与SVN上的代码是一致的，与此同时，我们也要不断的关注开发开发SVN上的改动，以便确认测试的范围和后续的验证。 待上线服务器待服务器端的功能测试完毕后，会将被测试完成的代码部署到待上线服务器上，待上线环境的配置与线上环境完全相同。我们会在这台机器上进行性能相关的测试。 线上服务器待性能测试与功能测试均完毕后，测试会将开发提交的代码进行冻结，开发会给OP运维部门提交上线申请单，然后由OP运维部门将SVN中测试完毕的代码部署到线上。待部署完成后，测试会针对线上环境进行上线验证。 准备监控我们会针对线上提供的服务进行监控，主要是该服务的接口功能正确性。 而服务器运行的稳定性是由OP运维部门负责监控。 当发生线上问题时，测试、产品、开发、OP均会收到包括邮件和短信的通知。 测试先进行问题确认，并及时给出结果反馈。 如果有问题，开发和OP会对问题进行排查，并由测试进行验证。 如果没有问题，会查当时通知时发生了什么，以便确认问题是被自动修复了，还是线上监控脚本出现了问题。 如何开展有了上面的测试流程之后，那么在开发提测后，我们是如何进行测试的呢？针对之前提到的两种不同的产品类型，我们会进行以下两方面的测试： 功能测试针对功能测试，我们有两种不同的测试方法： 基于用户层面的黑盒功能测试1、根据产品提出的需求文档，划分功能，拆分需求点，根据需求点，进行对应测试用例的编写； 2、在这个过程中，基本上忽略了客户端与服务器端或前台页面与后台逻辑是如何进行交互的，完全通过客户端或前端页面的行为进行功能测试。 基于代码逻辑和服务器配置的白盒测试服务器端配置的正确性与合理性1、服务器是否有缓存机制； 2、服务器对连接数是否有限制； 3、服务器的负载均衡是否合理； 4、服务器连接的是否有超时设置； 5、各种网络请求是否使用的是内网IP。 接口测试一般情况下客户端与服务器端的数据交互，均是通过http请求完成的。而服务器端通过web服务器将接收到的请求进行处理。这些处理主要围绕着，对数据的存储、运算、转发等操作，并将操作之后的结果反馈给客户端。所以接口功能的正确与否，会直接反映服务器端功能的正确与否。那么，这对接口我们是如何进行测试的呢？ 1、根据该接口的功能，评估该接口定义的合理性与安全性，例如： 1）客户端发送的网络请求是否需要带有时间戳； 2）客户端发送的网络请求是否需要有固定的参数，比如客户端发送的请求中需要带有版本号等信息； 3）客户端发送的数据是否需要进行加密； 4）服务器端是否有针对请求发送来源的校验； 5）服务器端给客户端返回的数据及状态码是否合理。 2、接口的测试方法 通过编写测试脚本，针对接口进行测试，步骤一般是这样的： 1）根据接口定义的参数，确认传输的参数都有哪些，可能的正常取值和异常取值； 2）通过脚本模拟客户端发送网络请求，对接口进行单独测试，并对服务端返回的结果数据进行自动化校验； 3）通过脚本构造用户的一系列操作，用以验证系统功能的可用性。 3、代码功能逻辑测试 1）对服务器端的代码做静态代码走查，主要关注以下内容： 1.定义的变量是否都被初始化； 2.服务器是否有针对客户端发送的数据进行异常校验； 3.对数据库的操作是否有未释放的情况； 4.服务器端的判断逻辑是否存在功能隐患； 5.连接的数据库环境是否正确； 6.对数据库的操作是否有关闭操作。 2）通过编写单元测试用例进行验证 性能测试制定方案依据需求，明确测试目的 围绕测试目的来制定测试方案，测试方案要明确需要关注的性能参数、测试方法，确定要使用的工具 最后要考虑到整个测试流程中可能存在的影响结果准确性的风险点（网络波动、CDN与SLB配置等非平台因素） 以下是之前进行直播平台性能测试的简单测试方案 选择压力生成工具服务器压力测试工具有很多，也可以自己写适合性能测试场景的压力生成脚本 较为常用的压力测试工具： Jmeter LoadRunner ab st_load 以上测试工具的简单使用方法参照本博客其他文章，《ab下载与上传压测》，《st-load安装与使用》 选择监控工具监控工具也有很多，也可以需求写适合性能测试场景的监控脚本，重点提取需要关注的性能参数 运维监控工具Zabbix等 nmon 以上部分工具的简单使用，参考本博客其他文章，《Nmon使用总结》 测试环境准备1、明确各个模块集群内部的服务器配置：基本的有内存、CPU、磁盘以及网络带宽等等 2、部署测试环境，也可以编写自动化部署脚本（ansible）或者使用容器（docker、kubernetes）快速部署 3、系统流程调试，确保系统底层功能正确无误 测试脚本准备考虑到压力机系统瓶颈，测试过程中可能需要多台压力机同时给出压力，为提高测试效率以及避免操作失误，需准备测试脚本 编写测试脚本可采用脚本语言亦可采用编程语言 shell expect python等 expect脚本在压力测试中的简单使用参考本博客中《Linux下expect脚本语言的简单使用》 执行测试渐增加压，达到一定程度观察系统稳定性，观察资源消耗以及系统响应情况 单台1、在一定的配置与系统环境下，得出模块单台服务器的系统性能 2、若有条件，在以上基础上对程序内部单个接口进行压测 3、定位瓶颈并给出优化意见 集群1、在一定的配置与系统环境下，得出模块集群服务器的系统性能 2、SLB配置（带宽峰值、调度算法、会话保持等）、内网带宽等 3、定位瓶颈并给出优化意见 系统1、在一定的配置与系统环境下，得出平台整体的系统性能 2、入出口SLB配置（带宽峰值、调度算法、会话保持等）、内网带宽与外网带宽、CDN命中率等 3、定位系统瓶颈并给出优化意见 数据库等其他模块1、压测过程中观察系统与数据库交互情况，排查数据库是否可能是系统瓶颈点 2、硬件、操作系统、数据库配置、应用模型、引擎选择等 参考资料http://blog.csdn.net/wlly1/article/details/51357306 https://www.zhihu.com/question/20694803 https://www.cnblogs.com/zhuque/archive/2013/03/15/2961953.html]]></content>
+      <categories>
+        <category>测试理论</category>
+      </categories>
+      <tags>
+        <tag>服务端测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[服务端自动化测试]]></title>
     <url>%2F2017%2F11%2F24%2F%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%2F</url>
     <content type="text"><![CDATA[背景略 未完待续]]></content>
@@ -9,17 +20,6 @@
       </categories>
       <tags>
         <tag>自动化测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[服务端测试思路]]></title>
-    <url>%2F2017%2F11%2F24%2F%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%80%9D%E8%B7%AF%2F</url>
-    <content type="text"><![CDATA[背景针对近半年的测试经验进行简要的总结，部分内容参考了网络上的一些文章 有哪些服务端测试我们公司有哪些服务端的应用： 1、web端的服务，onsite直播平台、云导播、云轮播、拆条、收录等等 2、客户端相关的服务：无 针对以上的这些服务，总结归纳了一下，划分了两种类型： 1、B\S结构，即浏览器\服务器结构，也就是各种web应用，这些web应用只与浏览器有关，他的web页面以及各种后台逻辑均运行在各种服务器上。 2、C\S结构，即客户端\服务器结构，这种产品的客户端需要与服务器端通过接口进行通讯，同时服务器端还有自己的功能逻辑，在接收到客户端发送的请求之后会进行处理，然后返回给客户端。 准备工作针对以上这两种不同结构的服务器端程序，如何进行测试呢？ 首先，制定一套完善的测试流程，通过该流程，指导测试、开发、产品、OP运维等同学的工作。在这个流程中，有三个关键的环节： 准备会议产品需求评审会在这个评审会上，产品会对提出的需求做出详细的讲解，如果各方涉及的人员比较多，还会确定产品负责人、开发负责人、测试负责人。各负责人的职责如下： 1、产品负责人：是这个项目的总负责人，负责各配合方之间的沟通。 2、开发责任人：包括客户端和服务端，原则上由客户端开发为开发的总负责人。 3、测试负责人：包括客户端和服务端，原则上由客户端测试为测试的总负责人。 开发设计实现讲解会在这个环节，开发会在接到需求后，组织一次设计评审，在这里主要由开发（包括前端和后端）和测试参加，在会上我们会做以下几件事情： 1、由开发详细的讲解功能得到设计思路，包括客户端和服务器端的功能实现 2、后续的计划排期 3、在设计阶段就会增加线上的监控机制 经过这两个评审会之后，测试会给出大概的测试方案，待开发提测后，测试就可以展开后续的测试工作。 准备环境测试服务器我们的开发会将编写完成的代码上传到SVN上，所有测试环境中的代码均来自SVN，这样可以保证被测试的代码与SVN上的代码是一致的，与此同时，我们也要不断的关注开发开发SVN上的改动，以便确认测试的范围和后续的验证。 待上线服务器待服务器端的功能测试完毕后，会将被测试完成的代码部署到待上线服务器上，待上线环境的配置与线上环境完全相同。我们会在这台机器上进行性能相关的测试。 线上服务器待性能测试与功能测试均完毕后，测试会将开发提交的代码进行冻结，开发会给OP运维部门提交上线申请单，然后由OP运维部门将SVN中测试完毕的代码部署到线上。待部署完成后，测试会针对线上环境进行上线验证。 准备监控我们会针对线上提供的服务进行监控，主要是该服务的接口功能正确性。 而服务器运行的稳定性是由OP运维部门负责监控。 当发生线上问题时，测试、产品、开发、OP均会收到包括邮件和短信的通知。 测试先进行问题确认，并及时给出结果反馈。 如果有问题，开发和OP会对问题进行排查，并由测试进行验证。 如果没有问题，会查当时通知时发生了什么，以便确认问题是被自动修复了，还是线上监控脚本出现了问题。 如何开展有了上面的测试流程之后，那么在开发提测后，我们是如何进行测试的呢？针对之前提到的两种不同的产品类型，我们会进行以下两方面的测试： 功能测试针对功能测试，我们有两种不同的测试方法： 基于用户层面的黑盒功能测试1、根据产品提出的需求文档，划分功能，拆分需求点，根据需求点，进行对应测试用例的编写； 2、在这个过程中，基本上忽略了客户端与服务器端或前台页面与后台逻辑是如何进行交互的，完全通过客户端或前端页面的行为进行功能测试。 基于代码逻辑和服务器配置的白盒测试服务器端配置的正确性与合理性1、服务器是否有缓存机制； 2、服务器对连接数是否有限制； 3、服务器的负载均衡是否合理； 4、服务器连接的是否有超时设置； 5、各种网络请求是否使用的是内网IP。 接口测试一般情况下客户端与服务器端的数据交互，均是通过http请求完成的。而服务器端通过web服务器将接收到的请求进行处理。这些处理主要围绕着，对数据的存储、运算、转发等操作，并将操作之后的结果反馈给客户端。所以接口功能的正确与否，会直接反映服务器端功能的正确与否。那么，这对接口我们是如何进行测试的呢？ 1、根据该接口的功能，评估该接口定义的合理性与安全性，例如： 1）客户端发送的网络请求是否需要带有时间戳； 2）客户端发送的网络请求是否需要有固定的参数，比如客户端发送的请求中需要带有版本号等信息； 3）客户端发送的数据是否需要进行加密； 4）服务器端是否有针对请求发送来源的校验； 5）服务器端给客户端返回的数据及状态码是否合理。 2、接口的测试方法 通过编写测试脚本，针对接口进行测试，步骤一般是这样的： 1）根据接口定义的参数，确认传输的参数都有哪些，可能的正常取值和异常取值； 2）通过脚本模拟客户端发送网络请求，对接口进行单独测试，并对服务端返回的结果数据进行自动化校验； 3）通过脚本构造用户的一系列操作，用以验证系统功能的可用性。 3、代码功能逻辑测试 1）对服务器端的代码做静态代码走查，主要关注以下内容： 1.定义的变量是否都被初始化； 2.服务器是否有针对客户端发送的数据进行异常校验； 3.对数据库的操作是否有未释放的情况； 4.服务器端的判断逻辑是否存在功能隐患； 5.连接的数据库环境是否正确； 6.对数据库的操作是否有关闭操作。 2）通过编写单元测试用例进行验证 性能测试制定方案依据需求，明确测试目的 围绕测试目的来制定测试方案，测试方案要明确需要关注的性能参数、测试方法，确定要使用的工具 最后要考虑到整个测试流程中可能存在的影响结果准确性的风险点（网络波动、CDN与SLB配置等非平台因素） 以下是之前进行直播平台性能测试的简单测试方案 选择压力生成工具服务器压力测试工具有很多，也可以自己写适合性能测试场景的压力生成脚本 较为常用的压力测试工具： Jmeter LoadRunner ab st_load 以上测试工具的简单使用方法参照本博客其他文章 选择监控工具监控工具也有很多，也可以需求写适合性能测试场景的监控脚本，重点提取需要关注的性能参数 运维监控工具Zabbix等 nmon 以上部分工具的简单使用，参考本博客其他文章 测试环境准备1、明确各个模块集群内部的服务器配置：基本的有内存、CPU、磁盘以及网络带宽等等 2、部署测试环境，也可以编写自动化部署脚本（ansible）或者使用容器（docker、kubernetes）快速部署 3、系统流程调试，确保系统底层功能正确无误 执行测试渐增加压，达到一定程度观察系统稳定性，观察资源消耗以及系统响应情况 单台1、在一定的配置与系统环境下，得出模块单台服务器的系统性能 2、若有条件，在以上基础上对程序内部单个接口进行压测 3、定位瓶颈并给出优化意见 集群1、在一定的配置与系统环境下，得出模块集群服务器的系统性能 2、SLB配置（带宽峰值、调度算法、会话保持等）、内网带宽等 3、定位瓶颈并给出优化意见 系统1、在一定的配置与系统环境下，得出平台整体的系统性能 2、入出口SLB配置（带宽峰值、调度算法、会话保持等）、内网带宽与外网带宽、CDN命中率等 3、定位系统瓶颈并给出优化意见 数据库等其他模块1、压测过程中观察系统与数据库交互情况，排查数据库是否可能是系统瓶颈点 2、硬件、操作系统、数据库配置、应用模型、引擎选择等 参考资料http://blog.csdn.net/wlly1/article/details/51357306 https://www.zhihu.com/question/20694803 https://www.cnblogs.com/zhuque/archive/2013/03/15/2961953.html]]></content>
-      <categories>
-        <category>测试理论</category>
-      </categories>
-      <tags>
-        <tag>服务端测试</tag>
       </tags>
   </entry>
   <entry>
@@ -91,6 +91,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[xscan漏扫工具的使用]]></title>
+    <url>%2F2017%2F10%2F18%2F%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E4%B8%8Exscan%E6%BC%8F%E6%89%AB%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[背景略 xscan有什么功能采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。 安装与使用安装1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3 2、安装X-scan需安装WinPCap驱动程序（什么是WinPCap，以及WinPCap的功能作用，参考百度百科） 使用1、“设置”修改扫描IP或者网段 2、“设置”修改扫描参数，可修改内容包括开放的服务端口，Telnet、SSH、FTP、SQL-Server等协议弱口令以及IIS编解码漏洞等扫描配置内容 3、“设置”修改扫描报告格式，可选html、txt、xml 4、开启任务，可实时监测扫描过程中的普通信息、漏洞信息（开放的服务、端口以及协议类型）、错误信息等内容 总结简单好用，基本满足日常工作使用！ 附： telnet命令：http://www.runoob.com/linux/linux-comm-telnet.html]]></content>
+      <categories>
+        <category>测试工具</category>
+      </categories>
+      <tags>
+        <tag>xscan</tag>
+        <tag>安全测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ab下载与上传压测]]></title>
     <url>%2F2017%2F10%2F18%2Fab%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0%E5%8E%8B%E6%B5%8B%2F</url>
     <content type="text"><![CDATA[背景略 简要命令下载ab -n 10000 -c 100 “文件地址” 上传ab -n 10000 -c 100 -T ‘multipart/form-data; boundary=w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ’ -p ./abpost.txt “上传接口地址” 上传压测操作方法1、修改abpost.txt内容 1）Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot;，依照例子进行修改 2）Content-Type: MIME，具体格式由上传的文件决定，参考常见的MIME类型 3）对上传的文件进行base64编码，可采用在线转换base64，图片在线转换地址http://tool.css-js.com/base64.html 4）无 2、将abpost.txt放置在执行ab命令的目录下 3、修改总请求数和并发请求数，回车，执行命令 abpost.txt内容--w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot; Content-Type: image/png iVBORw0KGgoAAAANSUhEUgAAAkgAAAFmCAYAAACWUGV0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhe7L11lB1Xeq+t+8dd37130GzLFtiWZBJYZmaSmWYyPJnkZjKUDCRjkkEM3S01MzMzMzMzd4tZMtszSb7v/X6/vWufU+f0aant8SSTxL3Ws4rhVFfVfurdtOj/bX5AFK33y0TG7ZK7e7X8w7dukqfvWSVP3HWNPHTbtfLAbdfLfbeulntvXSt337JO7rxlvebmm+SOs3DnLTfPy1233uLktlvPyt233yb33HGb3HfnbXL/nbfLg3fd7Qci8jJUHITPWTSFlKKJxskJYUQU5asiE9mXKVjGTKy0ihvMwUys9MNWSl8rllskNhFLaVHCWtVRQdS3KPLsVhpLeZIsXZXzln2cA732G/kR6X4uxHy5jthG/bN49/3S6hFvDm8fbZXG/5fP3l8bWI6zEnHdcqX7N6TbvXfLxLhoPeD0HXPq5zudZlveYaN3jXuRJ4nWM/eZ+jEXn8Fv5zFoug5duLoO0dAeHX8f8cgo41GkHL/1II//2de8263+zr1tzfGQI6GwSlIP9/IllCWUEWlRdkU3lhNlUU5VBlca5QVZJH1aA0/xdLbVkBjRvcky655BKpVoMYGX6g/x/H/Eel0xKsRgAAAABJRU5ErkJggg== ----w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ-- 附：常见的MIME类型(通用型)： 超文本标记语言文本 .html text/html xml文档 .xml text/xml XHTML文档 .xhtml application/xhtml+xml 普通文本 .txt text/plain RTF文本 .rtf application/rtf PDF文档 .pdf application/pdf Microsoft Word文件 .word application/msword PNG图像 .png image/png GIF图形 .gif image/gif JPEG图形 .jpeg,.jpg image/jpeg au声音文件 .au audio/basic MIDI音乐文件 mid,.midi audio/midi,audio/x-midi RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio MPEG文件 .mpg,.mpeg video/mpeg AVI文件 .avi video/x-msvideo GZIP文件 .gz application/x-gzip TAR文件 .tar application/x-tar 任意的二进制数据 application/octet-stream]]></content>
@@ -101,18 +113,6 @@
         <tag>性能测试</tag>
         <tag>ab</tag>
         <tag>性能工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[xscan漏扫工具的使用]]></title>
-    <url>%2F2017%2F10%2F18%2F%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E4%B8%8Exscan%E6%BC%8F%E6%89%AB%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[背景略 xscan有什么功能采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。 安装与使用安装1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3 2、安装X-scan需安装WinPCap驱动程序（什么是WinPCap，以及WinPCap的功能作用，参考百度百科） 使用1、“设置”修改扫描IP或者网段 2、“设置”修改扫描参数，可修改内容包括开放的服务端口，Telnet、SSH、FTP、SQL-Server等协议弱口令以及IIS编解码漏洞等扫描配置内容 3、“设置”修改扫描报告格式，可选html、txt、xml 4、开启任务，可实时监测扫描过程中的普通信息、漏洞信息（开放的服务、端口以及协议类型）、错误信息等内容 总结简单好用，基本满足日常工作使用！ 附： telnet命令：http://www.runoob.com/linux/linux-comm-telnet.html]]></content>
-      <categories>
-        <category>测试工具</category>
-      </categories>
-      <tags>
-        <tag>xscan</tag>
-        <tag>安全测试</tag>
       </tags>
   </entry>
   <entry>
@@ -243,6 +243,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[RabbitMQ学习总结]]></title>
+    <url>%2F2017%2F07%2F12%2Frabbitmq%2F</url>
+    <content type="text"><![CDATA[什么是RabbitMQMessage Queue（MQ），消息队列是一种应用程序对应用程序的通信方法。应用程序通过读写MQ的消息（针对应用程序的数据）来通信，而无需建立专用连接来链接它们。MQ是消费者-生产模型的一个典型代表，一段不断写入消息，而另一段可以读取或者订阅队列中的消息。MQ是遵循AMQP协议的具体实现和产品。 适用场景RabbitMQ，或者说AMQP解决了什么问题，或者说它的应用场景是什么？ 对于一个大型的软件系统来说，它会有很多的组件或者说模块或者说子系统或者（subsystem or Component or submodule）。那么这些模块的如何通信？这和传统的IPC有很大的区别。传统的IPC很多都是在单一系统上的，模块耦合性很大，不适合扩展（Scalability）；如果使用socket那么不同的模块的确可以部署到不同的机器上，但是还是有很多问题需要解决。比如： 1）信息的发送者和接收者如何维持这个连接，如果一方的连接中断，这期间的数据如何方式丢失？ 2）如何降低发送者和接收者的耦合度？ 3）如何让Priority高的接收者先接到数据？ 4）如何做到load balance？有效均衡接收者的负载？ 5）如何有效的将数据发送到相关的接收者？也就是说将接收者subscribe 不同的数据，如何做有效的filter。 6）如何做到可扩展，甚至将这个通信模块发到cluster上？ 7）如何保证接收者接收到了完整，正确的数据？ AMDQ协议解决了以上的问题，而RabbitMQ实现了AMQP。 安装部署1、安装erlang 1）下载erlang源码，解压，进入$erlang目录，安装依赖包： yum install tk yum install tcl yum install unixODBC 2）编译erlang ./configure –prefix=/usr/local/erlang ./make ./make install 3）将erlang的bin目录添加至PATH 2、安装RabitMQ 1）下载RabbitMQ，解压至$RMQ 2）启动RabbitMQ ./bin/rabbitmq-server start 实际使用1、创建未完 相关博客链接：http://blog.csdn.net/column/details/rabbitmq.html]]></content>
+      <categories>
+        <category>杂</category>
+      </categories>
+      <tags>
+        <tag>RabbitMQ</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Selenium初学总结]]></title>
     <url>%2F2017%2F07%2F12%2FSelenium%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 selenium集成java的一些常用方法： 1、页面元素定位方法：ID: driver.findElement(By.id(“ID值”));Name: driver.findElement(By.name(“name值”));链接的全部文字 : driver.findElement(By.linkText(“链接的全部文字内容”));部分链接文字: driver.findElement(By.partialLinkText(“链接的部分文字内容”));Xpath : driver.findElement(By.xpath(“Xpath定位表达式”));CSS: driver.findElement(By.cssSelector(“CSS定位表达式”));Class: driver.findElement(By.className(“页面元素的Class属性值”));标签名称:driver.findElement(By.tagName (“页面元素的HTML标签名称”)); 2、打开浏览器：打开firefox ： WebDriver driver= new FirefoxDriver();打开ie ：WebDriver driver =new InternetExplorerDriver();打开chrome： WebDriver driver = new ChromeDriver();打开指定路径浏览器 ： System.setProperty(“webdriver.firefox.bin”,”D:\ProgramFiles\MozillaFirefox\firefox.exe”); 3、关闭浏览器：driver.close();driver.quit(); 4、返回当前页面Title URLdriver.getTitle();driver.getCurrentUrl(); 5、返回上一个访问的网页driver.navigate().to(url1);driver.navigate().to(url2);driver.navigate().back();6、刷新当前网页：driver.navigate().refresh();7、输入框中输入指定内容:driver.sendKeys();8、输入框中清除文字内容：driver.clear();9、查看页面元素属性：driver.getAttribute(“value”);10、点击按钮：driver.click();11、操作frame：Driver.switchTo.frame()12、单选下拉列表：Select dropList = new Select(element);Select.getFrestSelectOption().getText();Select.selectByIndex();Select.selectByValue();Select.selectByVisibleText();例子： 单选框：List radioList = driver.findElements();radio. getAttribute(“Value”).equals(“”);radio.isSelectd()radio.click(); 复选框：List checkList = driver.findElements();check.getAttribute(“Value”).equals(“”);check.isSelectd()check.click();13、Alert弹窗：Alert alert = driver.switchTo().alert(); alert.accept();14、执行JavaScript脚本：声明一个JavaScript 执行器对象 JavaScriptExecutor js = (JavaScriptExecutor )driver; js.executeScript(“loginSubmit();”);]]></content>
@@ -253,17 +264,6 @@
         <tag>自动化测试</tag>
         <tag>java</tag>
         <tag>Selenium</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[RabbitMQ学习总结]]></title>
-    <url>%2F2017%2F07%2F12%2Frabbitmq%2F</url>
-    <content type="text"><![CDATA[什么是RabbitMQMessage Queue（MQ），消息队列是一种应用程序对应用程序的通信方法。应用程序通过读写MQ的消息（针对应用程序的数据）来通信，而无需建立专用连接来链接它们。MQ是消费者-生产模型的一个典型代表，一段不断写入消息，而另一段可以读取或者订阅队列中的消息。MQ是遵循AMQP协议的具体实现和产品。 适用场景RabbitMQ，或者说AMQP解决了什么问题，或者说它的应用场景是什么？ 对于一个大型的软件系统来说，它会有很多的组件或者说模块或者说子系统或者（subsystem or Component or submodule）。那么这些模块的如何通信？这和传统的IPC有很大的区别。传统的IPC很多都是在单一系统上的，模块耦合性很大，不适合扩展（Scalability）；如果使用socket那么不同的模块的确可以部署到不同的机器上，但是还是有很多问题需要解决。比如： 1）信息的发送者和接收者如何维持这个连接，如果一方的连接中断，这期间的数据如何方式丢失？ 2）如何降低发送者和接收者的耦合度？ 3）如何让Priority高的接收者先接到数据？ 4）如何做到load balance？有效均衡接收者的负载？ 5）如何有效的将数据发送到相关的接收者？也就是说将接收者subscribe 不同的数据，如何做有效的filter。 6）如何做到可扩展，甚至将这个通信模块发到cluster上？ 7）如何保证接收者接收到了完整，正确的数据？ AMDQ协议解决了以上的问题，而RabbitMQ实现了AMQP。 安装部署1、安装erlang 1）下载erlang源码，解压，进入$erlang目录，安装依赖包： yum install tk yum install tcl yum install unixODBC 2）编译erlang ./configure –prefix=/usr/local/erlang ./make ./make install 3）将erlang的bin目录添加至PATH 2、安装RabitMQ 1）下载RabbitMQ，解压至$RMQ 2）启动RabbitMQ ./bin/rabbitmq-server start 实际使用1、创建未完 相关博客链接：http://blog.csdn.net/column/details/rabbitmq.html]]></content>
-      <categories>
-        <category>杂</category>
-      </categories>
-      <tags>
-        <tag>RabbitMQ</tag>
       </tags>
   </entry>
   <entry>
@@ -280,17 +280,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数据库模型的简单理解]]></title>
-    <url>%2F2017%2F07%2F12%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 什么是数据模型？访问数据库中的数据取决于数据库实现的数据模型。 数据模型会影响客户端通过API对数据的操作。不同的数据模型可能会提供或多或少的功能。一般而言，数据模型不会直接提供过多的功能，许多功能必须由客户端自行实现。 数据模型决定了客户端如何对数据进行编码存储。应用程序需要某种域模型与存储技术支持的特性进行映射。 有哪些数据库模型关系模型关系模型使用记录（由元组组成）进行存储，记录存储在表中，表由架构界定。 表中的每个列都有名称和类型，表中的所有记录都要符合表的定义。 SQL是专门的查询语言，提供相应的语法查找符合条件的记录，如表联接（Join）。表联接可以基于表之间的关系在多表之间查询记录。 表中的记录可以被创建和删除，记录中的字段也可以单独更新。 关系模型数据库通常提供事务处理机制，这为涉及多条记录的自动化处理提供了解决方案。 对不同的编程语言而言，表可以被看成数组、记录列表或者结构。表可以使用B树和哈希表进行索引，以应对高性能访问。 键值存储键值存储提供了基于键对值的访问方式。 键值对可以被创建或删除，与键相关联的值可以被更新。 键值存储一般不提供事务处理机制。 对不同的编程语言而言，键值存储类似于哈希表。对此，不同的编程语言有不同的名字（如，Java称之为“HashMap”，Perl称之为“hash”，Python称之为“dict”，PHP称之为“associative array”），C++则称之为“boost::unordered_map&lt;...&gt;”。 键值存储支持键上自有的隐式索引。 键值存储看起来好像不太有用，但却可以在“值”上存储大量信息。“值”可以是一个XML文档，一个JSON对象，或者其它任何序列化形式。 重要的是，键值存储引擎并不在意“值”的内部结构，它依赖客户端对“值”进行解释和管理。 文档存储文档存储支持对结构化数据的访问，不同于关系模型的是，文档存储没有强制的架构。 事实上，文档存储以封包键值对的方式进行存储。在这种情况下，应用对要检索的封包采取一些约定，或者利用存储引擎的能力将不同的文档划分成不同的集合，以管理数据。 与关系模型不同的是，文档存储模型支持嵌套结构。例如，文档存储模型支持XML和JSON文档，字段的“值”又可以嵌套存储其它文档。文档存储模型也支持数组和列值键。 与键值存储不同的是，文档存储关心文档的内部结构。这使得存储引擎可以直接支持二级索引，从而允许对任意字段进行高效查询。支持文档嵌套存储的能力，使得查询语言具有搜索嵌套对象的能力，XQuery就是一个例子。 MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。 列式存储如果翻转数据，列式存储与关系存储将会非常相似。 与关系模型存储记录不同，列式存储以流的方式在列中存储所有的数据。对于任何记录，索引都可以快速地获取列上的数据。 Map-reduce的实现Hadoop的流数据处理效率非常高，列式存储的优点体现的淋漓极致。因此，HBase和Hypertable通常作为非关系型数据仓库，为Map-reduce进行数据分析提供支持。 关系类型的列标对数据分析效果不好，因此，用户经常将更复杂的数据存储在列式数据库中。这直接体现在Cassandra中，它引入的“column family”可以被认为是一个“super-column”。 列式存储支持行检索，但这需要从每个列获取匹配的列值，并重新组成行。 图形数据库图形数据库存储顶点和边的信息，有的支持添加注释。 图形数据库可用于对事物建模，如社交图谱、真实世界的各种对象。IMDB（Internet Movie Database）站点的内容就组成了一幅复杂的图像，演员与电影彼此交织在一起。 图形数据库的查询语言一般用于查找图形中断点的路径，或端点之间路径的属性。 Neo4j是一个典型的图形数据库。]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>数据库模型</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据库性能的影响因素]]></title>
     <url>%2F2017%2F07%2F12%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0%2F</url>
     <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 影响数据库性能表现的因素简单概括，通常会有如下相关项： 硬件、操作系统、数据库配置、应用模型 1、硬件 1）变化的硬件： 通常指裸机配置等，如CPU、内存大小都对性能有重要影响。 再如裸设备、固态硬盘等，对性能也影响很大。 2）变化的网络环境： 10M、100M、千兆以太网甚至光纤等，会对应用系统的整体性能产生较大影响。 2、操作系统 典型的如Linux系列、Win系列，通常会有不同的性能表现。 操作系统的一些设置，也可能对数据库性能造成影响。比如块读写的设置等。 3、数据库 数据库，至少包含2部分内容，一是数据库引擎，一是接口（如JDBC、ODBC等）。 1）接口如果实现的不好，某些时候，也容易成为瓶颈。 2）数据库引擎，可调优之处很多，需要根据实际情况，综合判断。如分区、索引、日志、数据文件、数据库可调参数等 4、应用模型 基于数据库的应用，原型是什么样的，需要深入了解，掌握，才能因地制宜地结合数据库一起调优。 目前国内对于数据库的应用现状，基本的问题是：应用不当，SQL写法有误。 应用模型对于数据库的影响可能有： 1）读多写少、读写并重、读少写多； 2）并发情况 3）数据量 4）中间件 总之，应用逻辑和应用模型对数据库的使用方式，更多地影响着系统的瓶颈（通常情况，硬件一旦固定，更换的机会少。比如，数据库性能测试的TPCX系列，很多硬件厂家给出的测试最佳值，都是在固定硬件的环境下进行的）。 附：什么是数据库应用模型？参考本博客：《数据库应用模型的简单理解》]]></content>
@@ -299,6 +288,17 @@
       </categories>
       <tags>
         <tag>数据库性能</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据库模型的简单理解]]></title>
+    <url>%2F2017%2F07%2F12%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 什么是数据模型？访问数据库中的数据取决于数据库实现的数据模型。 数据模型会影响客户端通过API对数据的操作。不同的数据模型可能会提供或多或少的功能。一般而言，数据模型不会直接提供过多的功能，许多功能必须由客户端自行实现。 数据模型决定了客户端如何对数据进行编码存储。应用程序需要某种域模型与存储技术支持的特性进行映射。 有哪些数据库模型关系模型关系模型使用记录（由元组组成）进行存储，记录存储在表中，表由架构界定。 表中的每个列都有名称和类型，表中的所有记录都要符合表的定义。 SQL是专门的查询语言，提供相应的语法查找符合条件的记录，如表联接（Join）。表联接可以基于表之间的关系在多表之间查询记录。 表中的记录可以被创建和删除，记录中的字段也可以单独更新。 关系模型数据库通常提供事务处理机制，这为涉及多条记录的自动化处理提供了解决方案。 对不同的编程语言而言，表可以被看成数组、记录列表或者结构。表可以使用B树和哈希表进行索引，以应对高性能访问。 键值存储键值存储提供了基于键对值的访问方式。 键值对可以被创建或删除，与键相关联的值可以被更新。 键值存储一般不提供事务处理机制。 对不同的编程语言而言，键值存储类似于哈希表。对此，不同的编程语言有不同的名字（如，Java称之为“HashMap”，Perl称之为“hash”，Python称之为“dict”，PHP称之为“associative array”），C++则称之为“boost::unordered_map&lt;...&gt;”。 键值存储支持键上自有的隐式索引。 键值存储看起来好像不太有用，但却可以在“值”上存储大量信息。“值”可以是一个XML文档，一个JSON对象，或者其它任何序列化形式。 重要的是，键值存储引擎并不在意“值”的内部结构，它依赖客户端对“值”进行解释和管理。 文档存储文档存储支持对结构化数据的访问，不同于关系模型的是，文档存储没有强制的架构。 事实上，文档存储以封包键值对的方式进行存储。在这种情况下，应用对要检索的封包采取一些约定，或者利用存储引擎的能力将不同的文档划分成不同的集合，以管理数据。 与关系模型不同的是，文档存储模型支持嵌套结构。例如，文档存储模型支持XML和JSON文档，字段的“值”又可以嵌套存储其它文档。文档存储模型也支持数组和列值键。 与键值存储不同的是，文档存储关心文档的内部结构。这使得存储引擎可以直接支持二级索引，从而允许对任意字段进行高效查询。支持文档嵌套存储的能力，使得查询语言具有搜索嵌套对象的能力，XQuery就是一个例子。 MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。 列式存储如果翻转数据，列式存储与关系存储将会非常相似。 与关系模型存储记录不同，列式存储以流的方式在列中存储所有的数据。对于任何记录，索引都可以快速地获取列上的数据。 Map-reduce的实现Hadoop的流数据处理效率非常高，列式存储的优点体现的淋漓极致。因此，HBase和Hypertable通常作为非关系型数据仓库，为Map-reduce进行数据分析提供支持。 关系类型的列标对数据分析效果不好，因此，用户经常将更复杂的数据存储在列式数据库中。这直接体现在Cassandra中，它引入的“column family”可以被认为是一个“super-column”。 列式存储支持行检索，但这需要从每个列获取匹配的列值，并重新组成行。 图形数据库图形数据库存储顶点和边的信息，有的支持添加注释。 图形数据库可用于对事物建模，如社交图谱、真实世界的各种对象。IMDB（Internet Movie Database）站点的内容就组成了一幅复杂的图像，演员与电影彼此交织在一起。 图形数据库的查询语言一般用于查找图形中断点的路径，或端点之间路径的属性。 Neo4j是一个典型的图形数据库。]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库模型</tag>
       </tags>
   </entry>
   <entry>
