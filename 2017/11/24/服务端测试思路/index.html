@@ -93,7 +93,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="xscan,安全测试," />
+  <meta name="keywords" content="服务端测试," />
 
 
 
@@ -111,17 +111,19 @@
 
 
 
-<meta name="description" content="背景略 xscan有什么功能采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。 安装与使用安装1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3 2、安装X-">
-<meta name="keywords" content="xscan,安全测试">
+<meta name="description" content="背景针对近半年的测试经验进行简要的总结，部分内容参考了网络上的一些文章 有哪些服务端测试我们公司有哪些服务端的应用： 1、web端的服务，onsite直播平台、云导播、云轮播、拆条、收录等等 2、客户端相关的服务：无 针对以上的这些服务，总结归纳了一下，划分了两种类型： 1、B\S结构，即浏览器\服务器结构，也就是各种web应用，这些web应用只与浏览器有关，他的web页面以及各种后台逻辑均运行在">
+<meta name="keywords" content="服务端测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="xscan漏扫工具的使用">
-<meta property="og:url" content="https://hardelm.github.io/2017/10/18/安全测试与xscan漏扫工具的使用/index.html">
+<meta property="og:title" content="服务端测试思路">
+<meta property="og:url" content="https://hardelm.github.io/2017/11/24/服务端测试思路/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
-<meta property="og:description" content="背景略 xscan有什么功能采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。 安装与使用安装1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3 2、安装X-">
-<meta property="og:updated_time" content="2017-11-17T09:41:06.426Z">
+<meta property="og:description" content="背景针对近半年的测试经验进行简要的总结，部分内容参考了网络上的一些文章 有哪些服务端测试我们公司有哪些服务端的应用： 1、web端的服务，onsite直播平台、云导播、云轮播、拆条、收录等等 2、客户端相关的服务：无 针对以上的这些服务，总结归纳了一下，划分了两种类型： 1、B\S结构，即浏览器\服务器结构，也就是各种web应用，这些web应用只与浏览器有关，他的web页面以及各种后台逻辑均运行在">
+<meta property="og:image" content="https://i.imgur.com/ncPWWXi.png">
+<meta property="og:updated_time" content="2017-11-24T09:27:03.354Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xscan漏扫工具的使用">
-<meta name="twitter:description" content="背景略 xscan有什么功能采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。 安装与使用安装1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3 2、安装X-">
+<meta name="twitter:title" content="服务端测试思路">
+<meta name="twitter:description" content="背景针对近半年的测试经验进行简要的总结，部分内容参考了网络上的一些文章 有哪些服务端测试我们公司有哪些服务端的应用： 1、web端的服务，onsite直播平台、云导播、云轮播、拆条、收录等等 2、客户端相关的服务：无 针对以上的这些服务，总结归纳了一下，划分了两种类型： 1、B\S结构，即浏览器\服务器结构，也就是各种web应用，这些web应用只与浏览器有关，他的web页面以及各种后台逻辑均运行在">
+<meta name="twitter:image" content="https://i.imgur.com/ncPWWXi.png">
 
 
 
@@ -149,13 +151,13 @@
 
 
 
-  <link rel="canonical" href="https://hardelm.github.io/2017/10/18/安全测试与xscan漏扫工具的使用/"/>
+  <link rel="canonical" href="https://hardelm.github.io/2017/11/24/服务端测试思路/"/>
 
 
 
 
 
-  <title>xscan漏扫工具的使用 | HardElm's blog</title>
+  <title>服务端测试思路 | HardElm's blog</title>
   
 
 
@@ -322,7 +324,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://hardelm.github.io/2017/10/18/安全测试与xscan漏扫工具的使用/">
+    <link itemprop="mainEntityOfPage" href="https://hardelm.github.io/2017/11/24/服务端测试思路/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HardElm">
@@ -339,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">xscan漏扫工具的使用</h1>
+          <h1 class="post-title" itemprop="name headline">服务端测试思路</h1>
         
 
         <div class="post-meta">
@@ -351,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T12:00:00+08:00">
-                2017-10-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-24T19:30:00+08:00">
+                2017-11-24
               </time>
             
 
@@ -374,8 +376,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/测试工具/" itemprop="url" rel="index">
-                    <span itemprop="name">测试工具</span>
+                  <a href="/categories/测试理论/" itemprop="url" rel="index">
+                    <span itemprop="name">测试理论</span>
                   </a>
                 </span>
 
@@ -411,7 +413,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  333
+                  2,640
                 </span>
               
 
@@ -433,17 +435,96 @@
       
 
       
-        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>略</p>
-<h1 id="xscan有什么功能"><a href="#xscan有什么功能" class="headerlink" title="xscan有什么功能"></a>xscan有什么功能</h1><p>采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。</p>
-<h1 id="安装与使用"><a href="#安装与使用" class="headerlink" title="安装与使用"></a>安装与使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3</p>
-<p>2、安装X-scan需安装WinPCap驱动程序<a href="http://https://baike.baidu.com/item/winpcap/11048966?fr=aladdin" title="什么是WinPCap" target="_blank" rel="external">（什么是WinPCap，以及WinPCap的功能作用，参考百度百科）</a></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>1、“设置”修改扫描IP或者网段</p>
-<p>2、“设置”修改扫描参数，可修改内容包括开放的服务端口，Telnet、SSH、FTP、SQL-Server等协议弱口令以及IIS编解码漏洞等扫描配置内容</p>
-<p>3、“设置”修改扫描报告格式，可选html、txt、xml</p>
-<p>4、开启任务，可实时监测扫描过程中的普通信息、漏洞信息（开放的服务、端口以及协议类型）、错误信息等内容</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>简单好用，基本满足日常工作使用！</p>
-<p>附：</p>
-<p>telnet命令：<a href="http://www.runoob.com/linux/linux-comm-telnet.html" target="_blank" rel="external">http://www.runoob.com/linux/linux-comm-telnet.html</a></p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>针对近半年的测试经验进行简要的总结，部分内容参考了网络上的一些文章</p>
+<h1 id="有哪些服务端测试"><a href="#有哪些服务端测试" class="headerlink" title="有哪些服务端测试"></a>有哪些服务端测试</h1><p>我们公司有哪些服务端的应用：</p>
+<pre><code>1、web端的服务，onsite直播平台、云导播、云轮播、拆条、收录等等
+2、客户端相关的服务：无
+</code></pre><p>针对以上的这些服务，总结归纳了一下，划分了两种类型：</p>
+<pre><code>1、B\S结构，即浏览器\服务器结构，也就是各种web应用，这些web应用只与浏览器有关，他的web页面以及各种后台逻辑均运行在各种服务器上。
+2、C\S结构，即客户端\服务器结构，这种产品的客户端需要与服务器端通过接口进行通讯，同时服务器端还有自己的功能逻辑，在接收到客户端发送的请求之后会进行处理，然后返回给客户端。
+</code></pre><h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>针对以上这两种不同结构的服务器端程序，如何进行测试呢？</p>
+<p>首先，制定一套完善的测试流程，通过该流程，指导测试、开发、产品、OP运维等同学的工作。在这个流程中，有三个关键的环节：</p>
+<h2 id="准备会议"><a href="#准备会议" class="headerlink" title="准备会议"></a>准备会议</h2><h3 id="产品需求评审会"><a href="#产品需求评审会" class="headerlink" title="产品需求评审会"></a>产品需求评审会</h3><p>在这个评审会上，产品会对提出的需求做出详细的讲解，如果各方涉及的人员比较多，还会确定产品负责人、开发负责人、测试负责人。各负责人的职责如下：</p>
+<pre><code>1、产品负责人：是这个项目的总负责人，负责各配合方之间的沟通。
+2、开发责任人：包括客户端和服务端，原则上由客户端开发为开发的总负责人。
+3、测试负责人：包括客户端和服务端，原则上由客户端测试为测试的总负责人。
+</code></pre><h3 id="开发设计实现讲解会"><a href="#开发设计实现讲解会" class="headerlink" title="开发设计实现讲解会"></a>开发设计实现讲解会</h3><p>在这个环节，开发会在接到需求后，组织一次设计评审，在这里主要由开发（包括前端和后端）和测试参加，在会上我们会做以下几件事情：</p>
+<pre><code>1、由开发详细的讲解功能得到设计思路，包括客户端和服务器端的功能实现
+2、后续的计划排期
+3、在设计阶段就会增加线上的监控机制
+</code></pre><p>经过这两个评审会之后，测试会给出大概的测试方案，待开发提测后，测试就可以展开后续的测试工作。</p>
+<h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><h3 id="测试服务器"><a href="#测试服务器" class="headerlink" title="测试服务器"></a>测试服务器</h3><p>我们的开发会将编写完成的代码上传到SVN上，所有测试环境中的代码均来自SVN，这样可以保证被测试的代码与SVN上的代码是一致的，与此同时，我们也要不断的关注开发开发SVN上的改动，以便确认测试的范围和后续的验证。</p>
+<h3 id="待上线服务器"><a href="#待上线服务器" class="headerlink" title="待上线服务器"></a>待上线服务器</h3><p>待服务器端的功能测试完毕后，会将被测试完成的代码部署到待上线服务器上，待上线环境的配置与线上环境完全相同。我们会在这台机器上进行性能相关的测试。</p>
+<h3 id="线上服务器"><a href="#线上服务器" class="headerlink" title="线上服务器"></a>线上服务器</h3><p>待性能测试与功能测试均完毕后，测试会将开发提交的代码进行冻结，开发会给OP运维部门提交上线申请单，然后由OP运维部门将SVN中测试完毕的代码部署到线上。待部署完成后，测试会针对线上环境进行上线验证。</p>
+<h2 id="准备监控"><a href="#准备监控" class="headerlink" title="准备监控"></a>准备监控</h2><p>我们会针对线上提供的服务进行监控，主要是该服务的接口功能正确性。</p>
+<p>而服务器运行的稳定性是由OP运维部门负责监控。</p>
+<p>当发生线上问题时，测试、产品、开发、OP均会收到包括邮件和短信的通知。</p>
+<p>测试先进行问题确认，并及时给出结果反馈。</p>
+<p>如果有问题，开发和OP会对问题进行排查，并由测试进行验证。</p>
+<p>如果没有问题，会查当时通知时发生了什么，以便确认问题是被自动修复了，还是线上监控脚本出现了问题。</p>
+<h1 id="如何开展"><a href="#如何开展" class="headerlink" title="如何开展"></a>如何开展</h1><p>有了上面的测试流程之后，那么在开发提测后，我们是如何进行测试的呢？针对之前提到的两种不同的产品类型，我们会进行以下两方面的测试：</p>
+<h2 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h2><p>针对功能测试，我们有两种不同的测试方法：</p>
+<h3 id="基于用户层面的黑盒功能测试"><a href="#基于用户层面的黑盒功能测试" class="headerlink" title="基于用户层面的黑盒功能测试"></a>基于用户层面的黑盒功能测试</h3><pre><code>1、根据产品提出的需求文档，划分功能，拆分需求点，根据需求点，进行对应测试用例的编写；
+2、在这个过程中，基本上忽略了客户端与服务器端或前台页面与后台逻辑是如何进行交互的，完全通过客户端或前端页面的行为进行功能测试。
+</code></pre><h3 id="基于代码逻辑和服务器配置的白盒测试"><a href="#基于代码逻辑和服务器配置的白盒测试" class="headerlink" title="基于代码逻辑和服务器配置的白盒测试"></a>基于代码逻辑和服务器配置的白盒测试</h3><h4 id="服务器端配置的正确性与合理性"><a href="#服务器端配置的正确性与合理性" class="headerlink" title="服务器端配置的正确性与合理性"></a>服务器端配置的正确性与合理性</h4><pre><code>1、服务器是否有缓存机制；
+2、服务器对连接数是否有限制；
+3、服务器的负载均衡是否合理；
+4、服务器连接的是否有超时设置；
+5、各种网络请求是否使用的是内网IP。
+</code></pre><h4 id="接口测试"><a href="#接口测试" class="headerlink" title="接口测试"></a>接口测试</h4><p>一般情况下客户端与服务器端的数据交互，均是通过http请求完成的。而服务器端通过web服务器将接收到的请求进行处理。这些处理主要围绕着，对数据的存储、运算、转发等操作，并将操作之后的结果反馈给客户端。所以接口功能的正确与否，会直接反映服务器端功能的正确与否。那么，这对接口我们是如何进行测试的呢？</p>
+<pre><code>1、根据该接口的功能，评估该接口定义的合理性与安全性，例如：
+    1）客户端发送的网络请求是否需要带有时间戳；
+    2）客户端发送的网络请求是否需要有固定的参数，比如客户端发送的请求中需要带有版本号等信息；
+    3）客户端发送的数据是否需要进行加密；
+    4）服务器端是否有针对请求发送来源的校验；
+    5）服务器端给客户端返回的数据及状态码是否合理。
+2、接口的测试方法
+    通过编写测试脚本，针对接口进行测试，步骤一般是这样的：
+    1）根据接口定义的参数，确认传输的参数都有哪些，可能的正常取值和异常取值；
+    2）通过脚本模拟客户端发送网络请求，对接口进行单独测试，并对服务端返回的结果数据进行自动化校验；
+    3）通过脚本构造用户的一系列操作，用以验证系统功能的可用性。
+3、代码功能逻辑测试
+    1）对服务器端的代码做静态代码走查，主要关注以下内容：
+        1.定义的变量是否都被初始化；
+        2.服务器是否有针对客户端发送的数据进行异常校验；
+        3.对数据库的操作是否有未释放的情况；
+        4.服务器端的判断逻辑是否存在功能隐患；
+        5.连接的数据库环境是否正确；
+        6.对数据库的操作是否有关闭操作。
+    2）通过编写单元测试用例进行验证
+</code></pre><h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><h3 id="制定方案"><a href="#制定方案" class="headerlink" title="制定方案"></a>制定方案</h3><pre><code>依据需求，明确测试目的
+围绕测试目的来制定测试方案，测试方案要明确需要关注的性能参数、测试方法，确定要使用的工具
+最后要考虑到整个测试流程中可能存在的影响结果准确性的风险点（网络波动、CDN与SLB配置等非平台因素）
+</code></pre><p>以下是之前进行直播平台性能测试的简单测试方案<br><img src="https://i.imgur.com/ncPWWXi.png" alt=""></p>
+<h3 id="选择压力生成工具"><a href="#选择压力生成工具" class="headerlink" title="选择压力生成工具"></a>选择压力生成工具</h3><p>服务器压力测试工具有很多，也可以自己写适合性能测试场景的压力生成脚本</p>
+<pre><code>较为常用的压力测试工具：
+    Jmeter
+    LoadRunner
+    ab
+    st_load
+</code></pre><p>以上测试工具的简单使用方法参照本博客其他文章</p>
+<h3 id="选择监控工具"><a href="#选择监控工具" class="headerlink" title="选择监控工具"></a>选择监控工具</h3><p>监控工具也有很多，也可以需求写适合性能测试场景的监控脚本，重点提取需要关注的性能参数</p>
+<pre><code>运维监控工具Zabbix等
+nmon
+</code></pre><p>以上部分工具的简单使用，参考本博客其他文章</p>
+<h3 id="测试环境准备"><a href="#测试环境准备" class="headerlink" title="测试环境准备"></a>测试环境准备</h3><pre><code>1、明确各个模块集群内部的服务器配置：基本的有内存、CPU、磁盘以及网络带宽等等
+2、部署测试环境，也可以编写自动化部署脚本（ansible）或者使用容器（docker、kubernetes）快速部署
+3、系统流程调试，确保系统底层功能正确无误
+</code></pre><h3 id="执行测试"><a href="#执行测试" class="headerlink" title="执行测试"></a>执行测试</h3><p>渐增加压，达到一定程度观察系统稳定性，观察资源消耗以及系统响应情况</p>
+<h4 id="单台"><a href="#单台" class="headerlink" title="单台"></a>单台</h4><pre><code>1、在一定的配置与系统环境下，得出模块单台服务器的系统性能
+2、若有条件，在以上基础上对程序内部单个接口进行压测
+3、定位瓶颈并给出优化意见
+</code></pre><h4 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h4><pre><code>1、在一定的配置与系统环境下，得出模块集群服务器的系统性能
+2、SLB配置（带宽峰值、调度算法、会话保持等）、内网带宽等
+3、定位瓶颈并给出优化意见
+</code></pre><h4 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h4><pre><code>1、在一定的配置与系统环境下，得出平台整体的系统性能
+2、入出口SLB配置（带宽峰值、调度算法、会话保持等）、内网带宽与外网带宽
+3、定位系统瓶颈并给出优化意见
+</code></pre><h4 id="数据库等其他模块"><a href="#数据库等其他模块" class="headerlink" title="数据库等其他模块"></a>数据库等其他模块</h4><pre><code>1、压测过程中观察系统与数据库交互情况，排查数据库是否可能是系统瓶颈点
+2、硬件、操作系统、数据库配置、应用模型、引擎选择等
+</code></pre><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://blog.csdn.net/wlly1/article/details/51357306" target="_blank" rel="external">http://blog.csdn.net/wlly1/article/details/51357306</a></p>
+<p><a href="https://www.zhihu.com/question/20694803" target="_blank" rel="external">https://www.zhihu.com/question/20694803</a></p>
+<p><a href="https://www.cnblogs.com/zhuque/archive/2013/03/15/2961953.html" target="_blank" rel="external">https://www.cnblogs.com/zhuque/archive/2013/03/15/2961953.html</a></p>
 
       
     </div>
@@ -503,7 +584,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://hardelm.github.io/2017/10/18/安全测试与xscan漏扫工具的使用/" title="xscan漏扫工具的使用">https://hardelm.github.io/2017/10/18/安全测试与xscan漏扫工具的使用/</a>
+      <a href="https://hardelm.github.io/2017/11/24/服务端测试思路/" title="服务端测试思路">https://hardelm.github.io/2017/11/24/服务端测试思路/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -519,9 +600,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/xscan/" <i class="fa fa-tag"></i> xscan</a>
-          
-            <a href="/tags/安全测试/" <i class="fa fa-tag"></i> 安全测试</a>
+            <a href="/tags/服务端测试/" <i class="fa fa-tag"></i> 服务端测试</a>
           
         </div>
       
@@ -534,8 +613,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/16/自动化测试的层级/" rel="next" title="自动化测试的层级">
-                <i class="fa fa-chevron-left"></i> 自动化测试的层级
+              <a href="/2017/11/24/Jenkins/" rel="next" title="关于Jenkins持续构建的初步了解">
+                <i class="fa fa-chevron-left"></i> 关于Jenkins持续构建的初步了解
               </a>
             
           </div>
@@ -544,8 +623,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/18/ab下载与上传压测/" rel="prev" title="ab下载与上传压测">
-                ab下载与上传压测 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/24/服务端自动化测试/" rel="prev" title="服务端自动化测试">
+                服务端自动化测试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -749,7 +828,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xscan有什么功能"><span class="nav-number">2.</span> <span class="nav-text">xscan有什么功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装与使用"><span class="nav-number">3.</span> <span class="nav-text">安装与使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.2.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有哪些服务端测试"><span class="nav-number">2.</span> <span class="nav-text">有哪些服务端测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备会议"><span class="nav-number">3.1.</span> <span class="nav-text">准备会议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#产品需求评审会"><span class="nav-number">3.1.1.</span> <span class="nav-text">产品需求评审会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发设计实现讲解会"><span class="nav-number">3.1.2.</span> <span class="nav-text">开发设计实现讲解会</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备环境"><span class="nav-number">3.2.</span> <span class="nav-text">准备环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试服务器"><span class="nav-number">3.2.1.</span> <span class="nav-text">测试服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#待上线服务器"><span class="nav-number">3.2.2.</span> <span class="nav-text">待上线服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线上服务器"><span class="nav-number">3.2.3.</span> <span class="nav-text">线上服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备监控"><span class="nav-number">3.3.</span> <span class="nav-text">准备监控</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何开展"><span class="nav-number">4.</span> <span class="nav-text">如何开展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#功能测试"><span class="nav-number">4.1.</span> <span class="nav-text">功能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于用户层面的黑盒功能测试"><span class="nav-number">4.1.1.</span> <span class="nav-text">基于用户层面的黑盒功能测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于代码逻辑和服务器配置的白盒测试"><span class="nav-number">4.1.2.</span> <span class="nav-text">基于代码逻辑和服务器配置的白盒测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器端配置的正确性与合理性"><span class="nav-number">4.1.2.1.</span> <span class="nav-text">服务器端配置的正确性与合理性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接口测试"><span class="nav-number">4.1.2.2.</span> <span class="nav-text">接口测试</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能测试"><span class="nav-number">4.2.</span> <span class="nav-text">性能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#制定方案"><span class="nav-number">4.2.1.</span> <span class="nav-text">制定方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择压力生成工具"><span class="nav-number">4.2.2.</span> <span class="nav-text">选择压力生成工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择监控工具"><span class="nav-number">4.2.3.</span> <span class="nav-text">选择监控工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试环境准备"><span class="nav-number">4.2.4.</span> <span class="nav-text">测试环境准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行测试"><span class="nav-number">4.2.5.</span> <span class="nav-text">执行测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单台"><span class="nav-number">4.2.5.1.</span> <span class="nav-text">单台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集群"><span class="nav-number">4.2.5.2.</span> <span class="nav-text">集群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统"><span class="nav-number">4.2.5.3.</span> <span class="nav-text">系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库等其他模块"><span class="nav-number">4.2.5.4.</span> <span class="nav-text">数据库等其他模块</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
