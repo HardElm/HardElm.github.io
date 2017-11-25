@@ -111,17 +111,19 @@
 
 
 
-<meta name="description" content="工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 selenium集成java的一些常用方法： 1、页面元素定位方法：ID:         driver.findElement(By.id(“ID值”));Name:      driver.findElement(By.name(“name值”));链接的全部文字 :">
+<meta name="description" content="背景工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 Selenium的简单介绍Selenium是什么Selenium是一款用于Web应用程序测试的工具，框架底层使用JavaScript模拟用户对浏览器进行操作。 selenium不是单纯的一个工具，是一组工具的集合，而且也有版本之分（目前3.0） selenium IDEse">
 <meta name="keywords" content="自动化测试,java,Selenium">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Selenium初学总结">
 <meta property="og:url" content="https://hardelm.github.io/2017/07/12/Selenium初学总结/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
-<meta property="og:description" content="工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 selenium集成java的一些常用方法： 1、页面元素定位方法：ID:         driver.findElement(By.id(“ID值”));Name:      driver.findElement(By.name(“name值”));链接的全部文字 :">
-<meta property="og:updated_time" content="2017-11-20T05:37:52.546Z">
+<meta property="og:description" content="背景工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 Selenium的简单介绍Selenium是什么Selenium是一款用于Web应用程序测试的工具，框架底层使用JavaScript模拟用户对浏览器进行操作。 selenium不是单纯的一个工具，是一组工具的集合，而且也有版本之分（目前3.0） selenium IDEse">
+<meta property="og:image" content="https://i.imgur.com/M8ZybO6.png">
+<meta property="og:updated_time" content="2017-11-25T11:18:48.925Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Selenium初学总结">
-<meta name="twitter:description" content="工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 selenium集成java的一些常用方法： 1、页面元素定位方法：ID:         driver.findElement(By.id(“ID值”));Name:      driver.findElement(By.name(“name值”));链接的全部文字 :">
+<meta name="twitter:description" content="背景工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 Selenium的简单介绍Selenium是什么Selenium是一款用于Web应用程序测试的工具，框架底层使用JavaScript模拟用户对浏览器进行操作。 selenium不是单纯的一个工具，是一组工具的集合，而且也有版本之分（目前3.0） selenium IDEse">
+<meta name="twitter:image" content="https://i.imgur.com/M8ZybO6.png">
 
 
 
@@ -411,7 +413,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  414
+                  1,304
                 </span>
               
 
@@ -433,13 +435,115 @@
       
 
       
-        <p>工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。</p>
-<p>selenium集成java的一些常用方法：</p>
-<p>1、页面元素定位方法：<br>ID:         driver.findElement(By.id(“ID值”));<br>Name:      driver.findElement(By.name(“name值”));<br>链接的全部文字 :<br>            driver.findElement(By.linkText(“链接的全部文字内容”));<br>部分链接文字:<br>            driver.findElement(By.partialLinkText(“链接的部分文字内容”));<br>Xpath :    driver.findElement(By.xpath(“Xpath定位表达式”));<br>CSS:        driver.findElement(By.cssSelector(“CSS定位表达式”));<br>Class:    driver.findElement(By.className(“页面元素的Class属性值”));<br>标签名称:<br>driver.findElement(By.tagName (“页面元素的HTML标签名称”));</p>
-<p>2、打开浏览器：<br>打开firefox ： WebDriver driver= new FirefoxDriver();<br>打开ie ：WebDriver driver =new InternetExplorerDriver();<br>打开chrome： WebDriver driver = new   ChromeDriver();<br>打开指定路径浏览器 ：<br>  System.setProperty(“webdriver.firefox.bin”,”D:\ProgramFiles\MozillaFirefox\firefox.exe”); </p>
-<p>3、关闭浏览器：<br>driver.close();<br>driver.quit();</p>
-<p>4、返回当前页面Title URL<br>driver.getTitle();<br>driver.getCurrentUrl(); </p>
-<p>5、返回上一个访问的网页<br>driver.navigate().to(url1);<br>driver.navigate().to(url2);<br>driver.navigate().back();<br>6、刷新当前网页：<br>driver.navigate().refresh();<br>7、输入框中输入指定内容:<br>driver.sendKeys();<br>8、输入框中清除文字内容：<br>driver.clear();<br>9、查看页面元素属性：<br>driver.getAttribute(“value”);<br>10、点击按钮：<br>driver.click();<br>11、操作frame：<br>Driver.switchTo.frame()<br>12、单选下拉列表：<br>Select dropList = new Select(element);<br>Select.getFrestSelectOption().getText();<br>Select.selectByIndex();<br>Select.selectByValue();<br>Select.selectByVisibleText();<br>例子：<br>    单选框：<br>List<webelement> radioList = driver.findElements();<br>radio. getAttribute(“Value”).equals(“”);<br>radio.isSelectd()<br>radio.click();<br>    复选框：<br>List<webelement> checkList = driver.findElements();<br>check.getAttribute(“Value”).equals(“”);<br>check.isSelectd()<br>check.click();<br>13、Alert弹窗：<br>Alert alert = driver.switchTo().alert();<br>     alert.accept();<br>14、执行JavaScript脚本：<br>声明一个JavaScript 执行器对象<br>    JavaScriptExecutor js = (JavaScriptExecutor )driver;<br>    js.executeScript(“loginSubmit();”);</webelement></webelement></p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。</p>
+<h1 id="Selenium的简单介绍"><a href="#Selenium的简单介绍" class="headerlink" title="Selenium的简单介绍"></a>Selenium的简单介绍</h1><h2 id="Selenium是什么"><a href="#Selenium是什么" class="headerlink" title="Selenium是什么"></a>Selenium是什么</h2><p>Selenium是一款用于Web应用程序测试的工具，框架底层使用JavaScript模拟用户对浏览器进行操作。</p>
+<p>selenium不是单纯的一个工具，是一组工具的集合，而且也有版本之分（目前3.0）<br><img src="https://i.imgur.com/M8ZybO6.png" alt=""></p>
+<h3 id="selenium-IDE"><a href="#selenium-IDE" class="headerlink" title="selenium IDE"></a>selenium IDE</h3><p>selenium IDE 是嵌入到Firefox浏览器中的一个插件，实现简单的浏览器操作的录制与回放功能。</p>
+<pre><code>优点：
+1、快速的创建bug重现脚本。
+    在测试过程中，发现了bug之后可以通过IDE将重现的步骤录制下来，可以帮助开发人员更容易的重现bug。
+2、IDE录制的脚本可以转换成多种语言，有助于快速的开发脚本。
+</code></pre><h3 id="selenium-Grid"><a href="#selenium-Grid" class="headerlink" title="selenium Grid"></a>selenium Grid</h3><p>Selenium Grid是一种自动化测试辅助工具，Grid通过利用现有的计算机基础设施，能加快Web-app的功能测试。利用Grid，可以很方便地同时在多台机器上和异构环境中并行运行多个测试事例。</p>
+<pre><code>特点：
+    1、并行执行
+    2、通过一个主机统一控制用例在不同环境、不同浏览器下运行。
+    3、灵活添加变动测试机
+</code></pre><h3 id="selenium-RC"><a href="#selenium-RC" class="headerlink" title="selenium RC"></a>selenium RC</h3><p>selenium RC是selenium的核心工具，selenium RC支持多种不同的语言编写自动化测试脚本，通过selenium RC的服务器作为代理服务器去访问应用从而达到测试的目的。</p>
+<p>selenium RC分为Client Libraries和selenium Server两部分</p>
+<pre><code>Client Libraries:
+    Client Libraries库主要用于编写测试脚本，是控制selenium Server的库。
+
+Selenium Server:
+    负责控制浏览器行为，Selenium Server主要包括3个部分：Launcher、Http Proxy、Core。
+        Selenium Core：被Selenium Server嵌入到浏览器页面中的。Selenium Core其实就是一堆JS函数的集合，通过这些JS函数，才可以实现用程序对浏览器进行操作。
+        Launcher：用于启动浏览器，把selnium Core加载到浏览器页面当中，并把浏览器的代理设置为Selenium Server 的Http Proxy。
+</code></pre><h3 id="selenium-2-0"><a href="#selenium-2-0" class="headerlink" title="selenium 2.0"></a>selenium 2.0</h3><p>selenium 2.0与selenium 1.0的关系，简单用公式表示为:</p>
+<pre><code>selenium 2.0 = selenium 1.0 + WebDriver 
+</code></pre><p>在selenium 2.0中主推WebDriver，WebDriver是selenium RC的替代品，因为selenium为了向下兼容，所以selenium RC并没有被彻底抛弃，如果使用selenium开发一个新自动化测试项目，推荐使用WebDriver 。</p>
+<p>selenium RC 与webdriver主要区别：</p>
+<pre><code>selenium RC:
+    在浏览器中运行JavaScript应用，使用浏览器内置的JavaScript翻译器来翻译和执行selenese命令（selenese是selenium命令集合）。
+
+WebDriver:
+    1、通过原生浏览器支持或者浏览器扩展直接控制浏览器
+    2、WebDriver针对各个浏览器而开发，取代了嵌入到被测Web应用中的JavaScript
+    3、与浏览器的紧密集成支持创建更高级的测试
+    4、避免了JavaScript安全模型导致的限制
+    5、利用操作系统级的调用模拟用户输入
+</code></pre><h2 id="Selenium的优势在哪"><a href="#Selenium的优势在哪" class="headerlink" title="Selenium的优势在哪"></a>Selenium的优势在哪</h2><pre><code>对B/S应用支持很好
+支持多平台/多浏览器
+支持多语言开发(java、python、ruby、php、C#、JavaScript等)
+支持分布式测试用例执行
+学习内容丰富，增加测试工程师的技术竞争力
+可选语言丰富
+
+    从语言易学性来讲，首选python和ruby
+    从语言应用广度来讲，首选java、C#和php等
+    从语言相关测试技术成度来讲：ruby、python和java
+
+    考虑整个技术团队主流用什么语言，然后选择相应的语言。
+</code></pre><h1 id="selenium集成java的一些常用方法"><a href="#selenium集成java的一些常用方法" class="headerlink" title="selenium集成java的一些常用方法"></a>selenium集成java的一些常用方法</h1><p>1、页面元素定位方法:</p>
+<pre><code>ID:    driver.findElement(By.id(“ID值”));
+Name:    driver.findElement(By.name(“name值”));
+链接的全部文字:    driver.findElement(By.linkText(“链接的全部文字内容”));
+部分链接文字:    driver.findElement(By.partialLinkText(“链接的部分文字内容”));
+Xpath:    driver.findElement(By.xpath(“Xpath定位表达式”));
+CSS:    driver.findElement(By.cssSelector(“CSS定位表达式”));
+Class:    driver.findElement(By.className(“页面元素的Class属性值”));
+标签名称:    driver.findElement(By.tagName (“页面元素的HTML标签名称”));
+</code></pre><p>2、打开浏览器:</p>
+<pre><code>打开firefox:    WebDriver driver= new FirefoxDriver();
+打开ie:    WebDriver driver =new InternetExplorerDriver();    
+打开chrome:    WebDriver driver = new   ChromeDriver();
+打开指定路径浏览器:    System.setProperty(&quot;webdriver.firefox.bin&quot;,&quot;D:\\ProgramFiles\\MozillaFirefox\\firefox.exe&quot;); 
+</code></pre><p>3、关闭浏览器:</p>
+<pre><code>driver.close();
+driver.quit();
+</code></pre><p>4、返回当前页面Title URL:</p>
+<pre><code>driver.getTitle();
+driver.getCurrentUrl(); 
+</code></pre><p>5、返回上一个访问的网页:</p>
+<pre><code>driver.navigate().to(url1);
+driver.navigate().to(url2);
+driver.navigate().back();
+</code></pre><p>6、刷新当前网页:</p>
+<pre><code>driver.navigate().refresh(); 
+</code></pre><p>7、输入框中输入指定内容:</p>
+<pre><code>driver.sendKeys();     
+</code></pre><p>8、输入框中清除文字内容:</p>
+<pre><code>driver.clear();
+</code></pre><p>9、查看页面元素属性:</p>
+<pre><code>driver.getAttribute(“value”);
+</code></pre><p>10、点击按钮:</p>
+<pre><code>driver.click();
+</code></pre><p>11、操作frame:</p>
+<pre><code>Driver.switchTo.frame()
+</code></pre><p>12、单选下拉列表:</p>
+<pre><code>Select dropList = new Select(element);
+Select.getFrestSelectOption().getText();
+Select.selectByIndex();
+Select.selectByValue();
+Select.selectByVisibleText();
+
+例子:
+    单选框:
+    List&lt;WebElement&gt; radioList = driver.findElements();
+    radio. getAttribute(&quot;Value&quot;).equals(&quot;&quot;);
+    radio.isSelectd()
+    radio.click();
+    复选框:
+    List&lt;WebElement&gt; checkList = driver.findElements();
+    check.getAttribute(&quot;Value&quot;).equals(&quot;&quot;);
+    check.isSelectd()
+    check.click();
+</code></pre><p>13、Alert弹窗:</p>
+<pre><code>Alert alert = driver.switchTo().alert();
+alert.accept();
+</code></pre><p>14、执行JavaScript脚本：</p>
+<p>声明一个JavaScript 执行器对象 </p>
+<pre><code>JavaScriptExecutor js = (JavaScriptExecutor )driver;
+js.executeScript(“loginSubmit();”);
+</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>无</p>
 
       
     </div>
@@ -532,8 +636,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/12/rabbitmq/" rel="next" title="RabbitMQ学习总结">
-                <i class="fa fa-chevron-left"></i> RabbitMQ学习总结
+              <a href="/2017/07/12/nmon使用总结/" rel="next" title="Nmon使用总结">
+                <i class="fa fa-chevron-left"></i> Nmon使用总结
               </a>
             
           </div>
@@ -542,8 +646,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/12/自动化测试的适用范围/" rel="prev" title="自动化测试的适用范围">
-                自动化测试的适用范围 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/12/rabbitmq/" rel="prev" title="RabbitMQ学习总结">
+                RabbitMQ学习总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -602,8 +706,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/header.jpg"
@@ -618,7 +731,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -729,6 +842,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Selenium的简单介绍"><span class="nav-number">2.</span> <span class="nav-text">Selenium的简单介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Selenium是什么"><span class="nav-number">2.1.</span> <span class="nav-text">Selenium是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#selenium-IDE"><span class="nav-number">2.1.1.</span> <span class="nav-text">selenium IDE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selenium-Grid"><span class="nav-number">2.1.2.</span> <span class="nav-text">selenium Grid</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selenium-RC"><span class="nav-number">2.1.3.</span> <span class="nav-text">selenium RC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selenium-2-0"><span class="nav-number">2.1.4.</span> <span class="nav-text">selenium 2.0</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Selenium的优势在哪"><span class="nav-number">2.2.</span> <span class="nav-text">Selenium的优势在哪</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#selenium集成java的一些常用方法"><span class="nav-number">3.</span> <span class="nav-text">selenium集成java的一些常用方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -764,7 +893,7 @@
 </span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站22.9k字</span>
+  <span class="post-count">全站24.2k字</span>
 </div>
 
 
@@ -801,7 +930,7 @@
   
   
   <div class="powered-by"></div>
-  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站22.9k字</span>
+  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站24.2k字</span>
 </div>
 
 

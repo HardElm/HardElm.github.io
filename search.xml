@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[web自动化测试]]></title>
+    <url>%2F2017%2F11%2F25%2Fweb%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[背景之前试着搞过公司云报道产品的自动化测试，基本设计思路以及相关问题，见文章内容。 进行前需要了解的测试框架使用哪种测试框架要根据所测产品的类型来进行选择。 桌面程序的工具有：QTP、 AutoRunner等 web应用的工具有：QTP、AutoRunner、selenium、Robot Framework、watir等 如果待测产品是C/S架构，可选QTP(也叫UFT) 主流的工具 易用性好 学习资料丰富 如果待测产品是B/S架构，推荐selenium 对B/S应用支持很好 支持多语言开发(java、python、ruby、php、C#、JavaScript等) 学习内容丰富，增加测试工程师的技术竞争力 开发语言如果使用QTP，必须掌握VBS 如果使用Selenium，可选语言丰富 从语言易学性来讲，首选python和ruby 从语言应用广度来讲，首选java、C#和php等 从语言相关测试技术成度来讲：ruby、python和java 考虑整个技术团队主流用什么语言，然后选择相应的语言。 思路1、利用自动化测试框架，编写测试case，模拟用户输入、点击等操作； 2、使用正则表达式对准备好的测试数据文件进行操作； 3、测试执行过程自动输出测试结果至测试结果文档 需要注意的问题： 1、UI自动化测试执行过程易受执行环境影响 2、]]></content>
+      <categories>
+        <category>测试理论</category>
+      </categories>
+      <tags>
+        <tag>自动化测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[关于Jenkins持续构建的初步了解]]></title>
     <url>%2F2017%2F11%2F25%2FJenkins%2F</url>
     <content type="text"><![CDATA[背景略 什么是Jenkins什么是JenkinsJenkins是一个用Java编写的开源的持续集成工具，提供了软件开发的持续集成服务，可监控并触发持续重复的工作，具有开源，支持多平台和插件扩展，安装简单，界面化管理等特点。更多介绍参考维基介绍. Jenkins有哪些功能Jenkins的主要功能包括： 1、持续的软件版本发布/测试项目。 2、监控外部调用执行的工作。 Jenkins的特点1、易于安装-只要把jenkins.war部署到servlet容器，不需要数据库支持。 2、易于配置-所有配置都是通过其提供的web界面实现。 3、集成RSS/E-mail通过RSS发布构建结果或当构建完成时通过e-mail通知。 4、生成JUnit/TestNG测试报告。 5、分布式构建支持Jenkins能够让多台计算机一起构建/测试。 6、文件识别:Jenkins能够跟踪哪次构建生成哪些jar，哪次构建使用哪个版本的jar等。 7、插件支持:支持扩展插件，你可以开发适合自己团队使用的工具。 Jenkins能做什么1、软件构建自动化: 配置完成后，CI系统会依照预先制定的时间表，或者针对某一特定事件，对目标软件进行构建。 2、构建可持续的自动化检查: CI系统能持续地获取新增或修改后签入的源代码，也就是说，当软件开发团队需要周期性的检查新增或修改后的代码时，CI系统会不断确认这些新代码是否破坏了原有软件的成功构建。这减少了开发者们在检查彼此相互依存的代码中变化情况需要花费的时间和精力(说直接一点也是钱啊，呵呵)。 3、构建可持续的自动化测试: 构建检查的扩展部分，构建后执行预先制定的一套测试规则，完成后触发通知(Email,RSS等等)给相关的当事人。 4、生成后后续过程的自动化: 当自动化检查和测试成功完成，软件构建的周期中可能也需要一些额外的任务，诸如生成文档、打包软件、部署构件到一个运行环境或者软件仓库。这样，构件才能更迅速地提供给用户使用。 Jenkins部署Jenkins官网有适应不同平台的不同安装方式，考虑到要做成稳定的服务，本次下载war Jenkins依赖于Java环境，首先需要安装和配置Java环境，详细步骤省略 直接启动java -jar jenkins.war 借助中间件或容器1、安装配置tomcat 2、配置nginx代理 3、部署Jenkins 4、启动 Jenkins部署新项目登录Jenkins访问上一步中配置好的域名 初次登录的配置1、输入Jenkins随机生成的口令(控制台获取) 2、执行默认的安装操作(必要的插件，详见文末附录) 3、创建用户，配置密码，邮箱等信息 系统设置shell编码设置管理Jenkins--&gt;系统设置--&gt;全局设置--&gt;环境变量--&gt;配置UTF-8 用于Jenkins内部shell UTF-8编码设置 RSS/Email配置略 构建项目构建一个maven项目略 配置源码仓库输入SVN地址或其他源码仓库地址 配置触发器Jenkins支持多种触发器配置，包括： 1、定期进行构建（Build periodically），定时器使用示例如下： H(25-30) 18 1-5： 工作日下午6点25到30分之间进行build H 23 1-5：工作日每晚23:00至23:59之间的某一时刻进行build H(0-29)/15 ：前半小时内每隔15分钟进行build（开始时间不确定） H/20 ：每隔20分钟进行build（开始时间不确定） 2、根据提交进行构建（Build when a change is pushed to GitHub） 3、定期检测代码更新，如有更新则进行构建（Poll SCM） 配置SonarQube1、点击“增加构建后操作步骤”，新增Sonar(什么是Sonar) 2、配置Sonar(JDK等) 配置自动化部署1、输入war包存放路径 一般存放在Jenkins的{%Jenkins_dir%}\\jobs\项目名\workspace\target目录下(根据JENKINS版本不同可能会不一样，当前版本2.91) 2、配置Context path，即项目的访问根地址，比如localhost:8080/根地址 3、新增容器，选择tomcat。(插件支持部分容器，如果需要发布到其他web容器，可考虑让容器与maven集成，使用mvn命令部署) 4、输入tomcat账号、密码(admin)、访问IP:端口 构建完成以上配置后，保存，回到Jenkins首页，点击项目列表最右方的构建按钮，开始构建 查看构建状态点击左下角构建编号，下拉选择ConsoleOutput，即可查看构建状态 查看代码检测结果构建完成后，下拉项目，选择sonarqube，可以看到代码检测结果 总结无 未完待续附：实用插件OS专用：Xcode integration Android专用：Gradle plugin Gitlab插件：GitLab Plugin 和 Gitlab Hook Plugin Git插件： Git plugin GitBuckit插件： GitBuckit plugin 签名证书管理插件: Credentials Plugin 和Keychains and Provisioning Profiles Management FTP插件: Publish over FTP 脚本插件: Post-Build Script Plug-in 修改Build名称/描述(二维码)： build-name-setter / description setter plugin 获取仓库提交的commit log： Git Changelog Plugin 自定义全局变量: Environment Injector Plugin 自定义邮件插件： Email Extension Plugin 获取当前登录用户信息： build-user-vars-plugin 显示代码测试覆盖率报表： Cobertura Plugin 来展示生成的单元测试报表，支持一切单测框架，如junit、nosetests等： Junit Plugin 其它： GIT plugin / SSH Credentials Plugin 本文参考资料：https://www.liaoxuefeng.com/article/001463233913442cdb2d1bd1b1b42e3b0b29eb1ba736c5e000https://www.zhihu.com/question/25385945http://skyseraph.com/2016/07/18/Tools/Jenkins%20Gitlab%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E6%89%93%E5%8C%85%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/http://blog.csdn.net/liuyuehu/article/details/51532466http://blog.csdn.net/wangmuming/article/details/22924815]]></content>
@@ -12,6 +23,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[服务端自动化测试]]></title>
+    <url>%2F2017%2F11%2F24%2F%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[背景略 未完待续附：]]></content>
+      <categories>
+        <category>测试理论</category>
+      </categories>
+      <tags>
+        <tag>自动化测试</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[服务端测试思路]]></title>
     <url>%2F2017%2F11%2F24%2F%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%80%9D%E8%B7%AF%2F</url>
     <content type="text"><![CDATA[背景针对近半年的测试经验进行简要的总结，部分内容参考了网络上的一些文章 有哪些服务端测试我们公司有哪些服务端的应用： 1、web端的服务，onsite直播平台、云导播、云轮播、拆条、收录等等 2、客户端相关的服务：无 针对以上的这些服务，总结归纳了一下，划分了两种类型： 1、B\S结构，即浏览器\服务器结构，也就是各种web应用，这些web应用只与浏览器有关，他的web页面以及各种后台逻辑均运行在各种服务器上。 2、C\S结构，即客户端\服务器结构，这种产品的客户端需要与服务器端通过接口进行通讯，同时服务器端还有自己的功能逻辑，在接收到客户端发送的请求之后会进行处理，然后返回给客户端。 准备工作针对以上这两种不同结构的服务器端程序，如何进行测试呢？ 首先，制定一套完善的测试流程，通过该流程，指导测试、开发、产品、OP运维等同学的工作。在这个流程中，有三个关键的环节： 准备会议产品需求评审会在这个评审会上，产品会对提出的需求做出详细的讲解，如果各方涉及的人员比较多，还会确定产品负责人、开发负责人、测试负责人。各负责人的职责如下： 1、产品负责人：是这个项目的总负责人，负责各配合方之间的沟通。 2、开发责任人：包括客户端和服务端，原则上由客户端开发为开发的总负责人。 3、测试负责人：包括客户端和服务端，原则上由客户端测试为测试的总负责人。 开发设计实现讲解会在这个环节，开发会在接到需求后，组织一次设计评审，在这里主要由开发（包括前端和后端）和测试参加，在会上我们会做以下几件事情： 1、由开发详细的讲解功能得到设计思路，包括客户端和服务器端的功能实现 2、后续的计划排期 3、在设计阶段就会增加线上的监控机制 经过这两个评审会之后，测试会给出大概的测试方案，待开发提测后，测试就可以展开后续的测试工作。 准备环境测试服务器我们的开发会将编写完成的代码上传到SVN上，所有测试环境中的代码均来自SVN，这样可以保证被测试的代码与SVN上的代码是一致的，与此同时，我们也要不断的关注开发开发SVN上的改动，以便确认测试的范围和后续的验证。 待上线服务器待服务器端的功能测试完毕后，会将被测试完成的代码部署到待上线服务器上，待上线环境的配置与线上环境完全相同。我们会在这台机器上进行性能相关的测试。 线上服务器待性能测试与功能测试均完毕后，测试会将开发提交的代码进行冻结，开发会给OP运维部门提交上线申请单，然后由OP运维部门将SVN中测试完毕的代码部署到线上。待部署完成后，测试会针对线上环境进行上线验证。 准备监控我们会针对线上提供的服务进行监控，主要是该服务的接口功能正确性。 而服务器运行的稳定性是由OP运维部门负责监控。 当发生线上问题时，测试、产品、开发、OP均会收到包括邮件和短信的通知。 测试先进行问题确认，并及时给出结果反馈。 如果有问题，开发和OP会对问题进行排查，并由测试进行验证。 如果没有问题，会查当时通知时发生了什么，以便确认问题是被自动修复了，还是线上监控脚本出现了问题。 如何开展有了上面的测试流程之后，那么在开发提测后，我们是如何进行测试的呢？针对之前提到的两种不同的产品类型，我们会进行以下两方面的测试： 功能测试针对功能测试，我们有两种不同的测试方法： 基于用户层面的黑盒功能测试1、根据产品提出的需求文档，划分功能，拆分需求点，根据需求点，进行对应测试用例的编写； 2、在这个过程中，基本上忽略了客户端与服务器端或前台页面与后台逻辑是如何进行交互的，完全通过客户端或前端页面的行为进行功能测试。 基于代码逻辑和服务器配置的白盒测试服务器端配置的正确性与合理性1、服务器是否有缓存机制； 2、服务器对连接数是否有限制； 3、服务器的负载均衡是否合理； 4、服务器连接的是否有超时设置； 5、各种网络请求是否使用的是内网IP。 接口测试一般情况下客户端与服务器端的数据交互，均是通过http请求完成的。而服务器端通过web服务器将接收到的请求进行处理。这些处理主要围绕着，对数据的存储、运算、转发等操作，并将操作之后的结果反馈给客户端。所以接口功能的正确与否，会直接反映服务器端功能的正确与否。那么，这对接口我们是如何进行测试的呢？ 1、根据该接口的功能，评估该接口定义的合理性与安全性，例如： 1）客户端发送的网络请求是否需要带有时间戳； 2）客户端发送的网络请求是否需要有固定的参数，比如客户端发送的请求中需要带有版本号等信息； 3）客户端发送的数据是否需要进行加密； 4）服务器端是否有针对请求发送来源的校验； 5）服务器端给客户端返回的数据及状态码是否合理。 2、接口的测试方法 通过编写测试脚本，针对接口进行测试，步骤一般是这样的： 1）根据接口定义的参数，确认传输的参数都有哪些，可能的正常取值和异常取值； 2）通过脚本模拟客户端发送网络请求，对接口进行单独测试，并对服务端返回的结果数据进行自动化校验； 3）通过脚本构造用户的一系列操作，用以验证系统功能的可用性。 3、代码功能逻辑测试 1）对服务器端的代码做静态代码走查，主要关注以下内容： 1.定义的变量是否都被初始化； 2.服务器是否有针对客户端发送的数据进行异常校验； 3.对数据库的操作是否有未释放的情况； 4.服务器端的判断逻辑是否存在功能隐患； 5.连接的数据库环境是否正确； 6.对数据库的操作是否有关闭操作。 2）通过编写单元测试用例进行验证 性能测试制定方案依据需求，明确测试目的 围绕测试目的来制定测试方案，测试方案要明确需要关注的性能参数、测试方法，确定要使用的工具 最后要考虑到整个测试流程中可能存在的影响结果准确性的风险点（网络波动、CDN与SLB配置等非平台因素） 以下是之前进行直播平台性能测试的简单测试方案 选择压力生成工具服务器压力测试工具有很多，也可以自己写适合性能测试场景的压力生成脚本 较为常用的压力测试工具： Jmeter LoadRunner ab st_load 以上测试工具的简单使用方法参照本博客其他文章，《ab下载与上传压测》，《st-load安装与使用》 选择监控工具监控工具也有很多，也可以需求写适合性能测试场景的监控脚本，重点提取需要关注的性能参数 运维监控工具Zabbix等 nmon 以上部分工具的简单使用，参考本博客其他文章，《Nmon使用总结》 测试环境准备1、明确各个模块集群内部的服务器配置：基本的有内存、CPU、磁盘以及网络带宽等等 2、部署测试环境，也可以编写自动化部署脚本（ansible）或者使用容器（docker、kubernetes）快速部署 3、系统流程调试，确保系统底层功能正确无误 测试脚本准备考虑到压力机系统瓶颈，测试过程中可能需要多台压力机同时给出压力，为提高测试效率以及避免操作失误，需准备测试脚本 编写测试脚本可采用脚本语言亦可采用编程语言 shell expect python等 expect脚本在压力测试中的简单使用参考本博客中《Linux下expect脚本语言的简单使用》 执行测试渐增加压，达到一定程度观察系统稳定性，观察资源消耗以及系统响应情况 单台1、在一定的配置与系统环境下，得出模块单台服务器的系统性能 2、若有条件，在以上基础上对程序内部单个接口进行压测 3、定位瓶颈并给出优化意见 集群1、在一定的配置与系统环境下，得出模块集群服务器的系统性能 2、SLB配置（带宽峰值、调度算法、会话保持等）、内网带宽等 3、定位瓶颈并给出优化意见 系统1、在一定的配置与系统环境下，得出平台整体的系统性能 2、入出口SLB配置（带宽峰值、调度算法、会话保持等）、内网带宽与外网带宽、CDN命中率等 3、定位系统瓶颈并给出优化意见 数据库等其他模块1、压测过程中观察系统与数据库交互情况，排查数据库是否可能是系统瓶颈点 2、硬件、操作系统、数据库配置、应用模型、引擎选择等 参考资料http://blog.csdn.net/wlly1/article/details/51357306 https://www.zhihu.com/question/20694803 https://www.cnblogs.com/zhuque/archive/2013/03/15/2961953.html]]></content>
@@ -20,17 +42,6 @@
       </categories>
       <tags>
         <tag>服务端测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[服务端自动化测试]]></title>
-    <url>%2F2017%2F11%2F24%2F%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%2F</url>
-    <content type="text"><![CDATA[背景略 未完待续]]></content>
-      <categories>
-        <category>测试理论</category>
-      </categories>
-      <tags>
-        <tag>自动化测试</tag>
       </tags>
   </entry>
   <entry>
@@ -99,8 +110,8 @@
       </categories>
       <tags>
         <tag>性能测试</tag>
-        <tag>ab</tag>
         <tag>性能工具</tag>
+        <tag>ab</tag>
       </tags>
   </entry>
   <entry>
@@ -146,8 +157,8 @@
       </categories>
       <tags>
         <tag>性能测试</tag>
-        <tag>性能工具</tag>
         <tag>iperf</tag>
+        <tag>性能工具</tag>
       </tags>
   </entry>
   <entry>
@@ -234,25 +245,12 @@
   <entry>
     <title><![CDATA[自动化测试的适用范围]]></title>
     <url>%2F2017%2F07%2F12%2F%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4%2F</url>
-    <content type="text"><![CDATA[什么情况适用自动化测试 什么情况不适用自动化测试 一、不适合自动化测试的情况 • 定制型项目（一次性的）。为客户定制的项目，维护期由客户方承担的，甚至采用的开发语言、运行环境也是客户特别要求的，即公司在这方面的测试积累就少，这样的项目不适合作自动化测试。 • 项目周期很短的项目。项目周期很短，测试周期很短，就不值得花精力去投资自动化测试，好不容易建立起的测试脚本，不能得到重复的利用是不现实的。 • 业务规则复杂的对象。业务规则复杂的对象，有很多的逻辑关系、运算关系，工具就很难测试。 • 美观、声音、易用性测试。人的感观方面的：界面的美观、声音的体验、易用性的测试，也只有人来测试。 • 测试很少运行。测试很少运行，对自动化测试就是一种浪费。自动化测试就是让它不厌其烦的、反反复复的运行才有效率。 • 软件不稳定。软件不稳定，则会由于这些不稳定因素导致自动化测试失败。只有当软件达到相对的稳定，没有界面性严重错误和中断错误才能开始自动化测试。 • 涉及物理交互。工具很难完成与物理设备的交互，比如刷卡的测试等。 二、适合自动化测试的情况 自动化测试之所以能在很多大公司实施起来，就是有它适合自动化测试的特点和高的投资回报率。 • 产品型项目。产品型的项目，每个项目只改进少量的功能，但每个项目必须反反复复的测试那些没有改动过的功能。这部分测试完全可以让自动化测试来承担， 同时可以把新加入的功能的测试也慢慢地加入到自动化测试当中。 • 增量式开发、持续集成项目。由于这种开发模式是频繁的发布新版本进行测试，也就需要频繁的自动化测试，以便把人从中解脱出来测试新的功能。 • 能够自动编译、自动发布的系统。要能够完全实现自动化测试，必须具有能够自动化编译，自动化发布系统进行测试的功能。 当然，不能达到这个要求也可以在手工干预的情况下进行自动化测试。 • 回归测试。回归测试是自动化测试的强项，它能够很好的验证你是否引入了新的缺陷，老的缺陷是否修改过来了。在某种程度上可以把自动化测试工具叫做回归测试工具。 • 多次重复、机械性动作，将烦琐的任务转化为自动化测试。自动化测试最适用于多次重复、机械性动作，这样的测试对它来说从不会失败。比如要向系统输入大量的相似数据来测试压力和报表。 • 需要频繁运行测试。在一个项目中需要频繁的运行测试，测试周期按天算，就能最大限度的利用测试脚本]]></content>
+    <content type="text"><![CDATA[背景无 适用范围不适合自动化测试的情况1、定制型项目（一次性的）。 为客户定制的项目，维护期由客户方承担的，甚至采用的开发语言、运行环境也是客户特别要求的，即公司在这方面的测试积累就少，这样的项目不适合作自动化测试。 2、项目周期很短的项目。 项目周期很短，测试周期很短，就不值得花精力去投资自动化测试，好不容易建立起的测试脚本，不能得到重复的利用是不现实的。 3、业务规则复杂的对象。 业务规则复杂的对象，有很多的逻辑关系、运算关系，工具就很难测试。 4、美观、声音、易用性测试。 人的感观方面的：界面的美观、声音的体验、易用性的测试，也只有人来测试。 5、测试很少运行。 测试很少运行，对自动化测试就是一种浪费。自动化测试就是让它不厌其烦的、反反复复的运行才有效率。 6、软件不稳定。 软件不稳定，则会由于这些不稳定因素导致自动化测试失败。只有当软件达到相对的稳定，没有界面性严重错误和中断错误才能开始自动化测试。 7、涉及物理交互。 工具很难完成与物理设备的交互，比如刷卡的测试等。 适合自动化测试的情况自动化测试之所以能在很多大公司实施起来，就是有它适合自动化测试的特点和高的投资回报率。 1、产品型项目。 产品型的项目，每个项目只改进少量的功能，但每个项目必须反反复复的测试那些没有改动过的功能。这部分测试完全可以让自动化测试来承担， 同时可以把新加入的功能的测试也慢慢地加入到自动化测试当中。 2、增量式开发、持续集成项目。 由于这种开发模式是频繁的发布新版本进行测试，也就需要频繁的自动化测试，以便把人从中解脱出来测试新的功能。 3、能够自动编译、自动发布的系统。 要能够完全实现自动化测试，必须具有能够自动化编译，自动化发布系统进行测试的功能。 当然，不能达到这个要求也可以在手工干预的情况下进行自动化测试。 4、回归测试。 回归测试是自动化测试的强项，它能够很好的验证你是否引入了新的缺陷，老的缺陷是否修改过来了。在某种程度上可以把自动化测试工具叫做回归测试工具。 5、多次重复、机械性动作，将烦琐的任务转化为自动化测试。 自动化测试最适用于多次重复、机械性动作，这样的测试对它来说从不会失败。比如要向系统输入大量的相似数据来测试压力和报表。 6、需要频繁运行测试。 在一个项目中需要频繁的运行测试，测试周期按天算，就能最大限度的利用测试脚本 总结考虑产品是否适合做自动化测试，比较普遍的共识是从三个方面进行权衡： 1、软件需求变动不频繁 2、项目周期较长 3、自动化测试脚本可重复使用]]></content>
       <categories>
         <category>测试理论</category>
       </categories>
       <tags>
         <tag>自动化测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Selenium初学总结]]></title>
-    <url>%2F2017%2F07%2F12%2FSelenium%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 selenium集成java的一些常用方法： 1、页面元素定位方法：ID: driver.findElement(By.id(“ID值”));Name: driver.findElement(By.name(“name值”));链接的全部文字 : driver.findElement(By.linkText(“链接的全部文字内容”));部分链接文字: driver.findElement(By.partialLinkText(“链接的部分文字内容”));Xpath : driver.findElement(By.xpath(“Xpath定位表达式”));CSS: driver.findElement(By.cssSelector(“CSS定位表达式”));Class: driver.findElement(By.className(“页面元素的Class属性值”));标签名称:driver.findElement(By.tagName (“页面元素的HTML标签名称”)); 2、打开浏览器：打开firefox ： WebDriver driver= new FirefoxDriver();打开ie ：WebDriver driver =new InternetExplorerDriver();打开chrome： WebDriver driver = new ChromeDriver();打开指定路径浏览器 ： System.setProperty(“webdriver.firefox.bin”,”D:\ProgramFiles\MozillaFirefox\firefox.exe”); 3、关闭浏览器：driver.close();driver.quit(); 4、返回当前页面Title URLdriver.getTitle();driver.getCurrentUrl(); 5、返回上一个访问的网页driver.navigate().to(url1);driver.navigate().to(url2);driver.navigate().back();6、刷新当前网页：driver.navigate().refresh();7、输入框中输入指定内容:driver.sendKeys();8、输入框中清除文字内容：driver.clear();9、查看页面元素属性：driver.getAttribute(“value”);10、点击按钮：driver.click();11、操作frame：Driver.switchTo.frame()12、单选下拉列表：Select dropList = new Select(element);Select.getFrestSelectOption().getText();Select.selectByIndex();Select.selectByValue();Select.selectByVisibleText();例子： 单选框：List radioList = driver.findElements();radio. getAttribute(“Value”).equals(“”);radio.isSelectd()radio.click(); 复选框：List checkList = driver.findElements();check.getAttribute(“Value”).equals(“”);check.isSelectd()check.click();13、Alert弹窗：Alert alert = driver.switchTo().alert(); alert.accept();14、执行JavaScript脚本：声明一个JavaScript 执行器对象 JavaScriptExecutor js = (JavaScriptExecutor )driver; js.executeScript(“loginSubmit();”);]]></content>
-      <categories>
-        <category>测试工具</category>
-      </categories>
-      <tags>
-        <tag>自动化测试</tag>
-        <tag>java</tag>
-        <tag>Selenium</tag>
       </tags>
   </entry>
   <entry>
@@ -264,6 +262,19 @@
       </categories>
       <tags>
         <tag>RabbitMQ</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Selenium初学总结]]></title>
+    <url>%2F2017%2F07%2F12%2FSelenium%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[背景工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 Selenium的简单介绍Selenium是什么Selenium是一款用于Web应用程序测试的工具，框架底层使用JavaScript模拟用户对浏览器进行操作。 selenium不是单纯的一个工具，是一组工具的集合，而且也有版本之分（目前3.0） selenium IDEselenium IDE 是嵌入到Firefox浏览器中的一个插件，实现简单的浏览器操作的录制与回放功能。 优点： 1、快速的创建bug重现脚本。 在测试过程中，发现了bug之后可以通过IDE将重现的步骤录制下来，可以帮助开发人员更容易的重现bug。 2、IDE录制的脚本可以转换成多种语言，有助于快速的开发脚本。 selenium GridSelenium Grid是一种自动化测试辅助工具，Grid通过利用现有的计算机基础设施，能加快Web-app的功能测试。利用Grid，可以很方便地同时在多台机器上和异构环境中并行运行多个测试事例。 特点： 1、并行执行 2、通过一个主机统一控制用例在不同环境、不同浏览器下运行。 3、灵活添加变动测试机 selenium RCselenium RC是selenium的核心工具，selenium RC支持多种不同的语言编写自动化测试脚本，通过selenium RC的服务器作为代理服务器去访问应用从而达到测试的目的。 selenium RC分为Client Libraries和selenium Server两部分 Client Libraries: Client Libraries库主要用于编写测试脚本，是控制selenium Server的库。 Selenium Server: 负责控制浏览器行为，Selenium Server主要包括3个部分：Launcher、Http Proxy、Core。 Selenium Core：被Selenium Server嵌入到浏览器页面中的。Selenium Core其实就是一堆JS函数的集合，通过这些JS函数，才可以实现用程序对浏览器进行操作。 Launcher：用于启动浏览器，把selnium Core加载到浏览器页面当中，并把浏览器的代理设置为Selenium Server 的Http Proxy。 selenium 2.0selenium 2.0与selenium 1.0的关系，简单用公式表示为: selenium 2.0 = selenium 1.0 + WebDriver 在selenium 2.0中主推WebDriver，WebDriver是selenium RC的替代品，因为selenium为了向下兼容，所以selenium RC并没有被彻底抛弃，如果使用selenium开发一个新自动化测试项目，推荐使用WebDriver 。 selenium RC 与webdriver主要区别： selenium RC: 在浏览器中运行JavaScript应用，使用浏览器内置的JavaScript翻译器来翻译和执行selenese命令（selenese是selenium命令集合）。 WebDriver: 1、通过原生浏览器支持或者浏览器扩展直接控制浏览器 2、WebDriver针对各个浏览器而开发，取代了嵌入到被测Web应用中的JavaScript 3、与浏览器的紧密集成支持创建更高级的测试 4、避免了JavaScript安全模型导致的限制 5、利用操作系统级的调用模拟用户输入 Selenium的优势在哪对B/S应用支持很好 支持多平台/多浏览器 支持多语言开发(java、python、ruby、php、C#、JavaScript等) 支持分布式测试用例执行 学习内容丰富，增加测试工程师的技术竞争力 可选语言丰富 从语言易学性来讲，首选python和ruby 从语言应用广度来讲，首选java、C#和php等 从语言相关测试技术成度来讲：ruby、python和java 考虑整个技术团队主流用什么语言，然后选择相应的语言。 selenium集成java的一些常用方法1、页面元素定位方法: ID: driver.findElement(By.id(“ID值”)); Name: driver.findElement(By.name(“name值”)); 链接的全部文字: driver.findElement(By.linkText(“链接的全部文字内容”)); 部分链接文字: driver.findElement(By.partialLinkText(“链接的部分文字内容”)); Xpath: driver.findElement(By.xpath(“Xpath定位表达式”)); CSS: driver.findElement(By.cssSelector(“CSS定位表达式”)); Class: driver.findElement(By.className(“页面元素的Class属性值”)); 标签名称: driver.findElement(By.tagName (“页面元素的HTML标签名称”)); 2、打开浏览器: 打开firefox: WebDriver driver= new FirefoxDriver(); 打开ie: WebDriver driver =new InternetExplorerDriver(); 打开chrome: WebDriver driver = new ChromeDriver(); 打开指定路径浏览器: System.setProperty(&quot;webdriver.firefox.bin&quot;,&quot;D:\\ProgramFiles\\MozillaFirefox\\firefox.exe&quot;); 3、关闭浏览器: driver.close(); driver.quit(); 4、返回当前页面Title URL: driver.getTitle(); driver.getCurrentUrl(); 5、返回上一个访问的网页: driver.navigate().to(url1); driver.navigate().to(url2); driver.navigate().back(); 6、刷新当前网页: driver.navigate().refresh(); 7、输入框中输入指定内容: driver.sendKeys(); 8、输入框中清除文字内容: driver.clear(); 9、查看页面元素属性: driver.getAttribute(“value”); 10、点击按钮: driver.click(); 11、操作frame: Driver.switchTo.frame() 12、单选下拉列表: Select dropList = new Select(element); Select.getFrestSelectOption().getText(); Select.selectByIndex(); Select.selectByValue(); Select.selectByVisibleText(); 例子: 单选框: List&lt;WebElement&gt; radioList = driver.findElements(); radio. getAttribute(&quot;Value&quot;).equals(&quot;&quot;); radio.isSelectd() radio.click(); 复选框: List&lt;WebElement&gt; checkList = driver.findElements(); check.getAttribute(&quot;Value&quot;).equals(&quot;&quot;); check.isSelectd() check.click(); 13、Alert弹窗: Alert alert = driver.switchTo().alert(); alert.accept(); 14、执行JavaScript脚本： 声明一个JavaScript 执行器对象 JavaScriptExecutor js = (JavaScriptExecutor )driver; js.executeScript(“loginSubmit();”); 总结无]]></content>
+      <categories>
+        <category>测试工具</category>
+      </categories>
+      <tags>
+        <tag>自动化测试</tag>
+        <tag>java</tag>
+        <tag>Selenium</tag>
       </tags>
   </entry>
   <entry>
