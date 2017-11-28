@@ -111,19 +111,21 @@
 
 
 
-<meta name="description" content="背景略 http协议基础略 主要的HTTP方法 未完待续参考资料http://www.runoob.com/http/http-tutorial.html https://www.toutiao.com/a6491506976181191181/?tt_from=mobile_qq&amp;amp;utm_campaign=client_share&amp;amp;app=news_article&amp;amp;utm">
+<meta name="description" content="背景做性能测试，压接口的时候，经常用到http协议的相关知识，特在此做个简单总结 http协议基础http通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。 HTTP使用统一资源标识符（Uniform Resource Identifiers, URI）来传输数据和建立连接。 一旦建立连接后，数据消息就通过类似Internet邮件所使用的格式[RFC5322]和多用途Internet邮件">
 <meta name="keywords" content="HTTP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="对HTTP协议认识的简要总结">
 <meta property="og:url" content="https://hardelm.github.io/2017/11/27/对HTTP协议认识的简要总结/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
-<meta property="og:description" content="背景略 http协议基础略 主要的HTTP方法 未完待续参考资料http://www.runoob.com/http/http-tutorial.html https://www.toutiao.com/a6491506976181191181/?tt_from=mobile_qq&amp;amp;utm_campaign=client_share&amp;amp;app=news_article&amp;amp;utm">
+<meta property="og:description" content="背景做性能测试，压接口的时候，经常用到http协议的相关知识，特在此做个简单总结 http协议基础http通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。 HTTP使用统一资源标识符（Uniform Resource Identifiers, URI）来传输数据和建立连接。 一旦建立连接后，数据消息就通过类似Internet邮件所使用的格式[RFC5322]和多用途Internet邮件">
+<meta property="og:image" content="https://i.imgur.com/jaOFqGe.png">
+<meta property="og:image" content="https://i.imgur.com/cDmqMn4.png">
 <meta property="og:image" content="https://i.imgur.com/rQ9kA78.jpg">
-<meta property="og:updated_time" content="2017-11-28T02:09:33.027Z">
+<meta property="og:updated_time" content="2017-11-28T03:02:07.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="对HTTP协议认识的简要总结">
-<meta name="twitter:description" content="背景略 http协议基础略 主要的HTTP方法 未完待续参考资料http://www.runoob.com/http/http-tutorial.html https://www.toutiao.com/a6491506976181191181/?tt_from=mobile_qq&amp;amp;utm_campaign=client_share&amp;amp;app=news_article&amp;amp;utm">
-<meta name="twitter:image" content="https://i.imgur.com/rQ9kA78.jpg">
+<meta name="twitter:description" content="背景做性能测试，压接口的时候，经常用到http协议的相关知识，特在此做个简单总结 http协议基础http通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。 HTTP使用统一资源标识符（Uniform Resource Identifiers, URI）来传输数据和建立连接。 一旦建立连接后，数据消息就通过类似Internet邮件所使用的格式[RFC5322]和多用途Internet邮件">
+<meta name="twitter:image" content="https://i.imgur.com/jaOFqGe.png">
 
 
 
@@ -413,7 +415,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  48
+                  220
                 </span>
               
 
@@ -435,9 +437,23 @@
       
 
       
-        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>略</p>
-<h1 id="http协议基础"><a href="#http协议基础" class="headerlink" title="http协议基础"></a>http协议基础</h1><p>略</p>
-<h1 id="主要的HTTP方法"><a href="#主要的HTTP方法" class="headerlink" title="主要的HTTP方法"></a>主要的HTTP方法</h1><p><img src="https://i.imgur.com/rQ9kA78.jpg" alt=""></p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>做性能测试，压接口的时候，经常用到http协议的相关知识，特在此做个简单总结</p>
+<h1 id="http协议基础"><a href="#http协议基础" class="headerlink" title="http协议基础"></a>http协议基础</h1><p>http通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。</p>
+<p>HTTP使用统一资源标识符（Uniform Resource Identifiers, URI）来传输数据和建立连接。</p>
+<p>一旦建立连接后，数据消息就通过类似Internet邮件所使用的格式[RFC5322]和多用途Internet邮件扩展（MIME）[RFC2045]来传送。</p>
+<h2 id="消息结构"><a href="#消息结构" class="headerlink" title="消息结构"></a>消息结构</h2><p>客户端请求消息结构：</p>
+<pre><code>请求行(requst line)
+请求头部(header)
+空行
+请求数据
+</code></pre><p><img src="https://i.imgur.com/jaOFqGe.png" alt=""></p>
+<p>服务端响应消息结构：</p>
+<pre><code>状态行
+消息报头
+空行
+响应正文
+</code></pre><p><img src="https://i.imgur.com/cDmqMn4.png" alt=""></p>
+<h2 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h2><p><img src="https://i.imgur.com/rQ9kA78.jpg" alt=""></p>
 <h1 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h1><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://www.runoob.com/http/http-tutorial.html" target="_blank" rel="external">http://www.runoob.com/http/http-tutorial.html</a></p>
 <p><a href="https://www.toutiao.com/a6491506976181191181/?tt_from=mobile_qq&amp;utm_campaign=client_share&amp;app=news_article&amp;utm_source=mobile_qq&amp;iid=18059487869&amp;utm_medium=toutiao_android" target="_blank" rel="external">https://www.toutiao.com/a6491506976181191181/?tt_from=mobile_qq&amp;utm_campaign=client_share&amp;app=news_article&amp;utm_source=mobile_qq&amp;iid=18059487869&amp;utm_medium=toutiao_android</a></p>
 
@@ -739,7 +755,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http协议基础"><span class="nav-number">2.</span> <span class="nav-text">http协议基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主要的HTTP方法"><span class="nav-number">3.</span> <span class="nav-text">主要的HTTP方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未完待续"><span class="nav-number">4.</span> <span class="nav-text">未完待续</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#http协议基础"><span class="nav-number">2.</span> <span class="nav-text">http协议基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#消息结构"><span class="nav-number">2.1.</span> <span class="nav-text">消息结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP请求方法"><span class="nav-number">2.2.</span> <span class="nav-text">HTTP请求方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未完待续"><span class="nav-number">3.</span> <span class="nav-text">未完待续</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
@@ -781,7 +797,7 @@
 </span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">全站24.6k字</span>
+  <span class="post-count">全站24.8k字</span>
 </div>
 
 
@@ -818,7 +834,7 @@
   
   
   <div class="powered-by"></div>
-  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站24.6k字</span>
+  <span class="post-count"><i class="fa fa-pencil-square-o"></i> 全站24.8k字</span>
 </div>
 
 
