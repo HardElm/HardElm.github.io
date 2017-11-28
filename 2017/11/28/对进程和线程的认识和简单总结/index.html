@@ -22,8 +22,8 @@
 
 <script>
     (function(){
-        if('1'){
-            if (prompt('请输入文章密码') !== '1'){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
                 alert('密码错误！');
                 history.back();
             }
@@ -93,7 +93,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="java,ffmpeg," />
+  <meta name="keywords" content="进程,线程," />
 
 
 
@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="参考了一些资料，学习过程中尝试写一个转码工具，由于一些个人能力和其他的一些原因暂时搁置，特此记录一些代码，留作参考。 一、GUI： package cn.com.huangyl.tool;  import java.awt.BorderLayout; import java.awt.GridLayout; import java.awt.event.ActionEvent; import java">
-<meta name="keywords" content="java,ffmpeg">
+<meta name="description" content="背景略 进程什么是进程1、进程是系统管理和分配资源的基本单位，是一个动态概念 2、每个进程都有自己的地址空间，进程地址空间的大小和处理器的位数有关，16位长处理机的进程空间大小为216，32位处理机的进程空间大小为232 3、进程至少有5种基本状态，分别是：     新生     运行     等待（阻塞）     就绪     结束 进程间的8种通信方式1、无名管道（pipe）：半双工的通信方式">
+<meta name="keywords" content="进程,线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于ffmpeg进行转码工具的编写（未完成）">
-<meta property="og:url" content="https://hardelm.github.io/2017/07/12/基于ffmpeg进行转码工具的编写（未完成）/index.html">
+<meta property="og:title" content="对进程和线程的认识和简单总结">
+<meta property="og:url" content="https://hardelm.github.io/2017/11/28/对进程和线程的认识和简单总结/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
-<meta property="og:description" content="参考了一些资料，学习过程中尝试写一个转码工具，由于一些个人能力和其他的一些原因暂时搁置，特此记录一些代码，留作参考。 一、GUI： package cn.com.huangyl.tool;  import java.awt.BorderLayout; import java.awt.GridLayout; import java.awt.event.ActionEvent; import java">
-<meta property="og:updated_time" content="2017-11-20T05:30:01.720Z">
+<meta property="og:description" content="背景略 进程什么是进程1、进程是系统管理和分配资源的基本单位，是一个动态概念 2、每个进程都有自己的地址空间，进程地址空间的大小和处理器的位数有关，16位长处理机的进程空间大小为216，32位处理机的进程空间大小为232 3、进程至少有5种基本状态，分别是：     新生     运行     等待（阻塞）     就绪     结束 进程间的8种通信方式1、无名管道（pipe）：半双工的通信方式">
+<meta property="og:updated_time" content="2017-11-28T10:16:21.436Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于ffmpeg进行转码工具的编写（未完成）">
-<meta name="twitter:description" content="参考了一些资料，学习过程中尝试写一个转码工具，由于一些个人能力和其他的一些原因暂时搁置，特此记录一些代码，留作参考。 一、GUI： package cn.com.huangyl.tool;  import java.awt.BorderLayout; import java.awt.GridLayout; import java.awt.event.ActionEvent; import java">
+<meta name="twitter:title" content="对进程和线程的认识和简单总结">
+<meta name="twitter:description" content="背景略 进程什么是进程1、进程是系统管理和分配资源的基本单位，是一个动态概念 2、每个进程都有自己的地址空间，进程地址空间的大小和处理器的位数有关，16位长处理机的进程空间大小为216，32位处理机的进程空间大小为232 3、进程至少有5种基本状态，分别是：     新生     运行     等待（阻塞）     就绪     结束 进程间的8种通信方式1、无名管道（pipe）：半双工的通信方式">
 
 
 
@@ -149,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="https://hardelm.github.io/2017/07/12/基于ffmpeg进行转码工具的编写（未完成）/"/>
+  <link rel="canonical" href="https://hardelm.github.io/2017/11/28/对进程和线程的认识和简单总结/"/>
 
 
 
 
 
-  <title>基于ffmpeg进行转码工具的编写（未完成） | HardElm's blog</title>
+  <title>对进程和线程的认识和简单总结 | HardElm's blog</title>
   
 
 
@@ -322,7 +322,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://hardelm.github.io/2017/07/12/基于ffmpeg进行转码工具的编写（未完成）/">
+    <link itemprop="mainEntityOfPage" href="https://hardelm.github.io/2017/11/28/对进程和线程的认识和简单总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HardElm">
@@ -339,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">基于ffmpeg进行转码工具的编写（未完成）</h1>
+          <h1 class="post-title" itemprop="name headline">对进程和线程的认识和简单总结</h1>
         
 
         <div class="post-meta">
@@ -351,8 +351,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-12T09:37:30+08:00">
-                2017-07-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T17:00:00+08:00">
+                2017-11-28
               </time>
             
 
@@ -374,8 +374,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程语言/" itemprop="url" rel="index">
-                    <span itemprop="name">编程语言</span>
+                  <a href="/categories/杂/" itemprop="url" rel="index">
+                    <span itemprop="name">杂</span>
                   </a>
                 </span>
 
@@ -411,7 +411,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  1,818
+                  892
                 </span>
               
 
@@ -433,405 +433,33 @@
       
 
       
-        <p>参考了一些资料，学习过程中尝试写一个转码工具，由于一些个人能力和其他的一些原因暂时搁置，特此记录一些代码，留作参考。</p>
-<p>一、GUI：</p>
-<pre><code>package cn.com.huangyl.tool;
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>略</p>
+<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="什么是进程"><a href="#什么是进程" class="headerlink" title="什么是进程"></a>什么是进程</h2><pre><code>1、进程是系统管理和分配资源的基本单位，是一个动态概念
+2、每个进程都有自己的地址空间，进程地址空间的大小和处理器的位数有关，16位长处理机的进程空间大小为216，32位处理机的进程空间大小为232
+3、进程至少有5种基本状态，分别是：
+    新生
+    运行
+    等待（阻塞）
+    就绪
+    结束
+</code></pre><h2 id="进程间的8种通信方式"><a href="#进程间的8种通信方式" class="headerlink" title="进程间的8种通信方式"></a>进程间的8种通信方式</h2><p>1、无名管道（pipe）：半双工的通信方式，数据单向流动。只能在具有亲缘关系进程间使用（通常指父子进程关系）</p>
+<p>2、高级管道（popen）：把另一个程序当做一个新的进程在当前程序进程中启动，算是当前程序的子进程<br>3、有名管道（named pipe）：允许无亲缘关系进程间通信</p>
+<p>4、信号（sinal）：信号是一种比较复杂的通信方式，用于通知接收进程某个时间已经发生</p>
+<p>5、信号量(semophore)：信号量是一个计数器，可以控制多个进程对共享资源的访问。常常作为一种死锁机制，防止某个进程正在访问共享资源时其他进程也访问该资源。主要作为进程间以及同一进程内不同线程之间的同步手段。</p>
+<p>6、消息队列（message queue）：消息队列是由消息的链表，存放在内核中并由消息队列标识符标识。消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点</p>
+<p>7、共享内存（shared memory）：共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的IPC方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号量配合使用，来实现进程间的同步和通信</p>
+<p>8、套接字（socket）：套接字也是一种进程间通信机制，区别于其他方式，它可用于不同机器间的进程通信。通信过程如下：</p>
+<pre><code>1）命名socket
+2）绑定机器本地地址
+3）监听
+4）连接服务器
+5）互相发送接受数据
+6）断开连接
+</code></pre><h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><h2 id="什么是线程"><a href="#什么是线程" class="headerlink" title="什么是线程"></a>什么是线程</h2><p>1、线程是操作系统中能后进行运算调度的最小单位<br>2、线程被包含在进程之中，是进程中的实际运作单位<br>3、一条线程指的是进程中一个单一顺序的控制流<br>4、一个进程可以并发多个线程，每条线程并行执行不同的任务<br>5、同一进程中的多条线程会共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等<br>6、但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）<br>7、线程有四种基本状态，分别是：<br>    产生（spawn）<br>    中断（block）<br>    非中断（unblock）<br>    结束（finish）</p>
+<h2 id="不同平台的线程"><a href="#不同平台的线程" class="headerlink" title="不同平台的线程"></a>不同平台的线程</h2><p>待补充</p>
+<h2 id="跨平台的线程"><a href="#跨平台的线程" class="headerlink" title="跨平台的线程"></a>跨平台的线程</h2><p>待补充</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://zh.wikipedia.org/wiki/%E8%A1%8C%E7%A8%8B" target="_blank" rel="external">https://zh.wikipedia.org/wiki/%E8%A1%8C%E7%A8%8B</a><br><a href="https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B" title="线程" target="_blank" rel="external">https://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8B</a><br><a href="http://www.xitongzhijia.net/xtjc/20171024/109869.html" target="_blank" rel="external">http://www.xitongzhijia.net/xtjc/20171024/109869.html</a></p>
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
-public class FFmpegGUI {
-    private JFrame frame = new JFrame(&quot;FFmpegGUI&quot;);
-    private JTabbedPane tabbedPane = new JTabbedPane();
-
-    private JPanel panel1 = new JPanel(new BorderLayout());
-    private JPanel panelx = new JPanel(new BorderLayout());
-    private JPanel panely = new JPanel(new BorderLayout());
-    private JPanel panel2 = new JPanel(new BorderLayout());
-    private JPanel panel3 = new JPanel(new GridLayout(2, 1));
-    private JPanel panel4 = new JPanel(new BorderLayout());
-    private JPanel panel5 = new JPanel(new BorderLayout());
-    private JPanel panel6 = new JPanel(new BorderLayout());
-    private JPanel panel7 = new JPanel(new BorderLayout());
-    private JPanel panel8 = new JPanel(new BorderLayout());
-    private JPanel panel9 = new JPanel(new BorderLayout());
-    private JPanel panel10 = new JPanel(new BorderLayout());
-    private JPanel panel11 = new JPanel(new BorderLayout());
-    private JPanel panel12 = new JPanel(new GridLayout(6,1));
-    private JPanel panel13 = new JPanel(new GridLayout(6,1));
-    private JPanel panel14 = new JPanel(new BorderLayout());
-    private JPanel panel15 = new JPanel(new BorderLayout());
-    private JPanel panel16 = new JPanel(new BorderLayout());
-    private JPanel panel17 = new JPanel(new BorderLayout());
-    private JPanel panel18 = new JPanel(new GridLayout(1,2));
-    private JPanel panel19 = new JPanel(new BorderLayout());
-    private JPanel panel20 = new JPanel(new BorderLayout());
-
-    private JButton Select = new JButton(&quot;选择&quot;);
-    private JButton StartTranscode = new JButton(&quot;开始&quot;);
-    private JButton Reset = new JButton(&quot;重置&quot;);
-    //private JTextField display = new JTextField(&quot;请点击查询按钮&quot;);
-    private JTextField FilePath = new JTextField(&quot;请选择文件路径&quot;);
-    private JTextField VideoBitrate = new JTextField();
-    private JTextField resolution = new JTextField();
-    private JTextField AudioBitrate = new JTextField();
-    private JTextField AudioSampleRate = new JTextField();
-    private JTextField CreateFileName = new JTextField();
-    private JTextField CreateFileFormat = new JTextField();
-
-    private JLabel label1 = new JLabel(&quot;请选择文件&quot;);
-    private JLabel label2 = new JLabel(&quot;模板转码&quot;);
-    private JLabel label3 = new JLabel(&quot;请选择模板：&quot;);
-    private JLabel label4 = new JLabel(&quot;自由转码&quot;);
-    private JLabel label5 = new JLabel(&quot;视频码率：&quot;);
-    private JLabel label6 = new JLabel(&quot;分辨率：&quot;);
-    private JLabel label7 = new JLabel(&quot;音频码率：&quot;);
-    private JLabel label8 = new JLabel(&quot;音频采样率：&quot;);
-    private JLabel label9 = new JLabel(&quot;请选择转码方式：&quot;);
-    private JLabel label10 = new JLabel(&quot;留做进度条：&quot;);
-    private JLabel label11 = new JLabel(&quot;生成文件名称：&quot;);
-    private JLabel label12 = new JLabel(&quot;生成文件格式：&quot;);
-
-    private JComboBox Template = new JComboBox();
-    private JComboBox TranscodeWay = new JComboBox();
-
-    private JTextArea Log = new JTextArea(&quot;&quot;);
-    private JScrollPane scrollPane1 = new JScrollPane();
-    private JFileChooser stf = new JFileChooser(new File(&quot;d://&quot;));
-
-    FFmpegGUI(){
-
-        frame.setLayout(null);
-        frame.setBounds(400, 200, 700, 420);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(3);
-        tabbedPane.addTab(&quot;ffmpeg&quot;, this.panel1);
-        tabbedPane.addTab(&quot;ffplay&quot;, this.panelx);
-        tabbedPane.addTab(&quot;ffprobe&quot;, this.panely);
-        tabbedPane.setBounds(10, 10, 660, 360);
-        frame.add(this.tabbedPane);
-
-        panel1.add(&quot;West&quot;,panel2);
-        panel1.add(&quot;Center&quot;,panel19);
-        panel19.add(&quot;Center&quot;,Log);
-        panel19.add(&quot;South&quot;,label10);
-
-        panel2.add(&quot;North&quot;,panel3);
-        panel2.add(&quot;Center&quot;,panel8);
-
-        panel3.add(panel4);
-        panel3.add(panel5);
-
-        panel4.add(&quot;North&quot;,label1);
-        panel4.add(&quot;South&quot;,panel6);
-        panel5.add(&quot;North&quot;,label2);
-        panel5.add(&quot;South&quot;,panel7);
-
-        panel6.add(&quot;Center&quot;,FilePath);
-        panel6.add(&quot;East&quot;,Select);
-        Template.setModel(new DefaultComboBoxModel(new String[] { &quot;1080p_1920x1080_2000&quot;, &quot;SHD_1280x720_1200&quot;, &quot;HD_960x540_800&quot;, &quot;SD_640x360_500&quot;, &quot;LD_360x240_300&quot;,&quot;...&quot; }));
-        Template.setEditable(false);
-        panel7.add(&quot;Center&quot;,Template);
-        panel7.add(&quot;West&quot;,label3);
-
-        panel8.add(&quot;North&quot;,label4);
-        panel8.add(&quot;Center&quot;,panel9);
-
-        panel9.add(&quot;North&quot;,panel10);
-        panel9.add(&quot;Center&quot;,panel11);
-
-        panel10.add(&quot;West&quot;,panel12);
-        panel10.add(&quot;Center&quot;,panel13);
-
-        panel12.add(label5);
-        panel12.add(label6);
-        panel12.add(label7);
-        panel12.add(label8);
-        panel12.add(label11);
-        panel12.add(label12);
-
-        panel13.add(VideoBitrate);
-        panel13.add(resolution);
-        panel13.add(AudioBitrate);
-        panel13.add(AudioSampleRate);
-        panel13.add(CreateFileName);
-        panel13.add(CreateFileFormat);
-
-        panel11.add(&quot;North&quot;,panel14);
-        panel11.add(&quot;Center&quot;,panel15);
-
-        TranscodeWay.setModel(new DefaultComboBoxModel(new String[] { &quot;模板转码&quot;, &quot;自由转码&quot; }));
-        TranscodeWay.setEditable(false);
-        panel14.add(&quot;West&quot;,label9);
-        panel14.add(&quot;Center&quot;,TranscodeWay);
-
-        panel15.add(&quot;Center&quot;,panel16);
-        panel15.add(&quot;South&quot;,panel17);
-
-        panel17.add(&quot;East&quot;,panel18);
-
-        panel18.add(Reset);
-        panel18.add(StartTranscode);
-
-        //文件选择
-        this.Select.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent event){
-                FFmpegGUI.this.stf.setFileSelectionMode(0);
-                int state = FFmpegGUI.this.stf.showOpenDialog(null);
-                if(state == 1){
-                    return;
-                    }
-                File f = FFmpegGUI.this.stf.getSelectedFile();
-                FFmpegGUI.this.FilePath.setText(f.getAbsolutePath());
-                }
-            });
-        this.StartTranscode.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-            String transcodeway = FFmpegGUI.this.TranscodeWay.getSelectedItem().toString();
-            if (&quot;模板转码&quot;.equals(transcodeway)) {
-                String sourcefile = FFmpegGUI.this.FilePath.getText();
-                String Template = FFmpegGUI.this.TranscodeWay.getSelectedItem().toString();
-                FFmpegGUI.this.Log.setText(sourcefile);
-                Transcode t = new Transcode();
-            }
-            if (&quot;自由转码&quot;.equals(transcodeway)){
-                String sourcefile = FFmpegGUI.this.FilePath.getText();
-                String VideoBitrate = FFmpegGUI.this.VideoBitrate.getText();
-                String resolution = FFmpegGUI.this.resolution.getText();
-                String AudioBitrate = FFmpegGUI.this.AudioBitrate.getText();
-                String AudioSampleRate = FFmpegGUI.this.AudioSampleRate.getText();
-                String CreateFileName = FFmpegGUI.this.CreateFileName.getText();
-                String CreateFileFormat = FFmpegGUI.this.CreateFileFormat.getText();
-                Transcode t = new Transcode();
-                try {
-                    t.processTranscodefree(sourcefile,VideoBitrate,resolution,AudioBitrate,AudioSampleRate,CreateFileName,CreateFileFormat);
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-            }
-        });
-        }
-
-    public static void main(String args[]){
-        new FFmpegGUI();
-    }
-}
-</code></pre><p>二、Transcode</p>
-<pre><code>package cn.com.huangyl.tool;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
-public class Transcode {
-    /*
-    private static int checkContentType(){
-        String type = sourcefile.substring(PATH.lastIndexOf(&quot;.&quot;) + 1, sourcefile.length())  
-                .toLowerCase();  
-        //ffmpeg能解析的格式:(asx，asf，mpg，wmv，3gp，mp4，mov，avi，flv等)
-        if (type.equals(&quot;avi&quot;)) {
-            return 0;
-        } else if (type.equals(&quot;mpg&quot;)) {
-            return 0;
-        } else if (type.equals(&quot;wmv&quot;)) {
-            return 0;
-        } else if (type.equals(&quot;3gp&quot;)) {
-            return 0;
-        } else if (type.equals(&quot;mov&quot;)) {
-            return 0;
-        } else if (type.equals(&quot;mp4&quot;)) {
-            return 0;
-        } else if (type.equals(&quot;asf&quot;)) {
-            return 0;
-        } else if (type.equals(&quot;asx&quot;)) {
-            return 0;
-        } else if (type.equals(&quot;flv&quot;)) {
-            return 0;
-        }
-        //对ffmpeg无法解析的文件格式(wmv9，rm，rmvb等),可以先用别的工具（mencoder）转换为avi(ffmpeg能解析的)格式.
-        else if (type.equals(&quot;wmv9&quot;)) {  
-            return 1;  
-        } else if (type.equals(&quot;rm&quot;)) {  
-            return 1;
-        } else if (type.equals(&quot;rmvb&quot;)) {  
-            return 1;  
-        }  
-        return 9;  
-    }
-
-    // 对ffmpeg无法解析的文件格式(wmv9，rm，rmvb等), 可以先用别的工具（mencoder）转换为avi(ffmpeg能解析的)格式.  
-    private static String processAVI(int type) {  
-        List&lt;String&gt; commend = new ArrayList&lt;String&gt;();  
-        commend.add(&quot;c:\\ffmpeg\\mencoder&quot;);  
-        commend.add(sourcefile);  
-        commend.add(&quot;-oac&quot;);  
-        commend.add(&quot;lavc&quot;);  
-        commend.add(&quot;-lavcopts&quot;);  
-        commend.add(&quot;acodec=mp3:abitrate=64&quot;);  
-        commend.add(&quot;-ovc&quot;);  
-        commend.add(&quot;xvid&quot;);  
-        commend.add(&quot;-xvidencopts&quot;);  
-        commend.add(&quot;bitrate=600&quot;);  
-        commend.add(&quot;-of&quot;);  
-        commend.add(&quot;avi&quot;);  
-        commend.add(&quot;-o&quot;);  
-        commend.add(&quot;c:\\ffmpeg\\output\\a.avi&quot;);  
-        try {  
-            ProcessBuilder builder = new ProcessBuilder();  
-            builder.command(commend);  
-            builder.start();  
-            return &quot;c:\\ffmpeg\\output\\a.avi&quot;;  
-        } catch (Exception e) {  
-            e.printStackTrace();  
-            return null;  
-        }  
-    }
-
-    public void processTranscodetemp(String Template,String sourcefile) throws Exception {
-        String type = sourcefile.substring(sourcefile.lastIndexOf(&quot;.&quot;) + 1, sourcefile.length())  
-                .toLowerCase();
-        String F1080p_1920x1080_2000 = &quot;ffmpeg -i &quot;+sourcefile+&quot;-vcodec h264 -b:v 2000k -r 25 -s 1920x1080 -pix_fmt yuv420p -g 33 -acodec aac -b:a 128k -ar 44100 -ac 2 -strict -2 -f &quot;+ type +&quot; -y &quot;+ &quot;1080P_2M.&quot;+type;
-        String SHD_1280x720_1200 = &quot;ffmpeg -i &quot;+sourcefile+&quot;-vcodec h264 -b:v 1200k -r 25 -s 1280x720 -pix_fmt yuv420p -g 33 -acodec aac -b:a 128k -ar 44100 -ac 2 -strict -2 -f &quot;+ type +&quot; -y &quot;+ &quot;720P_1200.&quot;+type;
-        String HD_960x540_800 = &quot;ffmpeg -i &quot;+sourcefile+&quot;-vcodec h264 -b:v 800k -r 25 -s 960x540 -pix_fmt yuv420p -g 33 -acodec aac -b:a 128k -ar 44100 -ac 2 -strict -2 -f &quot;+ type +&quot; -y &quot;+ &quot;540P_800.&quot;+type;
-        String SD_640x360_500 = &quot;ffmpeg -i &quot;+sourcefile+&quot;-vcodec h264 -b:v 500k -r 25 -s 640x360 -pix_fmt yuv420p -g 33 -acodec aac -b:a 128k -ar 44100 -ac 2 -strict -2 -f &quot;+ type +&quot; -y &quot;+ &quot;360P_500.&quot;+type;
-        String LD_360x240_300 = &quot;ffmpeg -i &quot;+sourcefile+&quot;-vcodec h264 -b:v 300k -r 25 -s 360x240 -pix_fmt yuv420p -g 33 -acodec aac -b:a 128k -ar 44100 -ac 2 -strict -2 -f &quot;+ type +&quot; -y &quot;+ &quot;240P_500.&quot;+type;
-        if (!checkfile(sourcefile)) {
-            System.out.println(sourcefile + &quot; is not file&quot;);
-        }
-    try{
-            Runtime rt = Runtime.getRuntime();
-            Process proc;
-            proc = rt.exec(F1080p_1920x1080_2000);
-            // 取得命令结果的输出流
-            InputStream fis = proc.getInputStream();
-            // 用一个读输出流类去读  
-            InputStreamReader isr = new InputStreamReader(fis);
-            // 用缓冲器读行  
-            BufferedReader br = new BufferedReader(isr); 
-            String line = null; 
-            // 直到读完为止  
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                }
-        }  
-*/
-    public boolean processTranscodefree(String sourcefile,String VideoBitrate,String resolution,String AudioBitrate,String AudioSampleRate,String CreateFileName,String CreateFileFormat) throws Exception{  
-        File diretory = new File(&quot;&quot;);
-        String currPath = diretory.getAbsolutePath();
-        String outputPath = currPath + &quot;\\output\\&quot;;  
-        String ffmpegPath = currPath + &quot;\\FFmpeg\\bin\\&quot;;  
-        if (!checkfile(sourcefile)) {
-            System.out.println(sourcefile + &quot; is not file&quot;);  
-        }
-        // 文件命名  
-        //Calendar c = Calendar.getInstance(); 
-        List&lt;String&gt; commend = new ArrayList&lt;String&gt;();
-        commend.add(ffmpegPath+&quot;ffmpeg.exe&quot;); 
-        //commend.add(&quot;F:\\java\\TranscodeGUI\\ffmpeg.exe&quot;); 
-        commend.add(&quot;-i&quot;);
-        commend.add(sourcefile);
-        commend.add(&quot;-ab&quot;);
-        commend.add(&quot;-vcodec&quot;);
-        commend.add(&quot;h264&quot;);
-        //commend.add(&quot;&quot;);
-        commend.add(&quot;-b:v&quot;);
-        commend.add(VideoBitrate);
-        commend.add(&quot;-r&quot;);
-        commend.add(&quot;25&quot;);
-        commend.add(&quot;-s&quot;);
-        commend.add(&quot;resolution&quot;);
-        commend.add(&quot;-pix_fmt&quot;);
-        commend.add(&quot;yuv420p&quot;);
-        commend.add(&quot;-g&quot;);
-        commend.add(&quot;33&quot;);
-        commend.add(&quot;-acodec&quot;);
-        commend.add(&quot;aac&quot;);
-        commend.add(&quot;-b:a&quot;);
-        commend.add(AudioBitrate);
-        commend.add(&quot;-ac&quot;);
-        commend.add(&quot;2&quot;);
-        commend.add(&quot;-strict&quot;);
-        commend.add(&quot;-2&quot;);
-        commend.add(&quot;-f&quot;);
-        commend.add(CreateFileFormat);
-        commend.add(&quot;-y&quot;);
-        commend.add(outputPath+CreateFileName+&quot;.&quot;+CreateFileFormat);
-        try {
-            ProcessBuilder builder = new ProcessBuilder();  
-            builder.command(commend);  
-            Process proc = builder.start();
-            InputStream stderr = proc.getErrorStream();
-            InputStreamReader isr = new InputStreamReader(stderr);
-            BufferedReader br = new BufferedReader(isr);
-            String line = null;
-            while ( (line = br.readLine()) != null)
-                System.out.println(line);
-
-            int exitVal = proc.waitFor();
-            System.out.println(&quot;Process exitValue: &quot; + exitVal);
-        } catch (Throwable t) {
-            t.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-/*
-        try {  
-            Runtime rt = Runtime.getRuntime();
-            ProcessBuilder builder = new ProcessBuilder(commend);  
-            builder.command(commend);  
-            builder.start();
-
-            System.out.println(&quot;开始转码，请等待······&quot;);
-
-        } catch (Exception e) {  
-            e.printStackTrace();
-            System.out.println(&quot;转码异常，请查看日志！&quot;);
-        }
-        */
-
-//检查文件是否存在
-    private static boolean checkfile(String path) {  
-        File file = new File(path);  
-        if (!file.isFile()) {  
-            return false;  
-        }  
-        return true;  
-    }
-}
-</code></pre>
       
     </div>
 
@@ -890,7 +518,7 @@ public class Transcode {
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://hardelm.github.io/2017/07/12/基于ffmpeg进行转码工具的编写（未完成）/" title="基于ffmpeg进行转码工具的编写（未完成）">https://hardelm.github.io/2017/07/12/基于ffmpeg进行转码工具的编写（未完成）/</a>
+      <a href="https://hardelm.github.io/2017/11/28/对进程和线程的认识和简单总结/" title="对进程和线程的认识和简单总结">https://hardelm.github.io/2017/11/28/对进程和线程的认识和简单总结/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -906,9 +534,9 @@ public class Transcode {
       
         <div class="post-tags">
           
-            <a href="/tags/java/" <i class="fa fa-tag"></i> java</a>
+            <a href="/tags/进程/" <i class="fa fa-tag"></i> 进程</a>
           
-            <a href="/tags/ffmpeg/" <i class="fa fa-tag"></i> ffmpeg</a>
+            <a href="/tags/线程/" <i class="fa fa-tag"></i> 线程</a>
           
         </div>
       
@@ -921,8 +549,8 @@ public class Transcode {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/12/自动化测试的适用范围/" rel="next" title="自动化测试的适用范围">
-                <i class="fa fa-chevron-left"></i> 自动化测试的适用范围
+              <a href="/2017/11/27/对HTTP协议认识的简要总结/" rel="next" title="对HTTP协议认识的简要总结">
+                <i class="fa fa-chevron-left"></i> 对HTTP协议认识的简要总结
               </a>
             
           </div>
@@ -930,10 +558,6 @@ public class Transcode {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/12/批处理修改DNS/" rel="prev" title="批处理修改DNS">
-                批处理修改DNS <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -991,8 +615,17 @@ public class Transcode {
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/header.jpg"
@@ -1117,6 +750,22 @@ public class Transcode {
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进程"><span class="nav-number">2.</span> <span class="nav-text">进程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是进程"><span class="nav-number">2.1.</span> <span class="nav-text">什么是进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进程间的8种通信方式"><span class="nav-number">2.2.</span> <span class="nav-text">进程间的8种通信方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程"><span class="nav-number">3.</span> <span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是线程"><span class="nav-number">3.1.</span> <span class="nav-text">什么是线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不同平台的线程"><span class="nav-number">3.2.</span> <span class="nav-text">不同平台的线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨平台的线程"><span class="nav-number">3.3.</span> <span class="nav-text">跨平台的线程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
