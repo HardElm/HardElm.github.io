@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[对HTTP协议认识的简要总结]]></title>
+    <url>%2F2017%2F11%2F27%2F%E5%AF%B9HTTP%E5%8D%8F%E8%AE%AE%E8%AE%A4%E8%AF%86%E7%9A%84%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[背景略 http协议基础略 主要的HTTP方法 未完待续参考资料http://www.runoob.com/http/http-tutorial.html https://www.toutiao.com/a6491506976181191181/?tt_from=mobile_qq&amp;utm_campaign=client_share&amp;app=news_article&amp;utm_source=mobile_qq&amp;iid=18059487869&amp;utm_medium=toutiao_android]]></content>
+      <categories>
+        <category>网络</category>
+      </categories>
+      <tags>
+        <tag>HTTP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[web自动化测试]]></title>
     <url>%2F2017%2F11%2F25%2Fweb%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%2F</url>
     <content type="text"><![CDATA[背景之前试着搞过公司云报道产品的自动化测试，基本设计思路以及相关问题，见文章内容。 进行前需要了解的测试框架使用哪种测试框架要根据所测产品的类型来进行选择。 桌面程序的工具有：QTP、 AutoRunner等 web应用的工具有：QTP、AutoRunner、selenium、Robot Framework、watir等 如果待测产品是C/S架构，可选QTP(也叫UFT) 主流的工具 易用性好 学习资料丰富 如果待测产品是B/S架构，推荐selenium 对B/S应用支持很好 支持多语言开发(java、python、ruby、php、C#、JavaScript等) 学习内容丰富，增加测试工程师的技术竞争力 开发语言如果使用QTP，必须掌握VBS 如果使用Selenium，可选语言丰富 从语言易学性来讲，首选python和ruby 从语言应用广度来讲，首选java、C#和php等 从语言相关测试技术成度来讲：ruby、python和java 考虑整个技术团队主流用什么语言，然后选择相应的语言。 思路1、自动化测试环境准备，本次采用Selenium+Eclipse+Java，详细安装配置过程略。 2、在自动化测试框架基础上，编写通用方法，如： 1）登录、配置浏览器系列操作 2）页面元素准确性判断（可自己简单编写，亦可采用其他一些监控对比工具，如：基于diff的页面差异监控、基于DOM树的页面差异监控） 3）case测试结果输出等 3、利用自动化测试框架，编写测试case，模拟用户输入、点击等操作； 4、使用正则表达式对准备好的测试数据进行操作； 5、测试执行过程自动输出测试结果至测试结果文档 需要注意的问题： 1、自动化测试的覆盖率，主要通过对需求点详细拆分，丰富测试数据来解决 2、UI自动化测试执行过程易受执行环境影响 3、记得还有，暂时想不起来了 总结目前的很多Web自动化测试框架都是通过操作Web中的控件，来模拟用户输入点击等操作，实现Web自动化测试。其实这些工具的原理大同小异，都是通过调用浏览器COM接口和HTML DOM对浏览器和Web测试对象进行操作。 工具是死的，人是活的，怎么用，怎么丰富，都是需要自己亲自去尝试着做，才能真正了解。 参考资料:https://www.cnblogs.com/fnng/p/3653793.html]]></content>
@@ -102,6 +113,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[ab下载与上传压测]]></title>
+    <url>%2F2017%2F10%2F18%2Fab%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0%E5%8E%8B%E6%B5%8B%2F</url>
+    <content type="text"><![CDATA[背景略 简要命令下载ab -n 10000 -c 100 “文件地址” 上传ab -n 10000 -c 100 -T ‘multipart/form-data; boundary=w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ’ -p ./abpost.txt “上传接口地址” 上传压测操作方法1、修改abpost.txt内容 1）Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot;，依照例子进行修改 2）Content-Type: MIME，具体格式由上传的文件决定，参考常见的MIME类型 3）对上传的文件进行base64编码，可采用在线转换base64，图片在线转换地址http://tool.css-js.com/base64.html 4）无 2、将abpost.txt放置在执行ab命令的目录下 3、修改总请求数和并发请求数，回车，执行命令 abpost.txt内容--w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot; Content-Type: image/png iVBORw0KGgoAAAANSUhEUgAAAkgAAAFmCAYAAACWUGV0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhe7L11lB1Xeq+t+8dd37130GzLFtiWZBJYZmaSmWYyPJnkZjKUDCRjkkEM3S01MzMzMzMzd4tZMtszSb7v/X6/vWufU+f0aant8SSTxL3Ws4rhVFfVfurdtOj/bX5AFK33y0TG7ZK7e7X8w7dukqfvWSVP3HWNPHTbtfLAbdfLfbeulntvXSt337JO7rxlvebmm+SOs3DnLTfPy1233uLktlvPyt233yb33HGb3HfnbXL/nbfLg3fd7Qci8jJUHITPWTSFlKKJxskJYUQU5asiE9mXKVjGTKy0ihvMwUys9MNWSl8rllskNhFLaVHCWtVRQdS3KPLsVhpLeZIsXZXzln2cA732G/kR6X4uxHy5jthG/bN49/3S6hFvDm8fbZXG/5fP3l8bWI6zEnHdcqX7N6TbvXfLxLhoPeD0HXPq5zudZlveYaN3jXuRJ4nWM/eZ+jEXn8Fv5zFoug5duLoO0dAeHX8f8cgo41GkHL/1II//2de8263+zr1tzfGQI6GwSlIP9/IllCWUEWlRdkU3lhNlUU5VBlca5QVZJH1aA0/xdLbVkBjRvcky655BKpVoMYGX6g/x/H/Eel0xKsRgAAAABJRU5ErkJggg== ----w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ-- 附：常见的MIME类型(通用型)： 超文本标记语言文本 .html text/html xml文档 .xml text/xml XHTML文档 .xhtml application/xhtml+xml 普通文本 .txt text/plain RTF文本 .rtf application/rtf PDF文档 .pdf application/pdf Microsoft Word文件 .word application/msword PNG图像 .png image/png GIF图形 .gif image/gif JPEG图形 .jpeg,.jpg image/jpeg au声音文件 .au audio/basic MIDI音乐文件 mid,.midi audio/midi,audio/x-midi RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio MPEG文件 .mpg,.mpeg video/mpeg AVI文件 .avi video/x-msvideo GZIP文件 .gz application/x-gzip TAR文件 .tar application/x-tar 任意的二进制数据 application/octet-stream]]></content>
+      <categories>
+        <category>测试工具</category>
+      </categories>
+      <tags>
+        <tag>性能测试</tag>
+        <tag>性能工具</tag>
+        <tag>ab</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[xscan漏扫工具的使用]]></title>
     <url>%2F2017%2F10%2F18%2F%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E4%B8%8Exscan%E6%BC%8F%E6%89%AB%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[背景略 xscan有什么功能采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及版本，各种弱口令漏洞、后门、应用服务漏洞、网络设备漏洞、拒绝服务漏洞等二十几个大类。对于多数已知漏洞，工具都有相应的漏洞描述、解决方案及详细描述链接。 安装与使用安装1、直接google或百度，下载X-Scan，我使用的是X-Scan-v3.3 2、安装X-scan需安装WinPCap驱动程序（什么是WinPCap，以及WinPCap的功能作用，参考百度百科） 使用1、“设置”修改扫描IP或者网段 2、“设置”修改扫描参数，可修改内容包括开放的服务端口，Telnet、SSH、FTP、SQL-Server等协议弱口令以及IIS编解码漏洞等扫描配置内容 3、“设置”修改扫描报告格式，可选html、txt、xml 4、开启任务，可实时监测扫描过程中的普通信息、漏洞信息（开放的服务、端口以及协议类型）、错误信息等内容 总结简单好用，基本满足日常工作使用！ 附： telnet命令：http://www.runoob.com/linux/linux-comm-telnet.html]]></content>
@@ -111,19 +135,6 @@
       <tags>
         <tag>xscan</tag>
         <tag>安全测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[ab下载与上传压测]]></title>
-    <url>%2F2017%2F10%2F18%2Fab%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0%E5%8E%8B%E6%B5%8B%2F</url>
-    <content type="text"><![CDATA[背景略 简要命令下载ab -n 10000 -c 100 “文件地址” 上传ab -n 10000 -c 100 -T ‘multipart/form-data; boundary=w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ’ -p ./abpost.txt “上传接口地址” 上传压测操作方法1、修改abpost.txt内容 1）Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot;，依照例子进行修改 2）Content-Type: MIME，具体格式由上传的文件决定，参考常见的MIME类型 3）对上传的文件进行base64编码，可采用在线转换base64，图片在线转换地址http://tool.css-js.com/base64.html 4）无 2、将abpost.txt放置在执行ab命令的目录下 3、修改总请求数和并发请求数，回车，执行命令 abpost.txt内容--w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot; Content-Type: image/png iVBORw0KGgoAAAANSUhEUgAAAkgAAAFmCAYAAACWUGV0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhe7L11lB1Xeq+t+8dd37130GzLFtiWZBJYZmaSmWYyPJnkZjKUDCRjkkEM3S01MzMzMzMzd4tZMtszSb7v/X6/vWufU+f0aant8SSTxL3Ws4rhVFfVfurdtOj/bX5AFK33y0TG7ZK7e7X8w7dukqfvWSVP3HWNPHTbtfLAbdfLfbeulntvXSt337JO7rxlvebmm+SOs3DnLTfPy1233uLktlvPyt233yb33HGb3HfnbXL/nbfLg3fd7Qci8jJUHITPWTSFlKKJxskJYUQU5asiE9mXKVjGTKy0ihvMwUys9MNWSl8rllskNhFLaVHCWtVRQdS3KPLsVhpLeZIsXZXzln2cA732G/kR6X4uxHy5jthG/bN49/3S6hFvDm8fbZXG/5fP3l8bWI6zEnHdcqX7N6TbvXfLxLhoPeD0HXPq5zudZlveYaN3jXuRJ4nWM/eZ+jEXn8Fv5zFoug5duLoO0dAeHX8f8cgo41GkHL/1II//2de8263+zr1tzfGQI6GwSlIP9/IllCWUEWlRdkU3lhNlUU5VBlca5QVZJH1aA0/xdLbVkBjRvcky655BKpVoMYGX6g/x/H/Eel0xKsRgAAAABJRU5ErkJggg== ----w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ-- 附：常见的MIME类型(通用型)： 超文本标记语言文本 .html text/html xml文档 .xml text/xml XHTML文档 .xhtml application/xhtml+xml 普通文本 .txt text/plain RTF文本 .rtf application/rtf PDF文档 .pdf application/pdf Microsoft Word文件 .word application/msword PNG图像 .png image/png GIF图形 .gif image/gif JPEG图形 .jpeg,.jpg image/jpeg au声音文件 .au audio/basic MIDI音乐文件 mid,.midi audio/midi,audio/x-midi RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio MPEG文件 .mpg,.mpeg video/mpeg AVI文件 .avi video/x-msvideo GZIP文件 .gz application/x-gzip TAR文件 .tar application/x-tar 任意的二进制数据 application/octet-stream]]></content>
-      <categories>
-        <category>测试工具</category>
-      </categories>
-      <tags>
-        <tag>性能测试</tag>
-        <tag>ab</tag>
-        <tag>性能工具</tag>
       </tags>
   </entry>
   <entry>
@@ -157,8 +168,8 @@
       </categories>
       <tags>
         <tag>性能测试</tag>
-        <tag>性能工具</tag>
         <tag>iperf</tag>
+        <tag>性能工具</tag>
       </tags>
   </entry>
   <entry>
