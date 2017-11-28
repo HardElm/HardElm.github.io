@@ -22,8 +22,8 @@
 
 <script>
     (function(){
-        if('1'){
-            if (prompt('请输入文章密码') !== '1'){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
                 alert('密码错误！');
                 history.back();
             }
@@ -93,7 +93,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo,GitHub,Next," />
+  <meta name="keywords" content="文本操作工具,Linux," />
 
 
 
@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="此篇文章测试使用！">
-<meta name="keywords" content="Hexo,GitHub,Next">
+<meta name="description" content="背景平时一直都在用，但是一直没有认真仔细的总结过，在此记录下，有空继续补充 Find在目录结构中搜索文件，并执行指定的操作。 1、按文件名查找 2、按文件特征查找     访问时间         find / -amin -10 #查找在系统中最后10分钟访问的文件(access time)         find / -atime -2 #查找在系统中最后48小时访问的文件     修改时间">
+<meta name="keywords" content="文本操作工具,Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试页">
-<meta property="og:url" content="https://hardelm.github.io/2017/07/11/测试页/index.html">
+<meta property="og:title" content="find、grep、sed和awk">
+<meta property="og:url" content="https://hardelm.github.io/2017/11/29/find、grep、sed和awk/index.html">
 <meta property="og:site_name" content="HardElm&#39;s blog">
-<meta property="og:description" content="此篇文章测试使用！">
-<meta property="og:updated_time" content="2017-07-12T13:25:27.422Z">
+<meta property="og:description" content="背景平时一直都在用，但是一直没有认真仔细的总结过，在此记录下，有空继续补充 Find在目录结构中搜索文件，并执行指定的操作。 1、按文件名查找 2、按文件特征查找     访问时间         find / -amin -10 #查找在系统中最后10分钟访问的文件(access time)         find / -atime -2 #查找在系统中最后48小时访问的文件     修改时间">
+<meta property="og:updated_time" content="2017-11-28T16:45:13.544Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测试页">
-<meta name="twitter:description" content="此篇文章测试使用！">
+<meta name="twitter:title" content="find、grep、sed和awk">
+<meta name="twitter:description" content="背景平时一直都在用，但是一直没有认真仔细的总结过，在此记录下，有空继续补充 Find在目录结构中搜索文件，并执行指定的操作。 1、按文件名查找 2、按文件特征查找     访问时间         find / -amin -10 #查找在系统中最后10分钟访问的文件(access time)         find / -atime -2 #查找在系统中最后48小时访问的文件     修改时间">
 
 
 
@@ -149,13 +149,13 @@
 
 
 
-  <link rel="canonical" href="https://hardelm.github.io/2017/07/11/测试页/"/>
+  <link rel="canonical" href="https://hardelm.github.io/2017/11/29/find、grep、sed和awk/"/>
 
 
 
 
 
-  <title>测试页 | HardElm's blog</title>
+  <title>find、grep、sed和awk | HardElm's blog</title>
   
 
 
@@ -322,7 +322,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://hardelm.github.io/2017/07/11/测试页/">
+    <link itemprop="mainEntityOfPage" href="https://hardelm.github.io/2017/11/29/find、grep、sed和awk/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HardElm">
@@ -339,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">测试页</h1>
+          <h1 class="post-title" itemprop="name headline">find、grep、sed和awk</h1>
         
 
         <div class="post-meta">
@@ -351,8 +351,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-11T09:48:50+08:00">
-                2017-07-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-29T00:30:00+08:00">
+                2017-11-29
               </time>
             
 
@@ -374,8 +374,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/博客搭建/" itemprop="url" rel="index">
-                    <span itemprop="name">博客搭建</span>
+                  <a href="/categories/文本操作工具/" itemprop="url" rel="index">
+                    <span itemprop="name">文本操作工具</span>
                   </a>
                 </span>
 
@@ -411,7 +411,7 @@
                   <span class="post-meta-item-text">字数</span>
                 
                 <span title="字数">
-                  8
+                  948
                 </span>
               
 
@@ -433,7 +433,67 @@
       
 
       
-        <p>此篇文章测试使用！</p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>平时一直都在用，但是一直没有认真仔细的总结过，在此记录下，有空继续补充</p>
+<h1 id="Find"><a href="#Find" class="headerlink" title="Find"></a>Find</h1><p>在目录结构中搜索文件，并执行指定的操作。</p>
+<pre><code>1、按文件名查找
+2、按文件特征查找
+    访问时间
+        find / -amin -10 #查找在系统中最后10分钟访问的文件(access time)
+        find / -atime -2 #查找在系统中最后48小时访问的文件
+    修改时间
+        find / -mmin -5 #查找在系统中最后5分钟里修改过的文件(modify time)
+        find / -mtime -1 #查找在系统中最后24小时里修改过的文件
+    空
+        find / -empty #查找在系统中为空的文件或者文件夹
+    大小
+    所属用户
+        find / -user fred#查找在系统中属于fred这个用户的文件
+    所属用户组
+        find / -group cat #查找在系统中属于 group为cat的文件
+3、混合查找
+    ！
+        find /tmp ! -user panda #在/tmp目录中查找所有不属于panda用户的文件
+    -and(-a)
+        find /tmp -size +10000c -and -mtime +2 #在/tmp目录下查找大于10000字节并在最后2分钟内修改的文件
+    -or(-o)
+        find / -user fred -or -user george #在/目录下查找用户是fred或者george的文件文件    
+</code></pre><h1 id="Grep"><a href="#Grep" class="headerlink" title="Grep"></a>Grep</h1><pre><code>grep &apos;test&apos; d*　#显示所有以d开头的文件中包含 test的行
+grep &apos;test&apos; aa bb cc 　　 #显示在aa，bb，cc文件中包含test的行
+grep &apos;[a-z]\{5\}&apos; aa 　　#显示所有包含每行字符串至少有5个连续小写字符的字符串的行
+grep magic /usr/src　　#显示/usr/src目录下的文件(不含子目录)包含magic的行
+grep -r magic /usr/src　　#显示/usr/src目录下的文件(包含子目录)包含magic的行
+grep -w pattern files    #只匹配整个单词，而不是字符串的一部分(如匹配’magic’，而不是’magical’)，
+</code></pre><h1 id="Sed"><a href="#Sed" class="headerlink" title="Sed"></a>Sed</h1><h2 id="sed语法格式"><a href="#sed语法格式" class="headerlink" title="sed语法格式"></a>sed语法格式</h2><pre><code>sed [-hnV][-e&lt;script&gt;][-f&lt;script文件&gt;][文本文件]
+</code></pre><p>参数说明：</p>
+<pre><code>-e&lt;script&gt;或--expression=&lt;script&gt; 以选项中指定的script来处理输入的文本文件。
+-f&lt;script文件&gt;或--file=&lt;script文件&gt; 以选项中指定的script文件来处理输入的文本文件。
+-h或--help 显示帮助。
+-n或--quiet或--silent 仅显示script处理后的结果。
+-V或--version 显示版本信息
+</code></pre><h1 id="Awk"><a href="#Awk" class="headerlink" title="Awk"></a>Awk</h1><h2 id="awk语法格式"><a href="#awk语法格式" class="headerlink" title="awk语法格式"></a>awk语法格式</h2><pre><code>awk &apos;{pattern + action}&apos; {filenames}
+</code></pre><h2 id="调用awk的三种方式"><a href="#调用awk的三种方式" class="headerlink" title="调用awk的三种方式"></a>调用awk的三种方式</h2><pre><code>1、命令行方式
+2、shell脚本方式
+3、将awk命令插入单独文件进行调用
+</code></pre><h2 id="入门语法"><a href="#入门语法" class="headerlink" title="入门语法"></a>入门语法</h2><pre><code>1、awk -F &apos; 分隔符 &apos; {pattern + action}    （默认分隔符是空白或者tab）
+2、awk -F &apos;:&apos; &apos;BEGIN {print &quot;name,shell&quot;} {print $1&quot;,&quot;$7} END {print &quot;blue,/bin/test&quot;}
+</code></pre><h2 id="awk内置变量"><a href="#awk内置变量" class="headerlink" title="awk内置变量"></a>awk内置变量</h2><pre><code>ARGC    命令行参数个数
+ARGV    命令行参数排列
+ENVIRON    支持队列中系统环境变量的使用
+FILENAME    awk浏览的文件名
+FNR        浏览文件的记录数
+FS        设置输入域分隔符，等价于命令行 -F选项
+NF        浏览记录的域的个数
+NR        已读的记录数
+OFS        输出域分隔符
+ORS        输出记录分隔符
+RS        控制记录分隔符
+</code></pre><h2 id="print和printf"><a href="#print和printf" class="headerlink" title="print和printf"></a>print和printf</h2><pre><code>awk中同时提供了print和printf两种打印输出的函数。
+1、print函数的参数可以是变量、数值或者字符串。字符串必须用双引号引用，参数用逗号分隔。如果没有逗号，参数就串联在一起而无法区分。这里，逗号的作用与输出文件的分隔符的作用是一样的，只是后者是空格而已。
+2、printf函数，其用法和c语言中printf基本相似,可以格式化字符串,输出复杂时，printf更加好用，代码更易懂。
+</code></pre><h2 id="awk编程"><a href="#awk编程" class="headerlink" title="awk编程"></a>awk编程</h2><pre><code>略
+</code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>有时候，平时用的很简单的东西，却没有清楚的认识，知其然不知其所以然。</p>
+<h1 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h1><p>附：</p>
+<p>参考资料：</p>
 
       
     </div>
@@ -493,7 +553,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://hardelm.github.io/2017/07/11/测试页/" title="测试页">https://hardelm.github.io/2017/07/11/测试页/</a>
+      <a href="https://hardelm.github.io/2017/11/29/find、grep、sed和awk/" title="find、grep、sed和awk">https://hardelm.github.io/2017/11/29/find、grep、sed和awk/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -509,11 +569,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo/" <i class="fa fa-tag"></i> Hexo</a>
+            <a href="/tags/文本操作工具/" <i class="fa fa-tag"></i> 文本操作工具</a>
           
-            <a href="/tags/GitHub/" <i class="fa fa-tag"></i> GitHub</a>
-          
-            <a href="/tags/Next/" <i class="fa fa-tag"></i> Next</a>
+            <a href="/tags/Linux/" <i class="fa fa-tag"></i> Linux</a>
           
         </div>
       
@@ -526,15 +584,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/11/28/对进程和线程的认识和简要总结/" rel="next" title="对进程和线程的认识和简要总结">
+                <i class="fa fa-chevron-left"></i> 对进程和线程的认识和简要总结
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/11/srs-bench安装与使用/" rel="prev" title="st-load安装与使用">
-                st-load安装与使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -592,8 +650,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/header.jpg"
@@ -718,6 +785,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Find"><span class="nav-number">2.</span> <span class="nav-text">Find</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Grep"><span class="nav-number">3.</span> <span class="nav-text">Grep</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sed"><span class="nav-number">4.</span> <span class="nav-text">Sed</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sed语法格式"><span class="nav-number">4.1.</span> <span class="nav-text">sed语法格式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Awk"><span class="nav-number">5.</span> <span class="nav-text">Awk</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk语法格式"><span class="nav-number">5.1.</span> <span class="nav-text">awk语法格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用awk的三种方式"><span class="nav-number">5.2.</span> <span class="nav-text">调用awk的三种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#入门语法"><span class="nav-number">5.3.</span> <span class="nav-text">入门语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk内置变量"><span class="nav-number">5.4.</span> <span class="nav-text">awk内置变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#print和printf"><span class="nav-number">5.5.</span> <span class="nav-text">print和printf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk编程"><span class="nav-number">5.6.</span> <span class="nav-text">awk编程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#未完待续"><span class="nav-number">7.</span> <span class="nav-text">未完待续</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[find、grep、sed和awk]]></title>
+    <url>%2F2017%2F11%2F29%2Ffind%E3%80%81grep%E3%80%81sed%E5%92%8Cawk%2F</url>
+    <content type="text"><![CDATA[背景平时一直都在用，但是一直没有认真仔细的总结过，在此记录下，有空继续补充 Find在目录结构中搜索文件，并执行指定的操作。 1、按文件名查找 2、按文件特征查找 访问时间 find / -amin -10 #查找在系统中最后10分钟访问的文件(access time) find / -atime -2 #查找在系统中最后48小时访问的文件 修改时间 find / -mmin -5 #查找在系统中最后5分钟里修改过的文件(modify time) find / -mtime -1 #查找在系统中最后24小时里修改过的文件 空 find / -empty #查找在系统中为空的文件或者文件夹 大小 所属用户 find / -user fred#查找在系统中属于fred这个用户的文件 所属用户组 find / -group cat #查找在系统中属于 group为cat的文件 3、混合查找 ！ find /tmp ! -user panda #在/tmp目录中查找所有不属于panda用户的文件 -and(-a) find /tmp -size +10000c -and -mtime +2 #在/tmp目录下查找大于10000字节并在最后2分钟内修改的文件 -or(-o) find / -user fred -or -user george #在/目录下查找用户是fred或者george的文件文件 Grepgrep &apos;test&apos; d* #显示所有以d开头的文件中包含 test的行 grep &apos;test&apos; aa bb cc #显示在aa，bb，cc文件中包含test的行 grep &apos;[a-z]\{5\}&apos; aa #显示所有包含每行字符串至少有5个连续小写字符的字符串的行 grep magic /usr/src #显示/usr/src目录下的文件(不含子目录)包含magic的行 grep -r magic /usr/src #显示/usr/src目录下的文件(包含子目录)包含magic的行 grep -w pattern files #只匹配整个单词，而不是字符串的一部分(如匹配’magic’，而不是’magical’)， Sedsed语法格式sed [-hnV][-e&lt;script&gt;][-f&lt;script文件&gt;][文本文件] 参数说明： -e&lt;script&gt;或--expression=&lt;script&gt; 以选项中指定的script来处理输入的文本文件。 -f&lt;script文件&gt;或--file=&lt;script文件&gt; 以选项中指定的script文件来处理输入的文本文件。 -h或--help 显示帮助。 -n或--quiet或--silent 仅显示script处理后的结果。 -V或--version 显示版本信息 Awkawk语法格式awk &apos;{pattern + action}&apos; {filenames} 调用awk的三种方式1、命令行方式 2、shell脚本方式 3、将awk命令插入单独文件进行调用 入门语法1、awk -F &apos; 分隔符 &apos; {pattern + action} （默认分隔符是空白或者tab） 2、awk -F &apos;:&apos; &apos;BEGIN {print &quot;name,shell&quot;} {print $1&quot;,&quot;$7} END {print &quot;blue,/bin/test&quot;} awk内置变量ARGC 命令行参数个数 ARGV 命令行参数排列 ENVIRON 支持队列中系统环境变量的使用 FILENAME awk浏览的文件名 FNR 浏览文件的记录数 FS 设置输入域分隔符，等价于命令行 -F选项 NF 浏览记录的域的个数 NR 已读的记录数 OFS 输出域分隔符 ORS 输出记录分隔符 RS 控制记录分隔符 print和printfawk中同时提供了print和printf两种打印输出的函数。 1、print函数的参数可以是变量、数值或者字符串。字符串必须用双引号引用，参数用逗号分隔。如果没有逗号，参数就串联在一起而无法区分。这里，逗号的作用与输出文件的分隔符的作用是一样的，只是后者是空格而已。 2、printf函数，其用法和c语言中printf基本相似,可以格式化字符串,输出复杂时，printf更加好用，代码更易懂。 awk编程略 总结有时候，平时用的很简单的东西，却没有清楚的认识，知其然不知其所以然。 未完待续附： 参考资料：]]></content>
+      <categories>
+        <category>文本操作工具</category>
+      </categories>
+      <tags>
+        <tag>文本操作工具</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[对进程和线程的认识和简要总结]]></title>
     <url>%2F2017%2F11%2F28%2F%E5%AF%B9%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%AE%A4%E8%AF%86%E5%92%8C%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[背景略 进程什么是进程1、进程是系统管理和分配资源的基本单位，是一个动态概念 2、每个进程都有自己的地址空间，进程地址空间的大小和处理器的位数有关，16位长处理机的进程空间大小为216，32位处理机的进程空间大小为232 3、进程至少有5种基本状态，分别是： 新生 运行 等待（阻塞） 就绪 结束 进程间的8种通信方式1、无名管道（pipe）：半双工的通信方式，数据单向流动。只能在具有亲缘关系进程间使用（通常指父子进程关系） 2、高级管道（popen）：把另一个程序当做一个新的进程在当前程序进程中启动，算是当前程序的子进程3、有名管道（named pipe）：允许无亲缘关系进程间通信 4、信号（sinal）：信号是一种比较复杂的通信方式，用于通知接收进程某个时间已经发生 5、信号量(semophore)：信号量是一个计数器，可以控制多个进程对共享资源的访问。常常作为一种死锁机制，防止某个进程正在访问共享资源时其他进程也访问该资源。主要作为进程间以及同一进程内不同线程之间的同步手段。 6、消息队列（message queue）：消息队列是由消息的链表，存放在内核中并由消息队列标识符标识。消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点 7、共享内存（shared memory）：共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的IPC方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号量配合使用，来实现进程间的同步和通信 8、套接字（socket）：套接字也是一种进程间通信机制，区别于其他方式，它可用于不同机器间的进程通信。通信过程如下： 1）命名socket 2）绑定机器本地地址 3）监听 4）连接服务器 5）互相发送接受数据 6）断开连接 线程什么是线程1、线程是操作系统中能后进行运算调度的最小单位2、线程被包含在进程之中，是进程中的实际运作单位3、一条线程指的是进程中一个单一顺序的控制流4、一个进程可以并发多个线程，每条线程并行执行不同的任务5、同一进程中的多条线程会共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等6、但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）7、线程有四种基本状态，分别是： 产生（spawn） 中断（block） 非中断（unblock） 结束（finish） 不同平台的线程待补充 跨平台的线程待补充 参考资料https://zh.wikipedia.org/wiki/%E8%A1%8C%E7%A8%8Bhttps://zh.wikipedia.org/wiki/%E7%BA%BF%E7%A8%8Bhttp://www.xitongzhijia.net/xtjc/20171024/109869.html]]></content>
@@ -46,17 +58,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[服务端自动化测试]]></title>
-    <url>%2F2017%2F11%2F24%2F%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%2F</url>
-    <content type="text"><![CDATA[背景略 未完待续附：]]></content>
-      <categories>
-        <category>测试理论</category>
-      </categories>
-      <tags>
-        <tag>自动化测试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[服务端测试思路]]></title>
     <url>%2F2017%2F11%2F24%2F%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%80%9D%E8%B7%AF%2F</url>
     <content type="text"><![CDATA[背景针对近半年的测试经验进行简要的总结，部分内容参考了网络上的一些文章 有哪些服务端测试我们公司有哪些服务端的应用： 1、web端的服务，onsite直播平台、云导播、云轮播、拆条、收录等等 2、客户端相关的服务：无 针对以上的这些服务，总结归纳了一下，划分了两种类型： 1、B\S结构，即浏览器\服务器结构，也就是各种web应用，这些web应用只与浏览器有关，他的web页面以及各种后台逻辑均运行在各种服务器上。 2、C\S结构，即客户端\服务器结构，这种产品的客户端需要与服务器端通过接口进行通讯，同时服务器端还有自己的功能逻辑，在接收到客户端发送的请求之后会进行处理，然后返回给客户端。 准备工作针对以上这两种不同结构的服务器端程序，如何进行测试呢？ 首先，制定一套完善的测试流程，通过该流程，指导测试、开发、产品、OP运维等同学的工作。在这个流程中，有三个关键的环节： 准备会议产品需求评审会在这个评审会上，产品会对提出的需求做出详细的讲解，如果各方涉及的人员比较多，还会确定产品负责人、开发负责人、测试负责人。各负责人的职责如下： 1、产品负责人：是这个项目的总负责人，负责各配合方之间的沟通。 2、开发责任人：包括客户端和服务端，原则上由客户端开发为开发的总负责人。 3、测试负责人：包括客户端和服务端，原则上由客户端测试为测试的总负责人。 开发设计实现讲解会在这个环节，开发会在接到需求后，组织一次设计评审，在这里主要由开发（包括前端和后端）和测试参加，在会上我们会做以下几件事情： 1、由开发详细的讲解功能得到设计思路，包括客户端和服务器端的功能实现 2、后续的计划排期 3、在设计阶段就会增加线上的监控机制 经过这两个评审会之后，测试会给出大概的测试方案，待开发提测后，测试就可以展开后续的测试工作。 准备环境测试服务器我们的开发会将编写完成的代码上传到SVN上，所有测试环境中的代码均来自SVN，这样可以保证被测试的代码与SVN上的代码是一致的，与此同时，我们也要不断的关注开发开发SVN上的改动，以便确认测试的范围和后续的验证。 待上线服务器待服务器端的功能测试完毕后，会将被测试完成的代码部署到待上线服务器上，待上线环境的配置与线上环境完全相同。我们会在这台机器上进行性能相关的测试。 线上服务器待性能测试与功能测试均完毕后，测试会将开发提交的代码进行冻结，开发会给OP运维部门提交上线申请单，然后由OP运维部门将SVN中测试完毕的代码部署到线上。待部署完成后，测试会针对线上环境进行上线验证。 准备监控我们会针对线上提供的服务进行监控，主要是该服务的接口功能正确性。 而服务器运行的稳定性是由OP运维部门负责监控。 当发生线上问题时，测试、产品、开发、OP均会收到包括邮件和短信的通知。 测试先进行问题确认，并及时给出结果反馈。 如果有问题，开发和OP会对问题进行排查，并由测试进行验证。 如果没有问题，会查当时通知时发生了什么，以便确认问题是被自动修复了，还是线上监控脚本出现了问题。 如何开展有了上面的测试流程之后，那么在开发提测后，我们是如何进行测试的呢？针对之前提到的两种不同的产品类型，我们会进行以下两方面的测试： 功能测试针对功能测试，我们有两种不同的测试方法： 基于用户层面的黑盒功能测试1、根据产品提出的需求文档，划分功能，拆分需求点，根据需求点，进行对应测试用例的编写； 2、在这个过程中，基本上忽略了客户端与服务器端或前台页面与后台逻辑是如何进行交互的，完全通过客户端或前端页面的行为进行功能测试。 基于代码逻辑和服务器配置的白盒测试服务器端配置的正确性与合理性1、服务器是否有缓存机制； 2、服务器对连接数是否有限制； 3、服务器的负载均衡是否合理； 4、服务器连接的是否有超时设置； 5、各种网络请求是否使用的是内网IP。 接口测试一般情况下客户端与服务器端的数据交互，均是通过http请求完成的。而服务器端通过web服务器将接收到的请求进行处理。这些处理主要围绕着，对数据的存储、运算、转发等操作，并将操作之后的结果反馈给客户端。所以接口功能的正确与否，会直接反映服务器端功能的正确与否。那么，这对接口我们是如何进行测试的呢？ 1、根据该接口的功能，评估该接口定义的合理性与安全性，例如： 1）客户端发送的网络请求是否需要带有时间戳； 2）客户端发送的网络请求是否需要有固定的参数，比如客户端发送的请求中需要带有版本号等信息； 3）客户端发送的数据是否需要进行加密； 4）服务器端是否有针对请求发送来源的校验； 5）服务器端给客户端返回的数据及状态码是否合理。 2、接口的测试方法 通过编写测试脚本，针对接口进行测试，步骤一般是这样的： 1）根据接口定义的参数，确认传输的参数都有哪些，可能的正常取值和异常取值； 2）通过脚本模拟客户端发送网络请求，对接口进行单独测试，并对服务端返回的结果数据进行自动化校验； 3）通过脚本构造用户的一系列操作，用以验证系统功能的可用性。 3、代码功能逻辑测试 1）对服务器端的代码做静态代码走查，主要关注以下内容： 1.定义的变量是否都被初始化； 2.服务器是否有针对客户端发送的数据进行异常校验； 3.对数据库的操作是否有未释放的情况； 4.服务器端的判断逻辑是否存在功能隐患； 5.连接的数据库环境是否正确； 6.对数据库的操作是否有关闭操作。 2）通过编写单元测试用例进行验证 性能测试制定方案依据需求，明确测试目的 围绕测试目的来制定测试方案，测试方案要明确需要关注的性能参数、测试方法，确定要使用的工具 最后要考虑到整个测试流程中可能存在的影响结果准确性的风险点（网络波动、CDN与SLB配置等非平台因素） 以下是之前进行直播平台性能测试的简单测试方案 选择压力生成工具服务器压力测试工具有很多，也可以自己写适合性能测试场景的压力生成脚本 较为常用的压力测试工具： Jmeter LoadRunner ab st_load 以上测试工具的简单使用方法参照本博客其他文章，《ab下载与上传压测》，《st-load安装与使用》 选择监控工具监控工具也有很多，也可以需求写适合性能测试场景的监控脚本，重点提取需要关注的性能参数 运维监控工具Zabbix等 nmon 以上部分工具的简单使用，参考本博客其他文章，《Nmon使用总结》 测试环境准备1、明确各个模块集群内部的服务器配置：基本的有内存、CPU、磁盘以及网络带宽等等 2、部署测试环境，也可以编写自动化部署脚本（ansible）或者使用容器（docker、kubernetes）快速部署 3、系统流程调试，确保系统底层功能正确无误 测试脚本准备考虑到压力机系统瓶颈，测试过程中可能需要多台压力机同时给出压力，为提高测试效率以及避免操作失误，需准备测试脚本 编写测试脚本可采用脚本语言亦可采用编程语言 shell expect python等 expect脚本在压力测试中的简单使用参考本博客中《Linux下expect脚本语言的简单使用》 执行测试渐增加压，达到一定程度观察系统稳定性，观察资源消耗以及系统响应情况 单台1、在一定的配置与系统环境下，得出模块单台服务器的系统性能 2、若有条件，在以上基础上对程序内部单个接口进行压测 3、定位瓶颈并给出优化意见 集群1、在一定的配置与系统环境下，得出模块集群服务器的系统性能 2、SLB配置（带宽峰值、调度算法、会话保持等）、内网带宽等 3、定位瓶颈并给出优化意见 系统1、在一定的配置与系统环境下，得出平台整体的系统性能 2、入出口SLB配置（带宽峰值、调度算法、会话保持等）、内网带宽与外网带宽、CDN命中率等 3、定位系统瓶颈并给出优化意见 数据库等其他模块1、压测过程中观察系统与数据库交互情况，排查数据库是否可能是系统瓶颈点 2、硬件、操作系统、数据库配置、应用模型、引擎选择等 参考资料http://blog.csdn.net/wlly1/article/details/51357306 https://www.zhihu.com/question/20694803 https://www.cnblogs.com/zhuque/archive/2013/03/15/2961953.html]]></content>
@@ -65,6 +66,17 @@
       </categories>
       <tags>
         <tag>服务端测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[服务端自动化测试]]></title>
+    <url>%2F2017%2F11%2F24%2F%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[背景略 未完待续附：]]></content>
+      <categories>
+        <category>测试理论</category>
+      </categories>
+      <tags>
+        <tag>自动化测试</tag>
       </tags>
   </entry>
   <entry>
@@ -116,12 +128,25 @@
   <entry>
     <title><![CDATA[正则表达式的使用]]></title>
     <url>%2F2017%2F11%2F05%2F%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[背景略 正则表达式简介啥是正则表达式正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”）。 正则表达式能干啥正则表达式使用单个字符串来描述、匹配一系列匹配某个句法规则的字符串。 正则表达式是烦琐的，但它是强大的，学会之后的应用会让你除了提高效率外，会给你带来绝对的成就感。只要认真阅读本教程，加上应用的时候进行一定的参考，掌握正则表达式不是问题。 许多程序设计语言都支持利用正则表达式进行字符串操作。 使用示例总结功能强大，特别有用！ 附： 参考资料：http://www.runoob.com/regexp/regexp-operator.html]]></content>
+    <content type="text"><![CDATA[背景略 正则表达式简介啥是正则表达式正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”）。 正则表达式能干啥正则表达式使用单个字符串来描述、匹配一系列匹配某个句法规则的字符串。 正则表达式是由普通字符以及特殊字符（元字符）组成的文字模式。 模式描述了在搜索文本时要匹配的一个或多个字符串。 正则表达式作为一个模板，将字符模式与所搜索的字符串进行匹配。 许多程序设计语言都支持利用正则表达式进行字符串操作。 为什么使用正则表达式典型的搜索和替换操作要求提供与预期的搜索结果匹配的确切文本，对于对静态文本执行简单搜索和替换任务可能已经足够了，但是缺乏灵活性，如果采用这种方法搜索动态文本，即便可以操作，但也会很困难 使用正则表达式，可以： 1、测试字符串内的模式 可以测试输入的字符串，来查看字符串内是否出现电话号码模式或者信用卡号模式。也被称为数据验证 2、替换文本 使用正则表达式来识别文档中的特定文本，完全删除该文本或者用其他文本替换它 3、基于模式匹配从字符串中提取子字符串 可以查找文档内或输入域内特定的文本 正则表达式语法1、test+hyl 可以匹配testhyl、testthyl、testtthyl等，+号表示前面的字符必须至少只出现一次（≥1次）2、testhyl 可以匹配testhyl、testthyl、testtthyl等，号表示字符可以出现一次或者多次，也可以不出现（≥0次）3、test?hyl 可以匹配testhyl和teshyl，？号表示前面的字符最多可以出现一次（0≥次数≤1） 普通字符普通字符包括没有显式指定为元字符的所有可打印字符和不可打印字符。包括所有大小写字母、数字、标点符号和一些其他符号 非打印字符 特殊字符匹配元字符时需要将字符转义，即将反斜杠字符\ 放在它们前面。 限定符 定位符 未完待续总结功能强大，特别有用！ 附： 参考资料：http://www.runoob.com/regexp/regexp-operator.html]]></content>
       <categories>
         <category>编程语言</category>
       </categories>
       <tags>
         <tag>正则表达式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ab下载与上传压测]]></title>
+    <url>%2F2017%2F10%2F18%2Fab%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0%E5%8E%8B%E6%B5%8B%2F</url>
+    <content type="text"><![CDATA[背景略 简要命令下载ab -n 10000 -c 100 “文件地址” 上传ab -n 10000 -c 100 -T ‘multipart/form-data; boundary=w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ’ -p ./abpost.txt “上传接口地址” 上传压测操作方法1、修改abpost.txt内容 1）Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot;，依照例子进行修改 2）Content-Type: MIME，具体格式由上传的文件决定，参考常见的MIME类型 3）对上传的文件进行base64编码，可采用在线转换base64，图片在线转换地址http://tool.css-js.com/base64.html 4）无 2、将abpost.txt放置在执行ab命令的目录下 3、修改总请求数和并发请求数，回车，执行命令 abpost.txt内容--w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot; Content-Type: image/png iVBORw0KGgoAAAANSUhEUgAAAkgAAAFmCAYAAACWUGV0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhe7L11lB1Xeq+t+8dd37130GzLFtiWZBJYZmaSmWYyPJnkZjKUDCRjkkEM3S01MzMzMzMzd4tZMtszSb7v/X6/vWufU+f0aant8SSTxL3Ws4rhVFfVfurdtOj/bX5AFK33y0TG7ZK7e7X8w7dukqfvWSVP3HWNPHTbtfLAbdfLfbeulntvXSt337JO7rxlvebmm+SOs3DnLTfPy1233uLktlvPyt233yb33HGb3HfnbXL/nbfLg3fd7Qci8jJUHITPWTSFlKKJxskJYUQU5asiE9mXKVjGTKy0ihvMwUys9MNWSl8rllskNhFLaVHCWtVRQdS3KPLsVhpLeZIsXZXzln2cA732G/kR6X4uxHy5jthG/bN49/3S6hFvDm8fbZXG/5fP3l8bWI6zEnHdcqX7N6TbvXfLxLhoPeD0HXPq5zudZlveYaN3jXuRJ4nWM/eZ+jEXn8Fv5zFoug5duLoO0dAeHX8f8cgo41GkHL/1II//2de8263+zr1tzfGQI6GwSlIP9/IllCWUEWlRdkU3lhNlUU5VBlca5QVZJH1aA0/xdLbVkBjRvcky655BKpVoMYGX6g/x/H/Eel0xKsRgAAAABJRU5ErkJggg== ----w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ-- 附：常见的MIME类型(通用型)： 超文本标记语言文本 .html text/html xml文档 .xml text/xml XHTML文档 .xhtml application/xhtml+xml 普通文本 .txt text/plain RTF文本 .rtf application/rtf PDF文档 .pdf application/pdf Microsoft Word文件 .word application/msword PNG图像 .png image/png GIF图形 .gif image/gif JPEG图形 .jpeg,.jpg image/jpeg au声音文件 .au audio/basic MIDI音乐文件 mid,.midi audio/midi,audio/x-midi RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio MPEG文件 .mpg,.mpeg video/mpeg AVI文件 .avi video/x-msvideo GZIP文件 .gz application/x-gzip TAR文件 .tar application/x-tar 任意的二进制数据 application/octet-stream]]></content>
+      <categories>
+        <category>测试工具</category>
+      </categories>
+      <tags>
+        <tag>性能测试</tag>
+        <tag>性能工具</tag>
+        <tag>ab</tag>
       </tags>
   </entry>
   <entry>
@@ -134,19 +159,6 @@
       <tags>
         <tag>xscan</tag>
         <tag>安全测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[ab下载与上传压测]]></title>
-    <url>%2F2017%2F10%2F18%2Fab%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0%E5%8E%8B%E6%B5%8B%2F</url>
-    <content type="text"><![CDATA[背景略 简要命令下载ab -n 10000 -c 100 “文件地址” 上传ab -n 10000 -c 100 -T ‘multipart/form-data; boundary=w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ’ -p ./abpost.txt “上传接口地址” 上传压测操作方法1、修改abpost.txt内容 1）Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot;，依照例子进行修改 2）Content-Type: MIME，具体格式由上传的文件决定，参考常见的MIME类型 3）对上传的文件进行base64编码，可采用在线转换base64，图片在线转换地址http://tool.css-js.com/base64.html 4）无 2、将abpost.txt放置在执行ab命令的目录下 3、修改总请求数和并发请求数，回车，执行命令 abpost.txt内容--w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ Content-Disposition: form-data; name=&quot;fileUpload&quot;; filename=&quot;huangyl.png&quot; Content-Type: image/png iVBORw0KGgoAAAANSUhEUgAAAkgAAAFmCAYAAACWUGV0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhe7L11lB1Xeq+t+8dd37130GzLFtiWZBJYZmaSmWYyPJnkZjKUDCRjkkEM3S01MzMzMzMzd4tZMtszSb7v/X6/vWufU+f0aant8SSTxL3Ws4rhVFfVfurdtOj/bX5AFK33y0TG7ZK7e7X8w7dukqfvWSVP3HWNPHTbtfLAbdfLfbeulntvXSt337JO7rxlvebmm+SOs3DnLTfPy1233uLktlvPyt233yb33HGb3HfnbXL/nbfLg3fd7Qci8jJUHITPWTSFlKKJxskJYUQU5asiE9mXKVjGTKy0ihvMwUys9MNWSl8rllskNhFLaVHCWtVRQdS3KPLsVhpLeZIsXZXzln2cA732G/kR6X4uxHy5jthG/bN49/3S6hFvDm8fbZXG/5fP3l8bWI6zEnHdcqX7N6TbvXfLxLhoPeD0HXPq5zudZlveYaN3jXuRJ4nWM/eZ+jEXn8Fv5zFoug5duLoO0dAeHX8f8cgo41GkHL/1II//2de8263+zr1tzfGQI6GwSlIP9/IllCWUEWlRdkU3lhNlUU5VBlca5QVZJH1aA0/xdLbVkBjRvcky655BKpVoMYGX6g/x/H/Eel0xKsRgAAAABJRU5ErkJggg== ----w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ-- 附：常见的MIME类型(通用型)： 超文本标记语言文本 .html text/html xml文档 .xml text/xml XHTML文档 .xhtml application/xhtml+xml 普通文本 .txt text/plain RTF文本 .rtf application/rtf PDF文档 .pdf application/pdf Microsoft Word文件 .word application/msword PNG图像 .png image/png GIF图形 .gif image/gif JPEG图形 .jpeg,.jpg image/jpeg au声音文件 .au audio/basic MIDI音乐文件 mid,.midi audio/midi,audio/x-midi RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio MPEG文件 .mpg,.mpeg video/mpeg AVI文件 .avi video/x-msvideo GZIP文件 .gz application/x-gzip TAR文件 .tar application/x-tar 任意的二进制数据 application/octet-stream]]></content>
-      <categories>
-        <category>测试工具</category>
-      </categories>
-      <tags>
-        <tag>性能测试</tag>
-        <tag>ab</tag>
-        <tag>性能工具</tag>
       </tags>
   </entry>
   <entry>
@@ -180,8 +192,8 @@
       </categories>
       <tags>
         <tag>性能测试</tag>
-        <tag>性能工具</tag>
         <tag>iperf</tag>
+        <tag>性能工具</tag>
       </tags>
   </entry>
   <entry>
@@ -277,6 +289,19 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Selenium初学总结]]></title>
+    <url>%2F2017%2F07%2F12%2FSelenium%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"><![CDATA[背景工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 Selenium的简单介绍Selenium是什么Selenium是一款用于Web应用程序测试的工具，框架底层使用JavaScript模拟用户对浏览器进行操作。 selenium不是单纯的一个工具，是一组工具的集合，而且也有版本之分（目前3.0） selenium IDEselenium IDE 是嵌入到Firefox浏览器中的一个插件，实现简单的浏览器操作的录制与回放功能。 优点： 1、快速的创建bug重现脚本。 在测试过程中，发现了bug之后可以通过IDE将重现的步骤录制下来，可以帮助开发人员更容易的重现bug。 2、IDE录制的脚本可以转换成多种语言，有助于快速的开发脚本。 selenium GridSelenium Grid是一种自动化测试辅助工具，Grid通过利用现有的计算机基础设施，能加快Web-app的功能测试。利用Grid，可以很方便地同时在多台机器上和异构环境中并行运行多个测试事例。 特点： 1、并行执行 2、通过一个主机统一控制用例在不同环境、不同浏览器下运行。 3、灵活添加变动测试机 selenium RCselenium RC是selenium的核心工具，selenium RC支持多种不同的语言编写自动化测试脚本，通过selenium RC的服务器作为代理服务器去访问应用从而达到测试的目的。 selenium RC分为Client Libraries和selenium Server两部分 Client Libraries: Client Libraries库主要用于编写测试脚本，是控制selenium Server的库。 Selenium Server: 负责控制浏览器行为，Selenium Server主要包括3个部分：Launcher、Http Proxy、Core。 Selenium Core：被Selenium Server嵌入到浏览器页面中的。Selenium Core其实就是一堆JS函数的集合，通过这些JS函数，才可以实现用程序对浏览器进行操作。 Launcher：用于启动浏览器，把selnium Core加载到浏览器页面当中，并把浏览器的代理设置为Selenium Server 的Http Proxy。 selenium 2.0selenium 2.0与selenium 1.0的关系，简单用公式表示为: selenium 2.0 = selenium 1.0 + WebDriver 在selenium 2.0中主推WebDriver，WebDriver是selenium RC的替代品，因为selenium为了向下兼容，所以selenium RC并没有被彻底抛弃，如果使用selenium开发一个新自动化测试项目，推荐使用WebDriver 。 selenium RC 与webdriver主要区别： selenium RC: 在浏览器中运行JavaScript应用，使用浏览器内置的JavaScript翻译器来翻译和执行selenese命令（selenese是selenium命令集合）。 WebDriver: 1、通过原生浏览器支持或者浏览器扩展直接控制浏览器 2、WebDriver针对各个浏览器而开发，取代了嵌入到被测Web应用中的JavaScript 3、与浏览器的紧密集成支持创建更高级的测试 4、避免了JavaScript安全模型导致的限制 5、利用操作系统级的调用模拟用户输入 Selenium的优势在哪对B/S应用支持很好 支持多平台/多浏览器 支持多语言开发(java、python、ruby、php、C#、JavaScript等) 支持分布式测试用例执行 学习内容丰富，增加测试工程师的技术竞争力 可选语言丰富 从语言易学性来讲，首选python和ruby 从语言应用广度来讲，首选java、C#和php等 从语言相关测试技术成度来讲：ruby、python和java 考虑整个技术团队主流用什么语言，然后选择相应的语言。 selenium集成java的一些常用方法1、页面元素定位方法: ID: driver.findElement(By.id(“ID值”)); Name: driver.findElement(By.name(“name值”)); 链接的全部文字: driver.findElement(By.linkText(“链接的全部文字内容”)); 部分链接文字: driver.findElement(By.partialLinkText(“链接的部分文字内容”)); Xpath: driver.findElement(By.xpath(“Xpath定位表达式”)); CSS: driver.findElement(By.cssSelector(“CSS定位表达式”)); Class: driver.findElement(By.className(“页面元素的Class属性值”)); 标签名称: driver.findElement(By.tagName (“页面元素的HTML标签名称”)); 2、打开浏览器: 打开firefox: WebDriver driver= new FirefoxDriver(); 打开ie: WebDriver driver =new InternetExplorerDriver(); 打开chrome: WebDriver driver = new ChromeDriver(); 打开指定路径浏览器: System.setProperty(&quot;webdriver.firefox.bin&quot;,&quot;D:\\ProgramFiles\\MozillaFirefox\\firefox.exe&quot;); 3、关闭浏览器: driver.close(); driver.quit(); 4、返回当前页面Title URL: driver.getTitle(); driver.getCurrentUrl(); 5、返回上一个访问的网页: driver.navigate().to(url1); driver.navigate().to(url2); driver.navigate().back(); 6、刷新当前网页: driver.navigate().refresh(); 7、输入框中输入指定内容: driver.sendKeys(); 8、输入框中清除文字内容: driver.clear(); 9、查看页面元素属性: driver.getAttribute(“value”); 10、点击按钮: driver.click(); 11、操作frame: Driver.switchTo.frame() 12、单选下拉列表: Select dropList = new Select(element); Select.getFrestSelectOption().getText(); Select.selectByIndex(); Select.selectByValue(); Select.selectByVisibleText(); 例子: 单选框: List&lt;WebElement&gt; radioList = driver.findElements(); radio. getAttribute(&quot;Value&quot;).equals(&quot;&quot;); radio.isSelectd() radio.click(); 复选框: List&lt;WebElement&gt; checkList = driver.findElements(); check.getAttribute(&quot;Value&quot;).equals(&quot;&quot;); check.isSelectd() check.click(); 13、Alert弹窗: Alert alert = driver.switchTo().alert(); alert.accept(); 14、执行JavaScript脚本： 声明一个JavaScript 执行器对象 JavaScriptExecutor js = (JavaScriptExecutor )driver; js.executeScript(“loginSubmit();”); 总结无]]></content>
+      <categories>
+        <category>测试工具</category>
+      </categories>
+      <tags>
+        <tag>自动化测试</tag>
+        <tag>Selenium</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[RabbitMQ学习总结]]></title>
     <url>%2F2017%2F07%2F12%2Frabbitmq%2F</url>
     <content type="text"><![CDATA[什么是RabbitMQMessage Queue（MQ），消息队列是一种应用程序对应用程序的通信方法。应用程序通过读写MQ的消息（针对应用程序的数据）来通信，而无需建立专用连接来链接它们。MQ是消费者-生产模型的一个典型代表，一段不断写入消息，而另一段可以读取或者订阅队列中的消息。MQ是遵循AMQP协议的具体实现和产品。 适用场景RabbitMQ，或者说AMQP解决了什么问题，或者说它的应用场景是什么？ 对于一个大型的软件系统来说，它会有很多的组件或者说模块或者说子系统或者（subsystem or Component or submodule）。那么这些模块的如何通信？这和传统的IPC有很大的区别。传统的IPC很多都是在单一系统上的，模块耦合性很大，不适合扩展（Scalability）；如果使用socket那么不同的模块的确可以部署到不同的机器上，但是还是有很多问题需要解决。比如： 1）信息的发送者和接收者如何维持这个连接，如果一方的连接中断，这期间的数据如何方式丢失？ 2）如何降低发送者和接收者的耦合度？ 3）如何让Priority高的接收者先接到数据？ 4）如何做到load balance？有效均衡接收者的负载？ 5）如何有效的将数据发送到相关的接收者？也就是说将接收者subscribe 不同的数据，如何做有效的filter。 6）如何做到可扩展，甚至将这个通信模块发到cluster上？ 7）如何保证接收者接收到了完整，正确的数据？ AMDQ协议解决了以上的问题，而RabbitMQ实现了AMQP。 安装部署1、安装erlang 1）下载erlang源码，解压，进入$erlang目录，安装依赖包： yum install tk yum install tcl yum install unixODBC 2）编译erlang ./configure –prefix=/usr/local/erlang ./make ./make install 3）将erlang的bin目录添加至PATH 2、安装RabitMQ 1）下载RabbitMQ，解压至$RMQ 2）启动RabbitMQ ./bin/rabbitmq-server start 实际使用1、创建未完 相关博客链接：http://blog.csdn.net/column/details/rabbitmq.html]]></content>
@@ -285,19 +310,6 @@
       </categories>
       <tags>
         <tag>RabbitMQ</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Selenium初学总结]]></title>
-    <url>%2F2017%2F07%2F12%2FSelenium%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93%2F</url>
-    <content type="text"><![CDATA[背景工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 Selenium的简单介绍Selenium是什么Selenium是一款用于Web应用程序测试的工具，框架底层使用JavaScript模拟用户对浏览器进行操作。 selenium不是单纯的一个工具，是一组工具的集合，而且也有版本之分（目前3.0） selenium IDEselenium IDE 是嵌入到Firefox浏览器中的一个插件，实现简单的浏览器操作的录制与回放功能。 优点： 1、快速的创建bug重现脚本。 在测试过程中，发现了bug之后可以通过IDE将重现的步骤录制下来，可以帮助开发人员更容易的重现bug。 2、IDE录制的脚本可以转换成多种语言，有助于快速的开发脚本。 selenium GridSelenium Grid是一种自动化测试辅助工具，Grid通过利用现有的计算机基础设施，能加快Web-app的功能测试。利用Grid，可以很方便地同时在多台机器上和异构环境中并行运行多个测试事例。 特点： 1、并行执行 2、通过一个主机统一控制用例在不同环境、不同浏览器下运行。 3、灵活添加变动测试机 selenium RCselenium RC是selenium的核心工具，selenium RC支持多种不同的语言编写自动化测试脚本，通过selenium RC的服务器作为代理服务器去访问应用从而达到测试的目的。 selenium RC分为Client Libraries和selenium Server两部分 Client Libraries: Client Libraries库主要用于编写测试脚本，是控制selenium Server的库。 Selenium Server: 负责控制浏览器行为，Selenium Server主要包括3个部分：Launcher、Http Proxy、Core。 Selenium Core：被Selenium Server嵌入到浏览器页面中的。Selenium Core其实就是一堆JS函数的集合，通过这些JS函数，才可以实现用程序对浏览器进行操作。 Launcher：用于启动浏览器，把selnium Core加载到浏览器页面当中，并把浏览器的代理设置为Selenium Server 的Http Proxy。 selenium 2.0selenium 2.0与selenium 1.0的关系，简单用公式表示为: selenium 2.0 = selenium 1.0 + WebDriver 在selenium 2.0中主推WebDriver，WebDriver是selenium RC的替代品，因为selenium为了向下兼容，所以selenium RC并没有被彻底抛弃，如果使用selenium开发一个新自动化测试项目，推荐使用WebDriver 。 selenium RC 与webdriver主要区别： selenium RC: 在浏览器中运行JavaScript应用，使用浏览器内置的JavaScript翻译器来翻译和执行selenese命令（selenese是selenium命令集合）。 WebDriver: 1、通过原生浏览器支持或者浏览器扩展直接控制浏览器 2、WebDriver针对各个浏览器而开发，取代了嵌入到被测Web应用中的JavaScript 3、与浏览器的紧密集成支持创建更高级的测试 4、避免了JavaScript安全模型导致的限制 5、利用操作系统级的调用模拟用户输入 Selenium的优势在哪对B/S应用支持很好 支持多平台/多浏览器 支持多语言开发(java、python、ruby、php、C#、JavaScript等) 支持分布式测试用例执行 学习内容丰富，增加测试工程师的技术竞争力 可选语言丰富 从语言易学性来讲，首选python和ruby 从语言应用广度来讲，首选java、C#和php等 从语言相关测试技术成度来讲：ruby、python和java 考虑整个技术团队主流用什么语言，然后选择相应的语言。 selenium集成java的一些常用方法1、页面元素定位方法: ID: driver.findElement(By.id(“ID值”)); Name: driver.findElement(By.name(“name值”)); 链接的全部文字: driver.findElement(By.linkText(“链接的全部文字内容”)); 部分链接文字: driver.findElement(By.partialLinkText(“链接的部分文字内容”)); Xpath: driver.findElement(By.xpath(“Xpath定位表达式”)); CSS: driver.findElement(By.cssSelector(“CSS定位表达式”)); Class: driver.findElement(By.className(“页面元素的Class属性值”)); 标签名称: driver.findElement(By.tagName (“页面元素的HTML标签名称”)); 2、打开浏览器: 打开firefox: WebDriver driver= new FirefoxDriver(); 打开ie: WebDriver driver =new InternetExplorerDriver(); 打开chrome: WebDriver driver = new ChromeDriver(); 打开指定路径浏览器: System.setProperty(&quot;webdriver.firefox.bin&quot;,&quot;D:\\ProgramFiles\\MozillaFirefox\\firefox.exe&quot;); 3、关闭浏览器: driver.close(); driver.quit(); 4、返回当前页面Title URL: driver.getTitle(); driver.getCurrentUrl(); 5、返回上一个访问的网页: driver.navigate().to(url1); driver.navigate().to(url2); driver.navigate().back(); 6、刷新当前网页: driver.navigate().refresh(); 7、输入框中输入指定内容: driver.sendKeys(); 8、输入框中清除文字内容: driver.clear(); 9、查看页面元素属性: driver.getAttribute(“value”); 10、点击按钮: driver.click(); 11、操作frame: Driver.switchTo.frame() 12、单选下拉列表: Select dropList = new Select(element); Select.getFrestSelectOption().getText(); Select.selectByIndex(); Select.selectByValue(); Select.selectByVisibleText(); 例子: 单选框: List&lt;WebElement&gt; radioList = driver.findElements(); radio. getAttribute(&quot;Value&quot;).equals(&quot;&quot;); radio.isSelectd() radio.click(); 复选框: List&lt;WebElement&gt; checkList = driver.findElements(); check.getAttribute(&quot;Value&quot;).equals(&quot;&quot;); check.isSelectd() check.click(); 13、Alert弹窗: Alert alert = driver.switchTo().alert(); alert.accept(); 14、执行JavaScript脚本： 声明一个JavaScript 执行器对象 JavaScriptExecutor js = (JavaScriptExecutor )driver; js.executeScript(“loginSubmit();”); 总结无]]></content>
-      <categories>
-        <category>测试工具</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>自动化测试</tag>
-        <tag>Selenium</tag>
       </tags>
   </entry>
   <entry>
@@ -314,17 +326,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数据库模型的简单理解]]></title>
-    <url>%2F2017%2F07%2F12%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 什么是数据模型？访问数据库中的数据取决于数据库实现的数据模型。 数据模型会影响客户端通过API对数据的操作。不同的数据模型可能会提供或多或少的功能。一般而言，数据模型不会直接提供过多的功能，许多功能必须由客户端自行实现。 数据模型决定了客户端如何对数据进行编码存储。应用程序需要某种域模型与存储技术支持的特性进行映射。 有哪些数据库模型关系模型关系模型使用记录（由元组组成）进行存储，记录存储在表中，表由架构界定。 表中的每个列都有名称和类型，表中的所有记录都要符合表的定义。 SQL是专门的查询语言，提供相应的语法查找符合条件的记录，如表联接（Join）。表联接可以基于表之间的关系在多表之间查询记录。 表中的记录可以被创建和删除，记录中的字段也可以单独更新。 关系模型数据库通常提供事务处理机制，这为涉及多条记录的自动化处理提供了解决方案。 对不同的编程语言而言，表可以被看成数组、记录列表或者结构。表可以使用B树和哈希表进行索引，以应对高性能访问。 键值存储键值存储提供了基于键对值的访问方式。 键值对可以被创建或删除，与键相关联的值可以被更新。 键值存储一般不提供事务处理机制。 对不同的编程语言而言，键值存储类似于哈希表。对此，不同的编程语言有不同的名字（如，Java称之为“HashMap”，Perl称之为“hash”，Python称之为“dict”，PHP称之为“associative array”），C++则称之为“boost::unordered_map&lt;...&gt;”。 键值存储支持键上自有的隐式索引。 键值存储看起来好像不太有用，但却可以在“值”上存储大量信息。“值”可以是一个XML文档，一个JSON对象，或者其它任何序列化形式。 重要的是，键值存储引擎并不在意“值”的内部结构，它依赖客户端对“值”进行解释和管理。 文档存储文档存储支持对结构化数据的访问，不同于关系模型的是，文档存储没有强制的架构。 事实上，文档存储以封包键值对的方式进行存储。在这种情况下，应用对要检索的封包采取一些约定，或者利用存储引擎的能力将不同的文档划分成不同的集合，以管理数据。 与关系模型不同的是，文档存储模型支持嵌套结构。例如，文档存储模型支持XML和JSON文档，字段的“值”又可以嵌套存储其它文档。文档存储模型也支持数组和列值键。 与键值存储不同的是，文档存储关心文档的内部结构。这使得存储引擎可以直接支持二级索引，从而允许对任意字段进行高效查询。支持文档嵌套存储的能力，使得查询语言具有搜索嵌套对象的能力，XQuery就是一个例子。 MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。 列式存储如果翻转数据，列式存储与关系存储将会非常相似。 与关系模型存储记录不同，列式存储以流的方式在列中存储所有的数据。对于任何记录，索引都可以快速地获取列上的数据。 Map-reduce的实现Hadoop的流数据处理效率非常高，列式存储的优点体现的淋漓极致。因此，HBase和Hypertable通常作为非关系型数据仓库，为Map-reduce进行数据分析提供支持。 关系类型的列标对数据分析效果不好，因此，用户经常将更复杂的数据存储在列式数据库中。这直接体现在Cassandra中，它引入的“column family”可以被认为是一个“super-column”。 列式存储支持行检索，但这需要从每个列获取匹配的列值，并重新组成行。 图形数据库图形数据库存储顶点和边的信息，有的支持添加注释。 图形数据库可用于对事物建模，如社交图谱、真实世界的各种对象。IMDB（Internet Movie Database）站点的内容就组成了一幅复杂的图像，演员与电影彼此交织在一起。 图形数据库的查询语言一般用于查找图形中断点的路径，或端点之间路径的属性。 Neo4j是一个典型的图形数据库。]]></content>
-      <categories>
-        <category>数据库</category>
-      </categories>
-      <tags>
-        <tag>数据库模型</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[数据库性能的影响因素]]></title>
     <url>%2F2017%2F07%2F12%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0%2F</url>
     <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 影响数据库性能表现的因素简单概括，通常会有如下相关项： 硬件、操作系统、数据库配置、应用模型 1、硬件 1）变化的硬件： 通常指裸机配置等，如CPU、内存大小都对性能有重要影响。 再如裸设备、固态硬盘等，对性能也影响很大。 2）变化的网络环境： 10M、100M、千兆以太网甚至光纤等，会对应用系统的整体性能产生较大影响。 2、操作系统 典型的如Linux系列、Win系列，通常会有不同的性能表现。 操作系统的一些设置，也可能对数据库性能造成影响。比如块读写的设置等。 3、数据库 数据库，至少包含2部分内容，一是数据库引擎，一是接口（如JDBC、ODBC等）。 1）接口如果实现的不好，某些时候，也容易成为瓶颈。 2）数据库引擎，可调优之处很多，需要根据实际情况，综合判断。如分区、索引、日志、数据文件、数据库可调参数等 4、应用模型 基于数据库的应用，原型是什么样的，需要深入了解，掌握，才能因地制宜地结合数据库一起调优。 目前国内对于数据库的应用现状，基本的问题是：应用不当，SQL写法有误。 应用模型对于数据库的影响可能有： 1）读多写少、读写并重、读少写多； 2）并发情况 3）数据量 4）中间件 总之，应用逻辑和应用模型对数据库的使用方式，更多地影响着系统的瓶颈（通常情况，硬件一旦固定，更换的机会少。比如，数据库性能测试的TPCX系列，很多硬件厂家给出的测试最佳值，都是在固定硬件的环境下进行的）。 附：什么是数据库应用模型？参考本博客：《数据库应用模型的简单理解》]]></content>
@@ -333,6 +334,17 @@
       </categories>
       <tags>
         <tag>数据库性能</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据库模型的简单理解]]></title>
+    <url>%2F2017%2F07%2F12%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[背景公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西 什么是数据模型？访问数据库中的数据取决于数据库实现的数据模型。 数据模型会影响客户端通过API对数据的操作。不同的数据模型可能会提供或多或少的功能。一般而言，数据模型不会直接提供过多的功能，许多功能必须由客户端自行实现。 数据模型决定了客户端如何对数据进行编码存储。应用程序需要某种域模型与存储技术支持的特性进行映射。 有哪些数据库模型关系模型关系模型使用记录（由元组组成）进行存储，记录存储在表中，表由架构界定。 表中的每个列都有名称和类型，表中的所有记录都要符合表的定义。 SQL是专门的查询语言，提供相应的语法查找符合条件的记录，如表联接（Join）。表联接可以基于表之间的关系在多表之间查询记录。 表中的记录可以被创建和删除，记录中的字段也可以单独更新。 关系模型数据库通常提供事务处理机制，这为涉及多条记录的自动化处理提供了解决方案。 对不同的编程语言而言，表可以被看成数组、记录列表或者结构。表可以使用B树和哈希表进行索引，以应对高性能访问。 键值存储键值存储提供了基于键对值的访问方式。 键值对可以被创建或删除，与键相关联的值可以被更新。 键值存储一般不提供事务处理机制。 对不同的编程语言而言，键值存储类似于哈希表。对此，不同的编程语言有不同的名字（如，Java称之为“HashMap”，Perl称之为“hash”，Python称之为“dict”，PHP称之为“associative array”），C++则称之为“boost::unordered_map&lt;...&gt;”。 键值存储支持键上自有的隐式索引。 键值存储看起来好像不太有用，但却可以在“值”上存储大量信息。“值”可以是一个XML文档，一个JSON对象，或者其它任何序列化形式。 重要的是，键值存储引擎并不在意“值”的内部结构，它依赖客户端对“值”进行解释和管理。 文档存储文档存储支持对结构化数据的访问，不同于关系模型的是，文档存储没有强制的架构。 事实上，文档存储以封包键值对的方式进行存储。在这种情况下，应用对要检索的封包采取一些约定，或者利用存储引擎的能力将不同的文档划分成不同的集合，以管理数据。 与关系模型不同的是，文档存储模型支持嵌套结构。例如，文档存储模型支持XML和JSON文档，字段的“值”又可以嵌套存储其它文档。文档存储模型也支持数组和列值键。 与键值存储不同的是，文档存储关心文档的内部结构。这使得存储引擎可以直接支持二级索引，从而允许对任意字段进行高效查询。支持文档嵌套存储的能力，使得查询语言具有搜索嵌套对象的能力，XQuery就是一个例子。 MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。 列式存储如果翻转数据，列式存储与关系存储将会非常相似。 与关系模型存储记录不同，列式存储以流的方式在列中存储所有的数据。对于任何记录，索引都可以快速地获取列上的数据。 Map-reduce的实现Hadoop的流数据处理效率非常高，列式存储的优点体现的淋漓极致。因此，HBase和Hypertable通常作为非关系型数据仓库，为Map-reduce进行数据分析提供支持。 关系类型的列标对数据分析效果不好，因此，用户经常将更复杂的数据存储在列式数据库中。这直接体现在Cassandra中，它引入的“column family”可以被认为是一个“super-column”。 列式存储支持行检索，但这需要从每个列获取匹配的列值，并重新组成行。 图形数据库图形数据库存储顶点和边的信息，有的支持添加注释。 图形数据库可用于对事物建模，如社交图谱、真实世界的各种对象。IMDB（Internet Movie Database）站点的内容就组成了一幅复杂的图像，演员与电影彼此交织在一起。 图形数据库的查询语言一般用于查找图形中断点的路径，或端点之间路径的属性。 Neo4j是一个典型的图形数据库。]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>数据库模型</tag>
       </tags>
   </entry>
   <entry>
